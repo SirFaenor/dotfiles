@@ -1,0 +1,22 @@
+// list of extensions to always be installed in remote container development.
+// These will be installed when container is created through vscode or when
+// you attach vscode to a running container for the first time.
+// If you need to update extensions in a container after these setting has been edited,
+// just recreate the container and re-attach vscode to it.
+"remote.containers.defaultExtensions": [
+  "bmewburn.vscode-intelephense-client",
+  "breezelin.phpstan",
+  "eamodio.gitlens",
+  "Gruntfuggly.todo-tree",
+  "junstyle.php-cs-fixer",
+  "MehediDracula.php-namespace-resolver",
+  "mhutchie.git-graph",
+  "onecentlin.laravel-blade",
+  "zobo.php-intellisense",
+  "mehedidracula.php-namespace-resolver",
+  "gruntfuggly.todo-tree",
+  "nhoizey.gremlins",
+  "aeschli.vscode-css-formatter",
+  "onecentlin.laravel-blade",
+  "mrmlnc.vscode-apache"
+]
