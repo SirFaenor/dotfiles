@@ -19,4 +19,3 @@ parameters:
             - ./_ide_helper_models.php
             - vendor/*
             - ./tests/**
-            - ./packages/shop/tests/**
