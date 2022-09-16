@@ -1,0 +1,24 @@
+// default setting for remote container (attached)
+// to be pasted in C:\Users\{username}\AppData\Roaming\Code\User\globalStorage\ms-vscode-remote.remote-containers\nameConfigs\{container_name}.json
+{
+	"workspaceFolder": "/var/www/html",
+	"extensions": [
+		"aeschli.vscode-css-formatter",
+		"bmewburn.vscode-intelephense-client",
+		"breezelin.phpstan",
+		"eamodio.gitlens",
+		"Gruntfuggly.todo-tree",
+		"junstyle.php-cs-fixer",
+		"MehediDracula.php-namespace-resolver",
+		"mhutchie.git-graph",
+		"mrmlnc.vscode-apache",
+		"nhoizey.gremlins",
+		"onecentlin.laravel-blade",
+		"zobo.php-intellisense"
+	],
+	"settings": {
+		"php-cs-fixer.onsave": true,
+		"phpstan.configuration": "phpstan.neon",
+		"phpstan.level": "config"
+	}
+}
