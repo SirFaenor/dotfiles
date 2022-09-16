@@ -2,6 +2,7 @@
 // to be pasted in C:\Users\{username}\AppData\Roaming\Code\User\globalStorage\ms-vscode-remote.remote-containers\nameConfigs\{container_name}.json
 {
 	"workspaceFolder": "/var/www/html",
+	// these will be automatically installed the frst time you attach vscode to the container (or after a rebuild / down)
 	"extensions": [
 		"aeschli.vscode-css-formatter",
 		"bmewburn.vscode-intelephense-client",
@@ -16,6 +17,7 @@
 		"onecentlin.laravel-blade",
 		"zobo.php-intellisense"
 	],
+	// container scoped settings
 	"settings": {
 		"php-cs-fixer.onsave": true,
 		"phpstan.configuration": "phpstan.neon",
