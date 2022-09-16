@@ -20,7 +20,7 @@
 	// container scoped settings
 	"settings": {
 		"php-cs-fixer.onsave": true,
-		"phpstan.configuration": "phpstan.neon",
+		"phpstan.configuration": ".phpstan.neon",
 		"phpstan.level": "config"
 	}
 }
