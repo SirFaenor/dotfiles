@@ -21,6 +21,21 @@
 	"settings": {
 		"php-cs-fixer.onsave": true,
 		"phpstan.configuration": ".phpstan.neon",
-		"phpstan.level": "config"
+		"phpstan.level": "config",
+		"intelephense.files.exclude": [
+			"**/.git/**",
+			"**/.svn/**",
+			"**/.hg/**",
+			"**/CVS/**",
+			"**/.DS_Store/**",
+			"**/node_modules/**",
+			"**/bower_components/**",
+			"**/vendor/**/{Tests,tests}/**",
+			"**/.history/**",
+			"**/vendor/**/vendor/**",
+			"_ide_helper_models.php",
+			"_ide_helper.php"
+		]
+
 	}
 }
