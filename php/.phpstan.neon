@@ -14,8 +14,9 @@ parameters:
     excludePaths:
     # exclude from analyse but keep for discovering symbols
         analyse :
-            - .php-cs-fixer.php
+            - ./.php-cs-fixer.php
             - ./_ide_helper.php
             - ./_ide_helper_models.php
-            - vendor/*
+            - ./vendor/*
             - ./tests/**
+            
