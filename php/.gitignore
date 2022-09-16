@@ -1,0 +1,4 @@
+.php-cs-fixer.cache
+.phpstan.neon
+.php-cs-fixer.php
+_ide_helper.php
