@@ -14,8 +14,7 @@
 		"mhutchie.git-graph",
 		"mrmlnc.vscode-apache",
 		"nhoizey.gremlins",
-		"onecentlin.laravel-blade",
-		"zobo.php-intellisense"
+		"onecentlin.laravel-blade"
 	],
 	// container scoped settings
 	"settings": {
