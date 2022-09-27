@@ -1,0 +1,30 @@
+{
+  // settings template for a project root directory on wsl folder with docker ce running natively on wls  
+  
+  // phpstan.* settings for sanderronde.phpstan-vscode to run phpstan inside a docker container
+    // (using the correct php versions)
+    // replace $containerName with real container name
+    // replace $hostPathToTheProjectRoot with absolute path of project 
+    "phpstan.binCommand": [
+        "docker", "exec", "$containerName", "vendor/bin/phpstan"
+    ],
+    "phpstan.configFile": ".phpstan.neon",
+    "phpstan.enableLanguageServer": false,
+    "phpstan.binPath": "",
+    "phpstan.paths": {
+        "$hostPathToTheProjectRoot": "/var/www/html"
+    },
+    "phpstan.timeout": 100000,
+
+    // run php-cs-fixer inside a docker container through the extension emeraldwalk.runonsave
+    // replace $containerName with real container name
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": ".php",
+                "isAsync": true,
+                "cmd": "docker exec -i $containerName /var/www/html/tools/php-cs-fixer/vendor/bin/php-cs-fixer fix /var/www/html/${relativeFile}"
+            }
+        ]
+    }
+}
