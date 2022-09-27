@@ -1,7 +1,20 @@
 {
   // settings template for a project root directory on wsl folder with docker ce running natively on wls  
   
-  // phpstan.* settings for sanderronde.phpstan-vscode to run phpstan inside a docker container
+    // Extensions installed on WSL
+    // bmewburn.vscode-intelephense-client
+    // emeraldwalk.RunOnSave
+    // Gruntfuggly.todo-tree
+    // MehediDracula.php-namespace-resolver
+    // mhutchie.git-graph
+    // ms-azuretools.vscode-docker
+    // onecentlin.laravel-blade
+    // SanderRonde.phpstan-vscode
+    // vscode.docker (bundled) 
+    // vscode.yaml (bundled)
+    
+  
+    // phpstan.* settings for sanderronde.phpstan-vscode to run phpstan inside a docker container
     // (using the correct php versions)
     // replace $containerName with real container name
     // replace $hostPathToTheProjectRoot with absolute path of project 
