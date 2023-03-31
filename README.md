@@ -1,2 +1,2 @@
 # dotfiles
-My settings files
+Settings / common tasks files
