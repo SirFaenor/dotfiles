@@ -1,0 +1,47 @@
+#
+# docker-compose -p radiotaxivenezia.com up
+#
+
+version: "3"
+
+services:
+  web-server:
+    build:
+      dockerfile: docker-php.Dockerfile
+      context: .
+    restart: "no"
+    volumes:
+      - ".:/var/www/html"
+      - "./docker-data/log:/var/log/apache2"
+    ports:
+      - ${COMPOSE_WEB_PORT}
+    environment:
+      - APACHE_RUN_USER=#${COMPOSE_APACHE_RUN_USER}
+      - APACHE_RUN_GROUP=#${COMPOSE_APACHE_RUN_GROUP}
+    # imposta l'hostname (come ritornato da gethostname()) INTERNAMENTE AL CONTAINER. Non ha effetto all'esterno
+    hostname: ${COMPOSE_PROJECT_NAME}.localhost
+    # sarà anche utente di default nella connessione al container
+    user : ${COMPOSE_APACHE_RUN_USER} 
+  db:
+    image: mysql:5.6.49
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE : ${DB_DATABASE}
+      MYSQL_USER : ${DB_USERNAME}
+      MYSQL_PASSWORD : ${DB_PASSWORD}
+    volumes:
+      - ./docker-data/mysql:/var/lib/mysql
+    ports:
+      - ${COMPOSE_MYSQL_PORT} 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.0.1
+    restart: "no"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: secret
+      UPLOAD_LIMIT : 200000000
+    ports:
+      - ${COMPOSE_PHPMYADMIN_PORT}
+

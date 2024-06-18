@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# php executable path inside container
+docker exec -it {$containerName} php "$@"

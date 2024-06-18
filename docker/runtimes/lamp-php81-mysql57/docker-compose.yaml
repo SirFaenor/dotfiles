@@ -1,0 +1,86 @@
+#
+# 'docker-compose up'
+#
+
+version: "3"
+
+services:
+  web:
+    container_name: ${COMPOSE_PROJECT_NAME}_web
+    build:
+      context: .
+      dockerfile: docker-php.dockerfile
+      args:
+        # lasciare "#"
+        - APACHE_RUN_USER=${COMPOSE_APACHE_RUN_USER}
+        - APACHE_RUN_GROUP=${COMPOSE_APACHE_RUN_GROUP}
+    entrypoint: ["/bin/sh","-c"]
+    command: 
+      - |
+        composer install
+        php artisan migrate
+        apache2-foreground
+    restart: "no"
+    volumes:
+      - ".:/var/www/html"
+      - "./docker-data/log:/var/log/apache2"
+      - "./docker-data/php/php.ini:/usr/local/etc/php/conf.d/custom.ini"
+    ports:
+      - ${COMPOSE_WEB_PORT}
+
+      # imposta l'hostname (come ritornato da gethostname()) INTERNAMENTE AL CONTAINER. Non ha effetto all'esterno
+    hostname: ${COMPOSE_PROJECT_NAME}.localhost
+    # utente default di esecuzione dei comandi nel container, utilizza utente del sistema host (es. bash)
+    user : ${COMPOSE_APACHE_RUN_USER}
+    environment:
+      - VIRTUAL_HOST=${COMPOSE_VIRTUAL_HOST:-}
+      - 'COMPOSER_AUTH={"github-oauth": {"github.com": "${GH_AUTH_TOKEN:-}"}}'
+    networks:
+      - default
+      - _external_
+  db:
+    container_name: ${COMPOSE_PROJECT_NAME}_db
+    image: mysql:5.7
+    restart: "no"
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE : ${DB_DATABASE}
+      MYSQL_USER : ${DB_USERNAME}
+      MYSQL_PASSWORD : ${DB_PASSWORD}
+    volumes:
+      - ./docker-data/mysql:/var/lib/mysql
+    ports:
+      - ${COMPOSE_MYSQL_PORT} 
+  # raggiungibile su {hostname}:5000
+  phpmyadmin:
+    container_name: ${COMPOSE_PROJECT_NAME}_pma
+    image: phpmyadmin/phpmyadmin:5
+    restart: "no"
+    environment:
+      PMA_HOST: ${COMPOSE_PROJECT_NAME}_db
+      PMA_USER: root
+      PMA_PASSWORD: secret
+      UPLOAD_LIMIT : 200000000
+    ports:
+      - ${COMPOSE_PHPMYADMIN_PORT}
+  node:
+    container_name: ${COMPOSE_PROJECT_NAME}_node
+    image : node:12
+    command: >
+      sh -c "npm install --save-dev && npm run watch"
+    volumes:
+      - "./:/app"
+    working_dir: /app
+    ports:
+      - ${MIX_BROWSERSYNC_PORT}:${MIX_BROWSERSYNC_PORT}
+  mailhog:
+    image: mailhog/mailhog
+    logging:
+      driver: 'none'
+    ports:
+      - ${COMPOSE_MAILHOG_PORT_1}
+      - ${COMPOSE_MAILHOG_PORT_2}
+networks:
+  _external_:
+    name : ${COMPOSE_EXTERNAL_NETWORK}
+    external: true

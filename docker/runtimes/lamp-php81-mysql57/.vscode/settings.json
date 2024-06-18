@@ -16,10 +16,10 @@
     
       // phpstan.* settings for sanderronde.phpstan-vscode to run phpstan inside a docker container
       // (using the correct php versions)
-      // forward the command to the "web" container
+      // replace {$containerName} with real container name
       // replace $hostPathToTheProjectRoot with absolute path of project 
       "phpstan.binCommand": [
-          "docker", "compose", "exec", "web", "vendor/bin/phpstan"
+          "docker", "exec", "{$containerName}", "vendor/bin/phpstan"
       ],
       "phpstan.configFile": ".phpstan.neon",
       "phpstan.enableLanguageServer": false,
@@ -29,13 +29,14 @@
       },
       "phpstan.timeout": 100000,
   
-      // run php-cs-fixer inside the "web" container through the extension emeraldwalk.runonsave
+      // run php-cs-fixer inside a docker container through the extension emeraldwalk.runonsave
+      // replace {$containerName} with real container name
       "emeraldwalk.runonsave": {
           "commands": [
               {
                   "match": ".php",
                   "isAsync": true,
-                  "cmd": "docker composer exec -i web /var/www/html/tools/php-cs-fixer/vendor/bin/php-cs-fixer fix /var/www/html/${relativeFile}"
+                  "cmd": "docker exec -i {$containerName} /var/www/html/tools/php-cs-fixer/vendor/bin/php-cs-fixer fix /var/www/html/${relativeFile}"
               }
           ]
       }
