@@ -1,0 +1,2 @@
+- [Atmosphera project](project_atmosphera.md) — Laravel + Filament starter kit for white-label PIM/DAM customizations (agency model, not generic SaaS)
+- [Exploratory dialogue preference](feedback_exploratory_dialogue.md) — wants quantified complexity tradeoffs and discriminating questions before any code

@@ -1,0 +1,23 @@
+- [Design reference doc](design_reference_doc.md) — `.docs/riepilogo-design.md` (architettura/decisioni) + `.docs/roadmap.md` (task con checkbox) + `.docs/import-prodotti-indoor.md` (parsing/import Indoor, 5 assi) sono i documenti di riferimento
+- [Motore di sync atmosphera-admin](atmosphera_admin_sync_engine.md) — sibling dir, HA GIÀ codice (app/Sync, packages/hub-sync), non fidarsi del design doc "nessun codice scritto"; va aggiornato quando cambia il contratto API hub
+- [Piano doc design](design_doc_history_plan.md) — il "Riepilogo consolidato" in fondo a riepilogo-design.md è lo specchio dello stato e la fonte autorevole (allinearlo a ogni intervento); Parti 1-9 = deliberazione storica con marker ⚠️ Superato; roadmap = dettaglio per task
+- [PHP via Docker](php_docker_container.md) — php/composer/artisan girano nel container `atmosphera-hub_php` (PHP 8.5), mai sull'host
+- [Dev Container](devcontainer_setup.md) — `.devcontainer/devcontainer.json` riusa il docker-compose; estensioni progetto vs personali; php-cs-fixer on-save; Xdebug via `XDEBUG_CLIENT_HOST` (default localhost)
+- [Preserva commenti utente](feedback_preserve_comments.md) — mai rimuovere i commenti dell'utente quando si editano file
+- [Tieni pulito / YAGNI](feedback_keep_clean_yagni.md) — rimuovere tabelle/colonne/codice non usati invece di conservarli; niente astrazioni anticipatorie
+- [Codice in inglese](feedback_code_in_english.md) — identificatori/metodi (anche nomi test) sempre in inglese; commenti in italiano ok
+- [Traduzioni anche in inglese](feedback_lang_en_translations.md) — quando si aggiungono chiavi in lang/it, creare sempre anche le corrispondenti in lang/en
+- [TextEntry vs Placeholder](feedback_filament_textentry_over_placeholder.md) — in Filament v5 usare TextEntry->state() (non Placeholder, deprecato) per testo/alert nei form
+- [PHPStan config template](feedback_phpstan_template_config.md) — lanciare phpstan completo (config del template), mai su path vendor isolati (verrebbero esclusi → falso OK)
+- [Coda elaborazione asset](asset_processing_queue.md) — ProcessAssetJob gira sulla coda dedicata `assets`: il worker va avviato su quella coda
+- [Deployment](deployment_webhook_pull.md) — in produzione: build CI → branch `release` → endpoint PHP `/deploy/trigger` → `git fetch/reset` via deploy key SSH; doc `.docs/deployment.md`; repo `atrioteam/atmosphera-hub`, utente server `atmospheraitaly-digitalhub`
+- [Fonti dati catalogo](atmosphera_data_sources.md) — `Appunti e Schemi/2026.05 Atmosphera/dati/` (INDOOR maschera xlsx + OUTDOOR catalogo PDF); estrazione PDF via pdftotext crop colonne
+- [PHPStan path](phpstan_stale_sibling_path.md) — analizza packages/digital-hub/src (subtree attiva, non la sibling ../digital-hub); lanciare con `composer analyse`
+- [Campo NestedCheckboxSelect](nested_checkbox_select_field.md) — field Filament custom (categorie collassabili, checkbox-padre tri-state) per prodotto ↔ materiali/tessuti; view a stili scoped (no Tailwind arbitrario nel panel admin)
+- [Gotcha test ProductForm](product_form_livewire_test_gotcha.md) — callTableAction('edit') solleva TypeError in AttributesEditorSection al re-render; EditAction salva relazioni via dehydrate()
+- [Filtri asset 14c](asset_filters_14c.md) — filtri AssetManager per tipo/autore/data fatti; tag e dimensioni rinviati in attesa del criterio
+- [Fonte tessuti normalizzata](fabrics_normalized_source.md) — `import/Tessuti interior e outdoor.xlsx` = dati tecnici (191 indoor + 142 outdoor); join col vecchio listino CAPITAL via Codice senza spazi; decisioni di normalizzazione
+- [Mai migrate:fresh senza permesso](feedback_never_migrate_fresh.md) — mai lanciare comandi che svuotano il DB (anche in locale) senza chiedere prima esplicitamente
+- [Pattern API esterna sola lettura](api_external_read_pattern.md) — roadmap #24: JsonResource + entry config, name sempre mappa multi-lingua, soft-delete → deleted_at gratis su query/UI Filament
+- [Risoluzione attributi tecnici in API](api_technical_attributes_resolution.md) — nessun helper "risolvi per API" nel trait; tutto il translatable (name, label/value PIM) esce sempre come mappa per tutte le lingue, mai dietro ?locale=
+- [Aggiorna Postman ad ogni modifica API](feedback_update_postman_on_api_changes.md) — ogni intervento sull'API esterna va accompagnato dall'update dei JSON in postman/

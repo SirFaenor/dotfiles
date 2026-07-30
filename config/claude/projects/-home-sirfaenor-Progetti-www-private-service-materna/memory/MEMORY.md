@@ -1,0 +1,2 @@
+- [Never delete on test](feedback_no_delete_on_test.md) — no truncate/delete on real tables during ad-hoc testing, use transactions or delete only own test IDs.
+- [Filament EditAction → slideover](project_filament_edit_slideover.md) — tutte le EditAction (attuali e future) devono usare ->slideOver().

@@ -1,0 +1,674 @@
+<ide_diagnostics>[
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 8,
+    "column": 18,
+    "message": "Unknown @param parameter name '$urlOrPath'.",
+    "code": "P1130",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 178,
+    "column": 11,
+    "message": "Unknown @param parameter name '$var'.",
+    "code": "P1130",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 209,
+    "column": 12,
+    "message": "PHPDoc undefined type 'riga'.",
+    "code": "P1133",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 64,
+    "column": 39,
+    "message": "Expected type 'array'. Found 'string'.",
+    "code": "P1006",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 79,
+    "column": 21,
+    "message": "Parameter $msg has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 181,
+    "column": 24,
+    "message": "Parameter $params has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 191,
+    "column": 5,
+    "message": "Assigning return type of 'void'.",
+    "code": "P1125",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 191,
+    "column": 5,
+    "message": "Symbol '$currentRequest' is declared but not used.",
+    "code": "P1003",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 211,
+    "column": 16,
+    "message": "Parameter $totalCount has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 211,
+    "column": 29,
+    "message": "Parameter $rowsPerPage has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 211,
+    "column": 43,
+    "message": "Parameter $currentPage has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 240,
+    "column": 29,
+    "message": "Parameter $data has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 241,
+    "column": 20,
+    "message": "Undefined function 'settimna_text'.",
+    "code": "P1010",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 246,
+    "column": 33,
+    "message": "Undefined function 'data_vd_g'.",
+    "code": "P1010",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 246,
+    "column": 54,
+    "message": "Undefined function 'mese_text'.",
+    "code": "P1010",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 246,
+    "column": 64,
+    "message": "Undefined function 'data_vd_m'.",
+    "code": "P1010",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 246,
+    "column": 86,
+    "message": "Undefined function 'data_vd_a'.",
+    "code": "P1010",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 257,
+    "column": 17,
+    "message": "Parameter $length has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 274,
+    "column": 22,
+    "message": "Parameter $stringa has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 300,
+    "column": 19,
+    "message": "Parameter $filename has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 316,
+    "column": 23,
+    "message": "Parameter $valore has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 316,
+    "column": 32,
+    "message": "Parameter $decimali has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 335,
+    "column": 18,
+    "message": "Parameter $valore has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 351,
+    "column": 21,
+    "message": "Parameter $data_db has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 351,
+    "column": 31,
+    "message": "Parameter $separatore has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 377,
+    "column": 19,
+    "message": "Parameter $stringa has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 398,
+    "column": 21,
+    "message": "Parameter $string has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 407,
+    "column": 19,
+    "message": "Parameter $valore has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 413,
+    "column": 20,
+    "message": "Parameter $valore has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 413,
+    "column": 29,
+    "message": "Parameter $tipo has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 426,
+    "column": 24,
+    "message": "Parameter $stringa has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 446,
+    "column": 29,
+    "message": "Parameter $sql has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 446,
+    "column": 35,
+    "message": "Parameter $errore_mysql has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 446,
+    "column": 50,
+    "message": "Symbol '$pagina' is declared but not used.",
+    "code": "P1003",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 460,
+    "column": 22,
+    "message": "Parameter $stringa has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 492,
+    "column": 21,
+    "message": "Parameter $file has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 510,
+    "column": 20,
+    "message": "Parameter $dir has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 514,
+    "column": 46,
+    "message": "Undefined function 'cancella_cartella'.",
+    "code": "P1010",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 519,
+    "column": 12,
+    "message": "Possible undefined variable '$success'.",
+    "code": "P1116",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 531,
+    "column": 21,
+    "message": "Parameter $path has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 531,
+    "column": 28,
+    "message": "Parameter $fileName has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 564,
+    "column": 21,
+    "message": "Parameter $upload_dir_file has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 564,
+    "column": 39,
+    "message": "Parameter $nome_file has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 564,
+    "column": 51,
+    "message": "Parameter $nome_file_tmp has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 564,
+    "column": 67,
+    "message": "Parameter $peso_file_caricato has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 564,
+    "column": 88,
+    "message": "Parameter $cancellazione has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 575,
+    "column": 9,
+    "message": "Unreachable code detected.",
+    "code": "P1108",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 580,
+    "column": 25,
+    "message": "Undefined function 'rinomina'.",
+    "code": "P1010",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 594,
+    "column": 13,
+    "message": "Unreachable code detected.",
+    "code": "P1108",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 603,
+    "column": 9,
+    "message": "Unreachable code detected.",
+    "code": "P1108",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 619,
+    "column": 20,
+    "message": "Parameter $src has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 619,
+    "column": 26,
+    "message": "Parameter $dest has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 631,
+    "column": 27,
+    "message": "Parameter $embed_code has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 633,
+    "column": 61,
+    "message": "Expected type 'int'. Found 'null'.",
+    "code": "P1006",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 646,
+    "column": 34,
+    "message": "Parameter $embed_code has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 648,
+    "column": 93,
+    "message": "Expected type 'int'. Found 'null'.",
+    "code": "P1006",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 664,
+    "column": 30,
+    "message": "Parameter $embed has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 675,
+    "column": 51,
+    "message": "Expected type 'int'. Found 'null'.",
+    "code": "P1006",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 686,
+    "column": 13,
+    "message": "Unreachable code detected.",
+    "code": "P1108",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 698,
+    "column": 13,
+    "message": "Unreachable code detected.",
+    "code": "P1108",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 704,
+    "column": 13,
+    "message": "Unreachable code detected.",
+    "code": "P1108",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 714,
+    "column": 36,
+    "message": "Parameter $link has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 741,
+    "column": 22,
+    "message": "Not enough arguments. Expected 2. Found 1.",
+    "code": "P1005",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 743,
+    "column": 52,
+    "message": "Undefined variable '$v'.",
+    "code": "P1008",
+    "severity": "Error"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 752,
+    "column": 28,
+    "message": "Possible undefined variable '$src'.",
+    "code": "P1116",
+    "severity": "Warning"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 811,
+    "column": 32,
+    "message": "Parameter $number has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 819,
+    "column": 35,
+    "message": "Parameter $aval has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 827,
+    "column": 17,
+    "message": "Parameter $stringa has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 840,
+    "column": 18,
+    "message": "Parameter $string has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 849,
+    "column": 20,
+    "message": "Parameter $ar_result has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 857,
+    "column": 28,
+    "message": "Symbol '$k' is declared but not used.",
+    "code": "P1003",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 914,
+    "column": 28,
+    "message": "Parameter $array has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 927,
+    "column": 35,
+    "message": "Symbol '$key' is declared but not used.",
+    "code": "P1003",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 947,
+    "column": 20,
+    "message": "Parameter $url has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 947,
+    "column": 26,
+    "message": "Parameter $arData has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 989,
+    "column": 5,
+    "message": "'curl_close' is deprecated.",
+    "code": "P1007",
+    "severity": "Hint"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 996,
+    "column": 23,
+    "message": "Parameter $date has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 996,
+    "column": 30,
+    "message": "Parameter $startFormat has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 996,
+    "column": 44,
+    "message": "Parameter $endFormat has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 1021,
+    "column": 20,
+    "message": "Parameter $string has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 1021,
+    "column": 29,
+    "message": "Parameter $vars has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 1037,
+    "column": 21,
+    "message": "Parameter $templatePath has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 1037,
+    "column": 36,
+    "message": "Parameter $replacements has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  },
+  {
+    "filePath": "/home/sirfaenor/Progetti/www/liking.it/liking.it/include/php/lib/functions.php",
+    "line": 1057,
+    "column": 23,
+    "message": "Parameter $requirePath has no type information available.",
+    "code": "P1132",
+    "severity": "Information"
+  }
+]</ide_diagnostics>

@@ -1,0 +1,1 @@
+- [Design reference doc](design-reference-doc.md) — `atmosphera-hub/.docs/riepilogo-design.md` è il riferimento canonico per tutte le decisioni di design del progetto; leggerlo all'inizio di ogni conversazione

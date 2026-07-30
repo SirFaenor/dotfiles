@@ -1,0 +1,1265 @@
+   185 .docs/deployment.md
+   447 .docs/import-prodotti-indoor.md
+   192 .docs/impostazioni.md
+  2493 .docs/riepilogo-design.md
+  1258 .docs/roadmap.md
+  4575 totale
+=== ROADMAP ===
+# Roadmap operativa
+
+Task in ordine approssimativo. Ogni voce è abbastanza grossa da meritare
+una sessione di lavoro dedicata, abbastanza piccola da chiudersi
+indicativamente in 1-2 giorni. Niente fasi formali, niente stime, niente
+date — l'ordine si aggiusta in base agli attriti che emergono in corsa.
+
+## Rapporto con il design doc
+
+Tre ruoli distinti, niente duplicazione:
+
+- **Questo file** — storico per task: stato, dettaglio implementativo, il
+  come/perché e le deviazioni emerse in corsa. È qui che il lavoro viene
+  registrato mentre si fa.
+- **[riepilogo-design.md](./riepilogo-design.md) → "Riepilogo consolidato"**
+  (in fondo) — lo **specchio dello stato attuale** e la fonte autorevole su
+  cosa il sistema è oggi. Se diverge dal codice, è un bug del documento.
+- **riepilogo-design.md → Parti 1-9** — la deliberazione: opzioni scartate e
+  perché. Stratificata, non si riscrive; ciò che diventa falso si annota con
+  un marker `⚠️ Superato` che rimanda al consolidato e alla voce qui.
+
+> **Regola operativa: a ogni task chiuso qui, allinea il consolidato.**
+> Fa parte del task, non è lavoro separato. Il consolidato non si aggiorna da
+> solo e la deriva non si vede finché qualcuno non rilegge: il passaggio a
+> subtree (#1b) è stato registrato qui il 24 giugno 2026 e il design ha
+> continuato a dire "subtree scartato, due cartelle sibling" per tre
+> settimane, indicando come workflow attivo una cartella morta.
+> Se il task rende *falsa* un'affermazione delle Parti 1-9, mettici anche il
+> marker. Il dettaglio resta qui: nel design va la decisione, non la storia.
+
+## Tracer bullet — la prima cosa che gira end-to-end
+
+- [x] **1. Setup dual-repo dev.** Cartelle siblings `digital-hub/` (il
+  package core) e `atmosphera-hub/` (il template cliente), path repo
+  Composer nel `composer.json` del template, multi-root workspace VSCode
+  (`atmosphera-stack.code-workspace`).
+  - Deviazione dal design: le cartelle non si chiamano `core/`/`template/`
+    ma `digital-hub/`/`atmosphera-hub/`. Il package è
+    `atrioteam/digital-hub` (namespace `AtrioTeam\DigitalHub\`),
+    service provider `DigitalHubServiceProvider`.
+
+- [x] **2. Package `core` (`digital-hub`) skeleton.** `composer.json` con
+  dipendenze, PSR-4 autoload, `DigitalHubServiceProvider` con
+  register/boot funzionanti.
+  - Versioni risolte: `laravel/framework ^13.0`, `filament/filament ^5.0`,
+    `filament/minimal-theme ^5.0.0-beta4`,
+    `bezhansalleh/filament-shield ^4.2`, `spatie/laravel-permission ^7.4`,
+    `spatie/laravel-medialibrary ^11.22`, `spatie/laravel-activitylog ^5.0`,
+    `kalnoy/nestedset ^7.0`, `spatie/laravel-health ^1.39`.
+  - Deviazione dal design: aggiunta `filament/minimal-theme` (fork
+    `atrioteam/filament-minimal-theme-fork` via VCS repo) + tema custom
+    (`resources/theme/digital-hub-theme.css` + `.scss`) applicati dal
+    `DigitalHubPlugin`. Il design non menzionava un tema.
+  - Tutti i SP auto-discovered in `bootstrap/cache/packages.php` di
+    atmosphera-hub (transitivi via path repo).
+
+- [x] **3. Skeleton template Laravel (`atmosphera-hub`).** Laravel fresh +
+  Filament v5 install + admin panel base (`AdminPanelProvider` registra
+  `DigitalHubPlugin`), `require atrioteam/digital-hub: @dev` via path repo,
+  `.env`, DB.
+  - Deviazione dal design: il template richiede anche
+    `spatie/laravel-translatable ^6.14` (per i `name` localizzati, vedi
+    sezione "Decisioni emerse") e dipende dal package
+    `atrioteam/filament-helper` (working dir separata) per
+    `TranslationSection`/`SeoFields`/auto-traduzione DeepL.
+
+- [x] **4. Auth + ruoli + super-admin.** ✅ Fatto (13 luglio 2026).
+  `spatie/laravel-permission` + `filament-shield` installati (già dipendenze
+  del core, mancava solo il wiring nel template): migrazioni + config
+  pubblicati, plugin registrato su `AdminPanelProvider` via `shield:install`.
+  `User` usa `HasRoles`. `RoleSeeder` (skeleton, non core) con
+  `super-admin`/`Admin`/`Editor`/`Viewer`: Admin ha tutti i permessi, Editor
+  view/create/update senza delete, Viewer solo view. `php artisan
+  shield:generate --all` genera permessi + policy per tutte le resource
+  esistenti (14 resource incluse quelle del core: Tag*, Role).
+  - **Super-admin via feature nativa di shield**, non `Gate::before()` scritto
+    a mano in `AuthServiceProvider` come originariamente previsto: config
+    `filament-shield.super_admin` con `enabled: true`, `name: 'super-admin'`
+    (con trattino, coerente con la convenzione del progetto),
+    `define_via_gate: true`. Il `ServiceProvider` di shield registra da sé
+    `Gate::before(fn ($user) => $user->hasRole('super-admin') ? true :
+    null)` — stessa logica, zero codice duplicato in `AppServiceProvider`.
+    Con `define_via_gate = true` shield non assegna permessi al ruolo
+    `super-admin` in `shield:generate` (`Utils::giveSuperAdminPermission`
+    no-op): resta un ruolo vuoto, il bypass è puro Gate.
+  - **Naming permessi**: il default del package installato (v4.2) è
+    `PascalCase:Colon` (es. `ViewAny:Product`), diverso dallo
+    `snake_case`/`_` documentato in §7.1 (`view_any_product`). Riconfigurato
+    esplicitamente (`filament-shield.permissions.case/separator`) per restare
+    aderente al design e compatibile con `manage_asset_folders` (§7.5,
+    quando arriverà).
+  - **`AssetManager` escluso da shield** (`filament-shield.pages.exclude`):
+    è una Page record-scoped (route `/assets/{ownerType}/{owner}`,
+    proprietà tipizzate popolate solo al mount), la discovery di shield la
+    istanzia per leggerne il titolo e crasha. La sua authz resta gated dal
+    permesso della resource proprietaria (non da un permesso di
+    navigazione dedicato), coerente con §7.5/§22h.
+  - **`UserResource`** nuovo nel template (non previsto esplicitamente dal
+    task, ma necessario: §7.9 assume "l'admin crea utenti via
+    `UserResource`"): form name/email/password (hashata, opzionale in
+    update)/ruoli (`Select` multiplo su `roles`), tabella con badge ruoli,
+    stesso pattern `ActionGroup` edit-in-slideover + delete delle altre
+    resource (non `digitalHubTable()`: quel macro forza `sort`/`reorderable`,
+    assente su `users`).
+  - **i18n**: `lang/vendor/filament-shield/it/filament-shield.php` — override
+    del file namespaced pubblicato dal package (chrome UI: nav/campi/colonne
+    + `resource_permission_prefixes_labels`, es. "Visualizza", "Crea").
+    **Non** `lang/it/filament-shield.php`: le chiamate del package sono
+    `filament-shield::filament-shield.*` (namespaced), un file in `lang/it/`
+    finisce in un namespace diverso e viene ignorato — il package continua a
+    usare silenziosamente il proprio IT bundled (bug scoperto e corretto in
+    corsa: il gruppo nav "Filament Shield" non si traduceva). `lang/{it,en}/user.php`
+    per la resource `User`.
+  - **Nav group condiviso**: `UserResource` e `RoleResource` (di shield)
+    nello stesso gruppo "Utenti e permessi" — stessa stringa
+    `user.navigation_group` / `filament-shield::filament-shield.nav.group`.
+    `UserResource::getNavigationSort()` = -1 per comparire prima di Ruoli.
+  - **`shield:generate` in `RoleSeeder`**: rilanciato via `Artisan::call`
+    dentro il seeder (oltre al lancio manuale da CLI dopo ogni resource
+    nuova, §7.7) solo per ripopolare `permissions` dopo un `migrate:fresh`,
+    che la svuota come ogni altra tabella. `--option=permissions`: solo righe
+    DB, niente riscrittura dei file Policy (già committati in git).
+  - **Migration `2026_07_13_150000_seed_base_roles_and_permissions`**: in
+    produzione il deploy lancia solo `artisan migrate --force`
+    (`.scripts/deploy.sh`), mai `db:seed` — senza una migration dedicata
+    ruoli/permessi non esisterebbero mai fuori dal DB locale. La migration
+    richiama `(new RoleSeeder())->run()` (stessa logica idempotente del
+    seeder, nessuna duplicazione).
+  - **Bug scoperto e corretto (13 luglio 2026): Policy generate ma mai
+    agganciate per i modelli del core.** Un utente senza ruoli vedeva
+    comunque le 6 resource Tag (`TagGroupResource`/`TagCategoryResource`/
+    `TagResource` lato entity, `AssetTagGroupResource`/
+    `AssetTagCategoryResource`/`AssetTagResource` lato asset) e la Page
+    `Catalog`. Due cause distinte:
+    1. **Policy non risolte da Laravel per i modelli fuori da `App\Models`.**
+       `shield:generate` scrive le Policy in `app/Policies` (artefatto del
+       template), ma i modelli `TagGroup`/`TagCategory`/`Tag` vivono nel core
+       (`AtrioTeam\DigitalHub\Tags\Models\*`). L'auto-discovery di Laravel
+       sostituisce `\Models\` con `\Policies\` nello **stesso** namespace
+       radice del modello, quindi cerca
+       `AtrioTeam\DigitalHub\Tags\Policies\TagGroupPolicy` (che non esiste),
+       non `App\Policies\TagGroupPolicy` (dove la Policy esiste davvero).
+       `Gate::getPolicyFor()` ritornava `null` → Filament, senza una Policy
+       risolta, **consente di default** l'accesso a tutti gli autenticati
+       (comportamento documentato di Filament, non un bug del framework).
+       Fix generico **nel core** (`DigitalHubServiceProvider::registerPolicyDiscovery()`),
+       non binding puntuali nel template: `Gate::guessPolicyNamesUsing(fn
+       ($model) => ["App\\Policies\\" . class_basename($model) . "Policy"])`.
+       Copre qualunque modello futuro del core senza bisogno di wiring lato
+       cliente, perché `filament-shield` scrive **sempre** le Policy in
+       `app/Policies` (`config('filament-shield.policies.path')`,
+       hardcoded ad `app_path()`) indipendentemente dal namespace del
+       modello — è l'unico candidato sensato, e copre anche i modelli
+       `App\Models\*` del template (stesso risultato della convenzione
+       Laravel di default, che questo callback sostituisce integralmente).
+       **Effetto collaterale noto, non risolto**: `TagGroupResource` (target
+       entity) e `AssetTagGroupResource` (target asset) condividono lo
+       stesso modello `TagGroup` e quindi la stessa Policy/stesso permesso
+       (`view_any_tag_group`, ecc. — `config('filament-shield.resources.subject')
+       = 'model'`). Non è possibile permissionare "Tag anagrafiche" e "Tag
+       asset" in modo indipendente con l'attuale setup: chi vede l'uno vede
+       anche l'altro. Idem per `TagCategoryResource`/`AssetTagCategoryResource`
+       e `TagResource`/`AssetTagResource`. Da valutare se/quando servirà
+       davvero separarli (richiederebbe bypassare l'auto-authz Policy-based
+       di Filament su uno dei due rami con un check custom).
+    2. **`Catalog` (Page core) priva di qualunque gate.** Le Filament Page
+       non passano da Policy Eloquent; senza il trait `HasPageShield` di
+       shield, `canAccess()` di default ritorna sempre `true` — il permesso
+       `view_catalog` generato da shield era quindi morto/mai controllato.
+       Fix: `use HasPageShield;` sulla Page `Catalog` (core). `AssetManager`
+       resta **volutamente** senza gate (esclusa da shield, §7.5/§22h: "oggi
+       nessuna policy → basta l'auth").
+
+- [x] **5. Trait `HasTechnicalAttributes` nel core.** API
+  `attr/setAttr/attrLabel/attrOption`, locale-aware reads, query scopes
+  `whereAttr`/`whereAttrBetween`, colonna configurabile via
+  `$attributesColumn`, static + dynamic schema resolution.
+  - Deviazione dal design: il trait NON dichiara le static properties
+    `$attributesColumn`/`$attributeSchemaClass` per evitare il PHP
+    property compatibility check tra trait e classe usante. I modelli
+    le dichiarano direttamente, il trait le legge via `property_exists()`.
+
+- [x] **6. `AttributeSchema` base + `Type` DSL nel core.** Classe
+  astratta con `attributes()` e `groups()`. `Type` fluent:
+  string/int/decimal/bool/date/enum/text con modificatori
+  required/min/max/regex/in/unit/translatable/filterable. Validation
+  che applica le rule sul save.
+
+- [x] **7. `AttributesEditor` Filament component nel core.**
+  `for(Model::class)` che legge lo schema, genera gli input giusti,
+  raggruppa con `Tabs`, reattivo via Livewire.
+  - Reattività (re-render sul cambio di `ProductType`) rimandata al task #17.
+    Oggi l'editor è risolto staticamente alla prima render del form.
+
+- [x] **8. `Product` + `ProductAttributes` + `ProductResource` nel
+  template.** Migration con colonna `attributes` JSON, schema con 2-3
+  attributi (es. `sku` string, `weight` decimal, `wood_type` enum),
+  resource minimale (name, slug, `AttributesEditor`).
+  - **Schema attributi del Product**: due ruoli distinti.
+    - `ProductAttributes` → schema **generico/default** (`sku`, `weight`,
+      `wood_type`), agganciato dal `ProductTypeSeeder` alla tipologia
+      "Generico". È lo schema di base per i prodotti senza tipologia
+      specifica.
+    - `Divani` (e future `Lampade`, `Tavoli`, …) → schemi **per-tipologia**,
+      con gli attributi dipendenti dalla `ProductType`. Oggi `Divani` è
+      vuota: si popolerà quando ci saranno attributi reali specifici della
+      tipologia, nell'ambito della composizione PHP (task #17, design §3.4/3.5).
+  - `Product` usa `HasGlobalId` + `HasTechnicalAttributes` +
+    `HasTranslations` (name localizzato). Vedi "Decisioni emerse".
+
+- [x] **9. Gerarchia catalogo (Category1 + Category2 + ProductType) nel
+  template.** Tre entità Eloquent separate al posto del singolo `Category`
+  + nested-set originariamente previsto. La gerarchia è fissata in codice
+  (numero di livelli noto a priori per cliente), niente strutture
+  flessibili runtime-configurabili.
+  - **Category1** (Categoria) → `HasMany Category2`. Label cliente:
+    "Categoria"/"Categorie". Schema attributi `Category1Attributes` (vuoto
+    inizialmente, applicabile via `HasTechnicalAttributes`).
+  - **Category2** (Collezione) → `BelongsTo Category1`, `HasMany Product`.
+    Label cliente: "Collezione"/"Collezioni". Schema attributi
+    `Category2Attributes`.
+  - **ProductType** (Tipologia prodotto) → entità autonoma cross-categoria,
+    contiene il campo `attribute_schema_class` (FQN della schema class).
+    Label cliente: "Tipologia prodotto"/"Tipologie prodotto". Seedata con
+    una tipologia default "Generico" che punta a `App\Pim\Schemas\ProductAttributes`.
+  - **Product** → `BelongsTo Category2` + `BelongsTo ProductType`. Lo
+    schema attributi è risolto dinamicamente da
+    `productType->attribute_schema_class` (override di
+    `resolveAttributeSchemaClass()` nel modello). Lo static
+    `$attributeSchemaClass` non è più dichiarato sul Product.
+  - **Naming convention**: classi `Category1`/`Category2` generiche;
+    tabelle `categories_1`/`categories_2` (sovrascritte via
+    `$table`); file traduzioni `lang/{locale}/category1.php`,
+    `category2.php`, `product_type.php` (matcha `Str::snake(class_basename())`).
+    Il refinement del trait è stato applicato per supportare i nomi
+    composti (es. `ProductType` → `product_type`).
+  - **Drill-down navigation**: click sulla riga + azione esplicita "Figli"
+    (Collezioni / Prodotti) sulla colonna actions; breadcrumb
+    ricostruisce la catena Categorie → Collezione → Prodotti.
+  - **Niente nested-set** in catalogo. `kalnoy/nestedset` resta installato
+    nel core ma non usato qui — disponibile per eventuali alberi
+    utente-driven futuri (es. menù navigazione).
+  - **Niente "famiglia" come concetto di categoria**. Il pattern Akeneo-style
+    è realizzato dall'entità autonoma `ProductType`, non da una proprietà
+    di un nodo categoria-radice (deviazione consapevole dal design
+    originale, documentata in [riepilogo-design.md](./riepilogo-design.md)
+    sezioni 3.4-3.6).
+
+- [x] **9b. UI Catalogo (Miller columns) nel core.** Modulo `Catalog/` con
+  `Level` value object + `CatalogHierarchy` registry (singleton) + Filament
+  Page `Catalog` con view Blade Livewire. Layout colonne side-by-side,
+  drill-down via `selectRecord(depth, id)`, breadcrumb cliccabile, link
+  "Apri" verso la Resource del livello. Il template configura la catena
+  in `AppServiceProvider::defineCatalogHierarchy()` (Category1 → Category2
+  → Product). Sub-entità del Product previste dal contratto (`Level::childLevelsFor`
+  ritorna lista ordinata di Level + UI tab switcher quando N > 1) ma
+  vuote in v1 — entreranno in gioco al task #22b.
+  - Catena dichiarata sul template: il core resta agnostic sui modelli
+    del cliente.
+  - Le tre Resource esistenti (Category1/2, Product) restano: la Page
+    Catalogo le orchestra, non le sostituisce.
+  - `Level` espone anche `childrenQuery`, `cardLabel`, `cardSubtitle` come
+    closure opzionali, oltre a `pluralLabel()`/`singularLabel()` risolti
+    dal file lang `{model_snake}.model[_plural]`.
+
+- [x] **10. Trait `HasAssets` nel core.** Wrap su `HasMedia` di spatie
+  (senza folder support per ora), config media-library, applicazione su
+  `Product` nel template.
+  - **Planning lockato (giugno 2026, design §4.11)**: #10/#15/#16 sono una
+    sola linea di lavoro sequenziale. Modulo nuovo `src/Assets/` (namespace
+    `AtrioTeam\DigitalHub\Assets\`). Migrazioni asset owned dal core via
+    `loadMigrationsFrom` (pattern nuovo: oggi il SP non carica migrazioni).
+    Valutati e scartati 4 package Filament (vedi §4.11): build custom con
+    `tomatophp/filament-media-manager` come sola reference, non dipendenza
+    (è Filament v4-only).
+
+- [x] **11. Architettura estrazione metadati (`MetadataExtractor` + dispatcher).**
+  Interfaccia `MetadataExtractor` (`supports()`/`extract()`) e
+  `MetadataExtractionPipeline` (usa il *primo* estrattore che supporta il
+  media, design §4.8) nel modulo core `Assets/Metadata/`. Colonna JSON
+  `extracted_metadata` su `media` (struttura ibrida `common` + verbatim,
+  design §4.7), gestita via helper `ExtractedMetadata`. Estrattori registrati
+  via `config('digital-hub.metadata_extractors')` (ordine = priorità,
+  estendibile dal cliente).
+  - **Deviazione dal design**: niente listener/job dedicati `ExtractMediaMetadata`
+    su coda `media-extraction`. L'estrazione vive nel `ProcessAssetJob` già
+    esistente (#16, coda `assets`): la pipeline è invocata da lì, non da un
+    listener su `MediaHasBeenAddedEvent`. Un secondo job/coda sarebbe stato
+    duplicazione.
+  - **Niente `FallbackExtractor` separato**: `common.size_bytes/mime/original_filename`
+    sono ricavati centralmente dalla pipeline dalle colonne del media (dati già
+    registrati all'upload), quindi un estrattore catch-all dedicato sarebbe stato
+    ridondante.
+  - **`assetDimensions`** (info panel) ora legge le dimensioni solo da
+    `extracted_metadata.common` (niente più fallback su custom_properties): i
+    media pre-esistenti vanno riprocessati per popolarle.
+  - **Backfill**: due strade. `digital-hub:reprocess-assets` riaccoda l'intero
+    `ProcessAssetJob` (metadati + anteprime). Nuovo comando dedicato
+    `digital-hub:extract-metadata {media?} {--collection=assets}`: gira la sola
+    pipeline in modo **sincrono**, popola `extracted_metadata` senza rigenerare
+    i poster. Coperto da `ExtractMetadataCommandTest` (end-to-end con immagine
+    reale).
+  - **UI "Metadati completi" (design §4.7)**: il pannello info dell'AssetManager
+    è ora a due tab — "Informazioni" (metadati curati) e "Metadati completi"
+    (`extracted_metadata` grezzo, una `Section` collassabile per blocco
+    common/EXIF/IPTC/XMP, valori annidati appiattiti in dot-notation via
+    `ExtractedMetadata::flatten`). Il secondo tab compare solo se ci sono
+    metadati. Coperto da `ExtractedMetadataFlattenTest` (logica) +
+    `AssetInfoPanelTest` (render).
+
+- [ ] **12. `spatie/laravel-health` + checks default.** `DatabaseCheck`
+  + `QueueCheck` + `FailedJobsCheck` registrati. Endpoint `/health`
+  esposto (no Oh Dear nel tracer, basta che ritorni JSON corretto).
+
+- [x] **13. `spatie/activitylog` sui modelli del catalogo.** ✅ Fatto
+  (15 luglio 2026). Logging + `updated_by` su `Product`, `Category1`,
+  `Category2`, `ProductType`; niente UI dedicata.
+  - **Concern `LogsCatalogActivity`**, unico costrutto: incapsula
+    `LogsActivity` di spatie, le `LogOptions` condivise e la
+    denormalizzazione di `updated_by` (via `static::saving()` nel
+    `bootLogsCatalogActivity()`). Deciso di NON usare un observer separato:
+    il trait è comunque obbligatorio — spatie invoca
+    `getActivitylogOptions()` come metodo *sull'istanza* e fa il boot degli
+    eventi da `bootLogsActivity()`, cose che un observer non può fornire —
+    quindi l'observer sarebbe stato un secondo costrutto per lo stesso ciclo
+    di vita.
+  - **Colonna configurabile lato modello**: `protected static ?string
+    $updatedByColumn = 'updated_by';`. Se assente o null il trait non tocca
+    l'`updated_by` ed espone solo il logging: è ciò che permette al punto 21
+    di aggiungere `AssetFolder` (nessuna colonna di autorship) e `Media`
+    (usa `uploaded_by_id`) con un semplice `use`. Il trait NON dichiara la
+    property — la dichiarano i modelli, come in `HasTechnicalAttributes`,
+    per evitare il PHP property compatibility check.
+  - `logAll()` + `logOnlyDirty()` + `dontLogEmptyChanges()`; `logExcept()`
+    scarta la colonna `updated_by` (il causer è già nell'activity_log),
+    `name_search` (colonna generata STORED che duplica `name`) e i timestamp.
+  - Fuori da contesto autenticato (console, seeder, job) `Auth::id()` è null
+    e la colonna — nullable — resta invariata, così non si azzera un valore
+    già presente. FK `nullOnDelete` sulle 4 tabelle del catalogo.
+  - **Attenzione alle API v5** (diverse dalla doc v4 in giro): il trait sta
+    in `Spatie\Activitylog\Models\Concerns\LogsActivity` (non `\Traits\`),
+    `LogOptions` in `\Support\`, e il metodo è `dontLogEmptyChanges()` (non
+    `dontSubmitEmptyLogs()`). I changes finiscono nella colonna
+    `attribute_changes`, **non** in `properties` (che resta `[]`).
+
+- [ ] **14. Giro end-to-end + lista attriti.** Crea Category1, crea
+  Category2 sotto, crea ProductType, crea Product collegato, set
+  attributi, upload immagine. Verifica: job in coda → completato →
+  `extracted_metadata` valorizzato; `activity_log` con entries;
+  `/health` ritorna OK. Annota tutto ciò che il design ha rivelato avere
+  di attrito o ambiguo nei punti di integrazione.
+
+- [x] **14b. Preview per le cartelle (AssetManager).** La card della
+  cartella mostra una preview presa dal primo file — o da più file —
+  contenuti nella cartella. Deciso: mosaico a layout variabile fino a 4
+  miniature (1 file = immagine piena, 2 = due fasce orizzontali, 3 = due
+  quarti sopra + fascia da 1/2 sotto, 4+ = griglia 2×2) dai media della
+  cartella **e dei suoi discendenti**, in ordine `order_column`. Riusa la
+  catena di fallback della card asset (poster del job → originale se
+  immagine); i media senza nulla di mostrabile (audio, preview fallita,
+  job non ancora concluso) vengono saltati e la tile ricade sull'icona.
+  Icona cartella a sinistra del nome (fuori dal riquadro di preview) per
+  mantenere l'affordance; sotto il nome, il numero totale di file del
+  sottoalbero (contato sulla stessa collezione delle preview, zero query
+  extra). Derivata pura
+  (niente persistenza); una sola query per tutte le tile; polling della
+  griglia esteso ai sottoalberi (`hasProcessingInSubfolders`) così le
+  preview compaiono da sole a job concluso.
+
+- [x] **14c. Filtri asset nell'AssetManager.** ✅ Fatto. Tre filtri sulla
+  griglia: **tipo di file** (categorie puntuali dell'enum `AssetFileType` —
+  Immagine, Video, PDF, Documento, Foglio di calcolo, CAD, Archivio, Audio,
+  Generico), **caricato da** (autori dell'upload) e **data di caricamento**
+  (intervallo da–a su `created_at`). Con almeno un filtro attivo la griglia
+  passa in **vista piatta**: tutti i file del record che corrispondono, a
+  prescindere dalla cartella (cartelle nascoste); senza filtri torna la
+  navigazione a cartelle. Aprire una cartella (`selectFolder`) azzera i filtri
+  (sono globali sul record, la navigazione no). Stato Livewire sulla Page
+  (`filterType`/`filterUploadedBy`/`filterUploadedFrom`/`filterUploadedTo`),
+  controlli nativi `wire:model.live` in una barra sopra la griglia — coerente
+  col resto della Page custom (non è una table Filament). Le opzioni di
+  "tipo"/"caricato da" elencano solo i valori effettivamente presenti tra gli
+  asset del record. Il filtraggio è in PHP su tutti i media del record caricati
+  una volta (`recordAssets`): gli asset di un record sono in numero contenuto e
+  la categoria mime/estensione non è una colonna SQL. Le date sono confrontate
+  come data locale (Europe/Rome), coerenti con quanto mostrato in UI. Aggiunti
+  `AssetFileType::tryFromName()` e `::label()` (chiavi `file_type_*`).
+  Copertura: `AssetFilterTest` (vista piatta cross-cartella, autore, intervallo
+  date inclusivo, reset su selectFolder, opzioni solo dei valori presenti).
+  Scartati da questa iterazione (rispetto all'elenco originario): **tag** e
+  **dimensioni** — non richiesti.
+
+- [x] **14d. Update layout slideover dettaglio asset.** ✅ Fatto. Layout a 2
+  colonne (`Grid` responsive `1`→`2` da `lg`) già implementato: colonna
+  sinistra anteprima + bottone "Sostituisci file" sopra (riusa
+  `replaceAssetFileAction`, già sviluppata al 22i, come `Actions` inline
+  nello schema) e sotto i tab "Informazioni"/"Metadati completi" (invariati);
+  colonna destra un campo nome editabile (etichetta `name` di Spatie Media —
+  **non** il file fisico, che resta `file_name` e non viene toccato) con
+  salvataggio live al blur (`->live(onBlur: true)->afterStateUpdated()`,
+  niente submit generale del form, che resta `modalSubmitAction(false)`).
+  "Il resto del form" a destra resta ancora da definire. Altre modifiche al
+  layout da fare prima di chiudere il punto.
+  - **Aggiornamento 2026-07-14**: due decisioni ribaltate.
+    (1) Il rename ora tocca **anche il file fisico**, per non disallineare le
+    aspettative sul download (che usa `file_name`): si aggiornano sia `name` sia
+    `file_name` (basename sanitizzato + estensione attuale preservata via nuovo
+    helper `AssetFileName::fromDisplayName`); al `save()` l'observer di spatie
+    (`syncFileNames`) rinomina il file su disco. L'anteprima non è toccata (path
+    per cartella-id, non per `file_name`). `AssetFileName::sanitize` è ora la
+    fonte unica del sanitizer spatie (dedup di `AssetDuplicator`/`AssetFileReplacer`).
+    (2) **Niente più salvataggio live al blur**: il campo è un `TextInput`
+    semplice e il nome viene persistito **solo** dal submit "Salva" del form
+    (`->action()` di `infoAsset`, già introdotto al 14e). Chiave `name_updated`
+    rimossa (orfana): il submit notifica con `saved`. Accanto al nome, un
+    `TextInput` disabled mostra l'estensione (chiave `file_extension`): rende
+    esplicito che si edita il solo basename, e non essendo dehydrato non arriva
+    in `$data`.
+    Copertura: `AssetRenameTest` (rename fisico + anteprima intatta + "senza
+    submit non salva") e unit `AssetFileNameTest` sulla derivazione.
+    Le **conversions** di spatie sono gestite da `syncFileNames`, che chiama
+    anche `renameConversionFiles` — ma oggi il progetto non registra alcuna
+    conversion, quindi è un no-op. L'anteprima non è una conversion: è il
+    `preview.jpg` di `AssetPreview`, per cartella-id, indipendente da `file_name`.
+
+- [x] **14e. Azioni nello slideover dettaglio asset.** ✅ Fatto. Duplica/
+  condividi/scarica/elimina nel **footer** dello slideover
+  (`.fi-modal-footer-actions`), a sinistra, con "Chiudi" isolato a destra —
+  via `extraModalFooterActions()` + `modalFooterActionsAlignment(Alignment::Start)`
+  su `infoAssetAction` ([AssetManager.php](../packages/digital-hub/src/Assets/Filament/Pages/AssetManager.php)).
+  "Chiudi" spinto a destra con `modalCancelAction(fn ($action) =>
+  $action->extraAttributes(['class' => 'ms-auto']))` (margin-inline-start:auto
+  nel footer flex, che di default clusterizza tutto a sinistra). Nessuna azione
+  nuova: riuso diretto delle action già esistenti nel menu contestuale
+  (`duplicateAssetAction`/`shareAssetAction`/`downloadAssetAction`/
+  `deleteAssetAction`), con `->arguments(['media' => $media->getKey()])`
+  pre-riempito. `deleteAssetAction` ha in più `->cancelParentActions()` (API
+  nativa Filament) così, invocata dallo slideover, chiude anche quello dopo la
+  conferma — no-op quando invocata standalone dal menu contestuale (nessun
+  parent da chiudere).
+  - [x] Preliminare: azione **duplica** (core `AssetDuplicator`: copia fisica
+    via `Media::copy()` di spatie + folder/uploader/tag; suffisso "(copia N)",
+    univoco nella folder, su `name` e — sanitizzato, "doc-(copia).txt" — su
+    `file_name`; derivati non copiati, la copia riparte `pending` e viene
+    rielaborata da `ProcessAssetJob`).
+
+- [x] **14f. Trigger visibile per il menu contestuale dell'asset.** Il menu
+  delle azioni sul singolo asset (oggi solo tasto destro) va aperto anche
+  da 3 pallini verticali in basso a destra del box asset. Il tasto destro
+  resta come seconda via di apertura. Il bottone dispatcha lo stesso
+  evento Alpine `asset-media-menu` del `contextmenu`, alle coordinate
+  del click.
+
+—— **tracer bullet completo: si valida end-to-end, si trovano gli
+attriti, si aggiusta il design dove serve, poi si espande** ——
+
+## Decisioni emerse in corsa (non previste dal design originale)
+
+Lavori già implementati che il design doc non contemplava. Documentati qui
+e riportati nelle relative sezioni di [riepilogo-design.md](./riepilogo-design.md).
+
+- [x] **E1. Localizzazione del `name` via `spatie/laravel-translatable`.**
+  Il design prevedeva translatable solo sugli attributi PIM (map
+  `{locale: value}` nel JSON degli attributi) e i `name` come colonne
+  fisse tradotte solo a livello di *label* via i18n files. In pratica i
+  modelli del catalogo (`Product`, `Category1`, `Category2`, `ProductType`)
+  usano `HasTranslations` con attributo `#[Translatable('name')]` e la
+  colonna `name` è stata convertita a **JSON `{locale: value}`**
+  (migration `change_name_to_json_on_entity_tables`). Le locale gestite
+  vengono da `config('digital-hub.locales')`. Componente core
+  `TranslationSection` (Tabs per locale) costruisce il form; `NameAndId`
+  rileva l'attributo `#[Translatable]` e wrappa il campo name di
+  conseguenza.
+
+- [x] **E2. `HasGlobalId` / colonna `global_id` (modulo `Identity/`).**
+  Concetto assente nel design. Trait `AtrioTeam\DigitalHub\Identity\
+  Concerns\HasGlobalId` che genera, dopo l'insert, un identificatore
+  stabile e leggibile `{table}:{id}` (es. `products:5`, `categories_1:21`),
+  immutabile e unique. Richiede colonna `global_id` VARCHAR unique
+  nullable (migration `add_global_id_to_*` su tutte le entità). Mostrato
+  readonly nel form edit (`NameAndId`) e come colonna mono in tabella
+  (`Pim\Filament\Tables\GlobalId`).
+
+- [x] **E3. Colonna `sort` + reordering.** Tutte le entità catalogo hanno
+  una colonna `sort` (migration `add_sort_to_entity_tables`). Le tabelle
+  Filament sono `reorderable('sort')` e ordinate di default per `sort` via
+  il macro `digitalHubTable()`.
+
+- [x] **E4. Convenzioni UI del core (Filament).**
+  - `DigitalHubPlugin` (Filament Plugin): registra la Page `Catalog`,
+    `MinimalTheme`, tema vite custom, font Open Sans, primary color da
+    `config('digital-hub.primary_color')`, paginazione default 50,
+    notifiche centrate.
+  - **Table macro `digitalHubTable()`** (`DigitalHubTableMacro`):
+    record action Edit in slide-over dentro un `ActionGroup`, bulk delete
+    con conferma, `defaultSort('sort')` + `reorderable('sort')`, layout
+    filtri a 3 colonne se > 2 filtri, formattazione `created_at`
+    (timezone Europe/Rome, toggle hidden).
+  - **Trait `IsDigitalHubListPage`** (`Filament\Concerns`): header action
+    "New" + toggle "Ordina/Salva ordine" sulle List page.
+  - **Trait `IsDigitalHubInputPage`** (`Filament\Concerns`): concern
+    (attualmente vuoto) per le pagine di input (Create/Edit), separato da
+    `IsDigitalHubListPage` per evitare il richiamo di `getTableRecords()`
+    sulle pagine che non hanno una tabella.
+  - Componenti Schema core: `NameAndId`, `TranslationSection`,
+    `AttributeSchemaInput`, `OrphanAttributesAlert` (oltre ad `AttributesEditor`).
+
+- [x] **E5. Dipendenza `atrioteam/filament-helper`.** Il template (e il
+  `TranslationSection` del core) usano il package separato
+  `atrioteam/filament-helper` per `TranslateActionModal` (auto-traduzione
+  via DeepL), `SeoFields` e config `filament-helper.seo.*`. È un terzo
+  repo nel workflow di sviluppo locale, non previsto dal design a due repo.
+
+- [x] **E6. Config `digital-hub.php`.** Pubblicata dal core con
+  `primary_color` (nome di una const `Filament\Support\Colors\Color`,
+  da env `DIGITAL_HUB_PRIMARY_COLOR`) e `locales` (mappa
+  `codice => label` delle lingue gestite, oggi solo `it`).
+
+- [x] **E7. Stack qualità nel template.** PHPStan/Larastan
+  (`phpstan.neon` + baseline), PHP-CS-Fixer, PHPUnit 12 configurati.
+
+## Espansione post-validazione
+
+L'ordine qui è meno rigido: dipende da quale pezzo serve prima al cliente
+Atmosphera concretamente.
+
+- [x] **15. `AssetFolder` polimorfico + adjacency list.** Tabella
+  polimorfica, `parent_id`, enforcement `MAX_DEPTH = 5` in `saving`,
+  refuse-on-delete-if-not-empty in `deleting`. Relazioni e helper sul
+  trait `HasAssets`.
+  - **Decisioni planning (design §4.11)**: link media↔folder via colonna FK
+    `asset_folder_id` su `media` (non `custom_properties`). Nome folder =
+    stringa semplice, NON translatable. Migrazione `asset_folders` + colonna
+    su `media` caricate dal core (`loadMigrationsFrom`).
+
+- [x] **16. `AssetManager` nel core.** Tree-left + grid-right + breadcrumb +
+  upload + drag-drop. Il pezzo di UI più grosso del core. **Completo.**
+  - **Punto di ingresso (design §4.11)**: Action core (`ManageAssetsAction`)
+    nella tabella resource → Page Filament record-scoped full-width che **è**
+    l'`AssetManager` (no componente separato), route generica polimorfica
+    `/assets/{ownerType}/{owner}`. NON slide-over. Il template fa solo il wiring
+    sulla `ProductsTable`.
+  - **Contratto `OwnsAssets` (design §4.11)**: interfaccia che dichiara l'API
+    asset del trait `HasAssets` ed `extends HasMedia`; il modello proprietario
+    fa `implements OwnsAssets` (come già con `HasMedia`). Serve a tipizzare il
+    proprietario risolto dinamicamente via morph.
+  - [x] **#16a** = tree + CRUD folder (crea/rinomina/elimina refuse-on-delete) +
+    breadcrumb + griglia asset + upload + sposta media via Select + elimina.
+    Feature usabile end-to-end. Aggiunte poi bulk action (selezione con
+    checkbox → sposta/elimina multipli) e Download per-file.
+  - [x] **#16b** = drag-drop media tra folder (HTML5 DnD nativo, payload
+    `application/x-asset-media`; drop su cartella o su "Tutti gli asset" per
+    de-assegnare) + reorder folder fra fratelli (`x-sortable`/SortableJS di
+    Filament, handle dedicato → `reorderFolders($ids)` riassegna `sort`).
+    Metodi Page `moveAssetToFolder` / `reorderFolders`.
+  - [x] **Re-parenting cartelle** (azione "Sposta" nel pannellino cartelle, non
+    drag): `Select` destinazione con opzioni che escludono la folder stessa e i
+    suoi discendenti (no ciclo già a monte) + guard sulla profondità risultante
+    del sottoalbero (`computeDepth() + subtreeHeight() ≤ MAX_DEPTH`, il caso che
+    il saving hook non copre perché valida solo la folder spostata). Drag cross-
+    livello scartato per fragilità. Metodo Page `moveFolderAction`.
+  - [x] **Pannello info file** (slide-over da destra al click sulla thumbnail,
+    `infoAssetAction`/`->slideOver()` read-only): nome, tipo, peso, risoluzione
+    (solo immagini), pubblicato il/ultima modifica, autore. **Autore = relazione
+    nullable + snapshot**: colonne `media.uploaded_by_id` (FK nullOnDelete verso
+    la tabella utenti risolta da config) + `uploaded_by_name`; mostra il nome live
+    se l'utente esiste, lo snapshot se eliminato, "—" se non tracciato. Dimensioni
+    immagine come custom property (con fallback dal file per i media legacy).
+    Vedi design §4.11.
+  - [x] **Pipeline elaborazione asset** (job + stato): all'upload il media entra
+    `pending` (colonna `media.processing_status`, enum `AssetProcessingStatus`) e
+    si dispatcha `ProcessAssetJob` (`ShouldQueue`/`afterCommit`/idempotente) che
+    estrae i metadati (oggi dimensioni; sede unica per future taglie/conversioni)
+    e chiude `completed`/`failed`. UI: overlay attesa, badge errore + "Riprocessa",
+    `wire:poll` condizionale. Con `QUEUE_CONNECTION=sync` gira inline (struttura
+    pronta; async = coda database/redis + worker). Vedi design §4.11.
+  - [x] **Poster/thumbnail leggero**: il job genera `preview.jpg` ottimizzato —
+    immagini ridotte a max 640px (GD nativo, skip se già piccole), video frame ~1s
+    (ffmpeg nativo via Symfony Process, no wrapper), PDF prima pagina (Ghostscript
+    `gs` già presente + GD), audio nessuno. Salvato nella
+    cartella del media (cleanup automatico con spatie). `AssetPreview` = fonte unica
+    path/URL; griglia usa la miniatura per immagini e video (play in overlay sui
+    video), player come `poster`; il pannello info mostra l'originale. Best-effort
+    (strumento assente/errore → originale/icona). ffmpeg aggiunto al container php.
+    Vedi design §4.11.
+  - [x] **Comando riprocesso**: `php artisan digital-hub:reprocess-assets {media?}
+    {--collection=assets}` riaccoda `ProcessAssetJob` per uno o tutti gli asset
+    (backfill metadati/anteprime). Rispetta la coda `assets`. Vedi design §4.11.
+
+- [x] **17. Composizione PHP degli schema + reattività + orfani.**
+  Il routing dello schema attributi via `ProductType` è già in piedi
+  (task #9). Completati il pattern di composizione e i flussi runtime:
+  - **Composizione PHP** ✅ pattern in piedi: lo schema base
+    (`ProductAttributes`) esteso da sottoclassi concrete per tipologia
+    (es. `Divani`), con il trait `MergesBaseAttributes` del core
+    (`mergeAttributes`/`mergeGroups`) per fondere attributi e gruppi della
+    base con i propri; collisione di chiavi → eccezione. Restano da
+    aggiungere le altre tipologie reali man mano che servono su Atmosphera.
+  - **Strategia orfani** ✅ (opzione C del design, §3.6): helper
+    `orphanAttributeKeys()`/`stripOrphanAttributes()` sul trait
+    `HasTechnicalAttributes` del core (riusabili da qualsiasi modello PIM).
+    L'avviso è il componente core `OrphanAttributesAlert::reactive($schema,
+    $resolver)` (riusabile da qualsiasi entità PIM con schema dinamico), che
+    elenca i valori che si perderanno quando lo schema selezionato differisce
+    da quello salvato; lo strip effettivo avviene in un hook `saving` su
+    `Product` (che scarica la relazione `productType` se l'id è dirty, per
+    risolvere lo schema nuovo).
+  - **Re-render reattivo dell'`AttributesEditor`** ✅: il `Select`
+    `product_type_id` è `->live()`; `AttributesEditor::reactive($schema,
+    $resolver)` avvolge le Tabs in un `Group` con `schema()` a closure che
+    ri-esegue il resolver (legge `product_type_id` dal form state) e
+    ricostruisce i campi a ogni cambio di tipologia. Lo stesso resolver è
+    condiviso con `OrphanAttributesAlert`.
+  - **Nota (bug latente del core risolto in corsa)**: l'accesso dinamico
+    `$this->{$this->attributesColumn()}` nel trait collideva con la
+    proprietà dichiarata `Model::$attributes` quando la colonna si chiamava
+    `attributes` (caso del `Product`), bypassando il cast e restituendo
+    l'intero array di attributi Eloquent. `attr()`/`setAttr()` erano
+    silenziosamente rotti. Doppia fix: (1) il trait ora legge/scrive via
+    `getAttribute()`/`setAttribute()` (helper `attributeValues()`),
+    corretto per qualunque nome colonna; (2) la colonna è stata **rinominata
+    da `attributes` a `properties`** (default del trait + migration
+    `rename_attributes_to_properties_on_entity_tables` su
+    `products`/`categories_1`/`categories_2`) per eliminare la collisione
+    alla radice e rendere il meccanismo non ambiguo per il futuro.
+
+- [x] **18. Localizzazione attributi PIM.** Translatable values nel JSON
+  (`{locale: value}`), per-locale rendering in `AttributesEditor`, label
+  tradotte via i18n, fallback sulla locale di default dell'app.
+  - **Read-side** ✅ (già da E1/#17): `HasTechnicalAttributes::attr($key,
+    $locale)` legge la map `{locale: value}` risolvendo `app()->getLocale()`
+    con fallback su `config('app.fallback_locale')` quando la locale richiesta
+    manca.
+  - **Label** ✅ (già): `attrLabel`/`attrOption`/`attrGroupLabel` risolvono
+    le traduzioni dai file `lang/{locale}/{model_snake}.php` (chiave
+    `{model}.attributes.{key}.label`), non da un singolo
+    `product-attributes.php` — la convenzione effettiva deriva la chiave dal
+    `class_basename` del modello (deviazione dal testo originale del task).
+  - **Per-locale rendering** ✅ (nuovo): `AttributesEditor::buildField` avvolge
+    gli attributi `translatable()` String/Text in una `TranslationSection`
+    (stesso componente core usato per il `name`), che clona il campo per ogni
+    locale spostando lo statePath da `{column}.{key}` a `{column}.{key}.{locale}`.
+    Le regole native (required/min/max) valgono per-locale. Vale anche per la
+    variante `reactive()` (passa per lo stesso `buildField`).
+  - **Locale gestite**: lette da `config('digital-hub.locales')` (coerente con
+    la localizzazione del `name`), non da `config('app.available_locales')`
+    come ipotizzato nel design §3.3 — deviazione consapevole per uniformità.
+  - **Demo**: attributo `finish` (String, translatable) aggiunto a
+    `ProductAttributes` con label in `lang/it/product.php`. Coperto da
+    `tests/Unit/TranslatableAttributesTest`.
+
+- [x] **19. Estrattori metadati reali.** Un estrattore per step, sopra
+  l'architettura del #11. (`size`/`mime`/`filename` non hanno estrattore
+  dedicato: la pipeline li ricava dalle colonne del media.)
+  - [x] **`ImageExtractor`** (EXIF native + IPTC da APP13 + XMP via parsing
+    `<x:xmpmeta>` senza dipendenze). Normalizza `common.width/height`
+    (`getimagesize`, ogni formato raster) e `common.captured_at` (EXIF
+    `DateTimeOriginal`); sotto-oggetti verbatim `exif`/`iptc`/`xmp`. Valori
+    binari/non-UTF8 scartati per garantire JSON serializzabile. Test
+    `ImageExtractorTest` + `MetadataExtractionPipelineTest`.
+  - [x] **`PdfExtractor`** (`smalot/pdfparser`, già in dipendenze app): Title/
+    Author/Subject/Keywords/Creator/Producer + page count in `common.pages`;
+    blocco verbatim `pdf`. Test `PdfExtractorTest`.
+  - [x] **`VideoAudioExtractor`** (singola classe, backend `ffprobe`): graceful
+    degradation se `ffprobe` assente (`supports()` false). Normalizza
+    `common.duration_seconds/width/height`; verbatim `ffprobe`. Audio-only:
+    solo `duration_seconds` (no `width/height`). Test `VideoAudioExtractorTest`.
+
+- [ ] **20. Migration helpers per schema change.**
+  `ProductAttributes::rename('old', 'new')`, `::remove('old')`
+  invocabili da migration Laravel — riscrivono i JSON esistenti nelle
+  righe.
+
+- [ ] **21. Audit log v1 production.** Plugin community Filament per la
+  vista (es. `noxoua/filament-activitylog`), `updated_by` mostrato
+  inline nelle resource. `MediaAttributes` / `AssetFolder` aggiunti al
+  logging.
+
+- [ ] **21b. Ruoli cartella + tag asset.** Due meccanismi distinti per due
+  bisogni distinti (vedi design §4.1/§4.5):
+  - **Folder role (primario)** — recupero per *scopo* via API ("schede
+    tecniche", "file 3D", "istruzioni di montaggio"): lo scopo è un concern
+    a livello di cartella, non di file. Colonna `role` (nullable, string)
+    su `asset_folders`: identificatore controllato e **stabile**, distinto
+    dal `name` (stringa libera, rinominabile, non affidabile per il match
+    API). Recupero tipo `folders?role=assembly_instructions` → i file
+    dentro; uniforme cross-prodotto senza string-matching sul nome.
+    - **Vocabolario personalizzabile per progetto**: la lista dei ruoli NON
+      è un enum fisso nel core ma viene dalla config del client (pattern
+      `config('digital-hub.asset_folder_roles')`, coerente con
+      `digital-hub.locales`). Il `role` salvato è una chiave validata contro
+      il vocabolario configurato dal progetto. UI AssetManager: Select sul
+      pannellino cartella popolato dalla config (label translatable via i18n).
+  - **Tag sui file (secondario, priorità bassa)** — classificazione
+    *trasversale/ad-hoc* che NON coincide coi confini delle cartelle:
+    `public`/`internal`, `rev-2024`, `obsoleto`, o un file con doppio scopo
+    (la cartella è 1-to-many, il tag no). `spatie/laravel-tags` (già nello
+    stack) via `HasTags` sul `Media` esteso del core. Non taggare lo *scopo*
+    sui file (ridondante: lo copre il folder role) né sulle cartelle (perde
+    la stabilità dell'identificatore). Da fare solo quando emerge un caso
+    reale di cross-folder. **NB**: i tag sono ora una taxonomy gerarchica di
+    catalogo di prima classe (gruppo→categoria→tag, gruppo legato all'entità;
+    vedi #28 e design §4.12); per taggare i `Media` servirà un `TagGroup` con
+    `entity_type` dedicato e `HasTags` sul `Media` esteso — uno dei taggable,
+    non più l'unico scopo dei tag.
+
+- [ ] **22. Auth enhancements.** 2FA via
+  `stephenjude/filament-two-factor-authentication`, magic link
+  roll-your-own (signed URL + mail template + controller). Da
+  affrontare solo se/quando emerge una richiesta concreta del cliente.
+
+- [x] **22b. Sub-entità del Product (moduli / varianti).** ✅ Superata per
+  questo progetto (luglio 2026). Il pattern **Composizione** è coperto dai
+  moduli come `Product` con `parent_id` self-referenziale (relazioni
+  `parent()`/`modules()`), introdotti con l'import Indoor — supersede
+  l'ipotesi del modello `Module` separato (vedi §3.8 del design doc e
+  [import-prodotti-indoor.md](./import-prodotti-indoor.md) §3). Il pattern
+  **Variazione** non è mai emerso come esigenza: le finiture sono gestite
+  dalla matrice materiali/tessuti, non da varianti di prodotto. Resta
+  valida la parte "core agnostic" della §3.8 (niente da predisporre nel
+  core); pricing/stock fuori scope come da design.
+
+- [x] **22c. Rendere `TranslationSection` autonoma da `filament-helper`.**
+  ✅ Fatto. La dipendenza era già rimossa a livello composer; mancava
+  internalizzare l'auto-traduzione. Portati nel core `digital-hub`:
+  `TranslateActionModal` (`src/Pim/Filament/Actions/`) + servizio
+  `TranslateString` (`src/Pim/Translation/`, client DeepL via DI) + config
+  `digital-hub.deepl.*` + dipendenza `deeplcom/deepl-php`. Aggiunto il
+  metodo `TranslationSection->autoTranslation()`. Rimossa la classe CSS morta
+  (`filament-helper-translation-tabs`) dal `render()`. **I `SeoFields` NON
+  sono stati portati** (non servono al momento; se servissero, stesso schema:
+  internalizzare in `digital-hub` con config propria). Workflow tornato a due
+  repo (`digital-hub` + template), `filament-helper` fuori dal grafo.
+
+### DAM v2 — ricerca, download e condivisione asset
+
+Tre feature richieste sull'AssetManager (catalogo asset), con una decisione
+di storage fondante che le abilita tutte. Razionale e decisione architetturale
+in [riepilogo-design.md](./riepilogo-design.md) §7.10. **L'ordine è vincolato
+dalle dipendenze**: 22d prima di tutto, poi 22e/22f in parallelo, 22g per
+ultimo.
+
+- [x] **22d. Disco privato + serving gated (fondante).** ✅ Fatto. Il disco
+  `assets` era uno `scoped` sopra `public` → file scaricabili da chiunque
+  conoscesse l'URL, nessun controllo. Ora storage **privato** + serving via
+  route gata del core.
+  - `assets` disk → driver `local` privato (`storage/app/private/assets`,
+    `visibility: private`, niente symlink) — `config/filesystems.php`.
+  - Route core `assets/{media}` + `assets/{media}/preview`
+    (`digital-hub.assets.show/preview`), gruppo middleware `web`, caricate via
+    `loadRoutesFrom`. `AssetServeController` con **gate doppio**: richiesta
+    firmata (signed URL) → ok dalla firma; altrimenti utente autenticato +
+    policy sul proprietario morph dell'asset **se esiste** (oggi nessuna
+    policy → basta l'auth; il ramo per-record si attiverà col task #4 / le
+    policy shield). Il ramo token `Share` esterno arriva con 22g (riusa lo
+    stesso controller via signed/route pubblica).
+  - Serving inline con `BinaryFileResponse` sui dischi locali (Range request →
+    seeking video/audio), fallback su stream del filesystem per dischi remoti.
+  - **`AssetUrl`** = fonte unica degli URL: `original()`/`preview()` (autorizzati via
+    sessione) + `temporaryOriginal()`/`temporaryPreview()` (signed URL, per
+    embedding senza sessione e riuso esterno 22g). `AssetPreview::url()` delega
+    a `AssetUrl::preview()`; i blade non usano più `Media::getUrl()`.
+  - **Migrazione**: comando idempotente `php artisan
+    digital-hub:move-assets-private` (`--prune` per eliminare l'origine dopo la
+    verifica). In dev: 23 file spostati. **In produzione**: lanciarlo una volta
+    dopo il deploy, verificare in UI, poi rilanciare con `--prune`.
+  - **Test**: `AssetServeTest` (anonimo 403, auth 200, signed ok, signed
+    manomesso 403, poster assente 404). PHPStan pulito sul codice nuovo.
+  - *Trade-off accettato*: col disco privato **ogni** accesso al file passa da
+    PHP (niente più URL diretto/CDN). I signed URL non bypassano PHP: servono a
+    far funzionare l'embedding/condivisione senza sessione.
+
+- [x] **22e. Scarica multipli (bulk download).** ✅ Fatto. Bulk action
+  "Scarica selezionati" (`downloadSelectedAssetsAction`) nella toolbar di
+  selezione dell'AssetManager → zip on-the-fly in **streaming**, niente file
+  temporaneo.
+  - **`AssetZip`** (`src/Assets/Support/`) = helper riusabile:
+    `streamResponse(iterable $media, string $name)` legge ogni media come
+    stream dal suo disco (`readStream`) e scrive lo zip su `php://output` via
+    `maennchen/zipstream-php` 3.x (`response()->streamDownload`). Salta i media
+    col file mancante; rende univoci i nomi duplicati (`foto.jpg` →
+    `foto (2).jpg`). **Sarà riusato dalla gallery di condivisione (22g)**.
+  - **Streaming reale via route GET + token server-side, NON via response
+    dall'action.** Scoperto che Livewire (`SupportFileDownloads`) bufferizza
+    l'intera response di un'action: `ob_start` → `sendContent` →
+    `base64_encode` nel JSON → tutto lo zip in RAM (server + client), niente
+    streaming + ~33%. Quindi l'action raccoglie i media di proprietà
+    (`findOwnedMedia`), crea un `AssetShare` effimero e fa
+    `$this->redirect(route('digital-hub.assets.share-download', token))`: il
+    browser **naviga** alla route → streaming end-to-end + download nativo come
+    unico feedback (nessun loader custom). Controller
+    `AssetServeController::downloadShareZip`. Nome download
+    `assets-YYYYmmdd-His.zip`.
+  - **Token server-side `AssetShare` (al posto del signed URL con id in
+    querystring).** Scelta presa per evitare URL lunghissimi su selezioni grandi
+    e per posare le fondamenta della condivisione 22g. Una sola entità per due
+    lifecycle distinti dalla **scadenza**: download = share *effimero*
+    (`expires_at` +5min, creato in silenzio, prunato); share 22g = *persistente*
+    (scadenza lunga/assente, poi password + UI). Tabella `asset_shares`
+    (`token` unique, `expires_at`, `created_by` FK nullOnDelete) + pivot
+    `asset_share_media` con FK reali `cascadeOnDelete` (no id orfani). Model
+    `AssetShare` (`createForMedia()`, `media()` BelongsToMany, `isExpired()`,
+    scope `valid()`). Il token è il segreto: il controller verifica solo
+    esistenza + non-scadenza. La **cache è stata scartata**: in dev
+    `CACHE_STORE=array` non persiste tra richieste (il download passa per un
+    redirect). Migrazioni owned dal core (`loadMigrationsFrom`).
+  - **Pruning effimeri**: `Prunable` sul model + `model:prune` schedulato
+    `hourly()` dal service provider (`callAfterResolving(Schedule)`), così il
+    template non configura nulla — serve solo il cron `schedule:run` attivo.
+  - **Dipendenze**: `maennchen/zipstream-php ^3.1` + `ext-zip` aggiunte
+    esplicitamente al `composer.json` del package (erano transitive).
+  - **`AssetZip`** (`src/Assets/Support/`) = helper riusabile:
+    `streamResponse(iterable $media, string $name)` legge ogni media come
+    stream (`readStream`) e scrive lo zip su `php://output` via zipstream. Salta
+    i media col file mancante; nomi duplicati resi univoci (`foto.jpg` →
+    `foto (2).jpg`). **Riusato dalla gallery di condivisione (22g)**.
+  - **Test**: `AssetZipTest` (contenuto zip + nomi univoci + skip file
+    mancante), `AssetDownloadZipTest` (route per token: valido stream ok /
+    scaduto 404 / sconosciuto 404), `AssetBulkDownloadTest` (wiring: crea share
+    + redirect / niente share né redirect senza selezione). PHPStan/cs-fixer
+    puliti.
+
+- [ ] **22f. Ricerca asset (DB-level).** Ricerca dentro l'AssetManager:
+  `LIKE` sul nome del media + match dentro `extracted_metadata` (JSON) +
+  filtri per folder / tipo file / owner. **Niente Scout/Meilisearch qui**:
+  quello è la search globale cross-collection (#23), concern diverso. Questa
+  è locale al catalogo asset.
+
+- [x] **22g. Condividi (link esterno).** Condivisione verso destinatari
+  **senza account** (rivenditore / agente / cliente), slegata dagli account
+  del pannello. **Le fondamenta esistono già da 22e**: model `AssetShare`
+  (token + scadenza + pivot media), route/controller di download per token,
+  `AssetZip`, pruning. 22g aggiunge la parte *persistente*:
+  - Estendere `asset_shares` con `password` nullable (hash) e `name` (+ eventuale
+    `last_accessed_at`). Lo share persistente = `expires_at` lunga/assente.
+  - Permesso custom core `share_assets` (coerente con design §7.5): **rimandato**
+    — la bulk action è ungated per ora (anche le altre lo sono, lo shield non è
+    ancora cablato nel template). Si gata col cablaggio del layer authz.
+  - Bulk action "Condividi" → crea `AssetShare` persistente, mostra link
+    copiabile.
+  - Route pubblica `/share/{token}`: gallery minimale read-only + download,
+    password gate se impostata, 404 se scaduto/revocato. **La password resta
+    opzionale** (`nullable`): non viaggia col link, è un secondo fattore
+    comunicato out-of-band.
+  - **Gallery = Page Filament in panel guest dedicato** (non Blade a sé):
+    `SharePanelProvider`, path `/share`, **senza** `Authenticate` in
+    `authMiddleware`, nav/branding spogli. Trade-off accettato: carica il
+    bundle Filament anche per l'esterno (ok). Vedi design §7.2 e §7.10.
+  - **Estrarre dall'`AssetManager` in classi di supporto condivise** (usate da
+    panel privato + page guest, no duplicazione):
+    - `AssetSummary::forMedia($media): array` (metadati base `label=>value`;
+      uploader/data opzionali via flag, esclusi sulla gallery pubblica) — da
+      `assetSummaryEntries()` / `assetImageDimensions()`.
+    - Partial `asset-preview.blade.php` **parametrizzato sull'URL**: panel passa
+      `AssetUrl::original()`, page guest passa `AssetUrl::temporaryOriginal()` /
+      `temporaryPreview()` (signed, scadenza = share).
+  - UX gallery: elenco miniatura + metadati base, **checkbox selezione** + tasto
+    **"Scarica"** (→ `AssetZip`, riusa la route download per token di 22e).
+  - Gate password condiviso page+download: la route zip ri-verifica lo sblocco
+    via sessione (`AssetShare::sessionUnlockKey()`), così il token nudo non
+    bypassa la password.
+  - Core resta agnostic: route/model/permesso nel package, il template fa
+    solo il wiring. Authz interna invariata (shield A+B), accesso esterno
+    completamente separato.
+
+- [ ] **22h. Gestione degli share attivi (follow-up di 22g).** UI nel pannello
+  admin per elencare gli share persistenti, vedere ultimo accesso
+  (`last_accessed_at`) e **revocare** (delete o scadenza forzata). Fuori scope
+  da 22g (lì la revoca è possibile solo via scadenza/delete a mano). Naturale
+  sede anche di un eventuale gating `share_assets` quando arriva l'authz.
+
+- [x] **22i. Sostituisci file di un asset.** Azione "sostituisci file" su un
+  asset esistente: si carica un nuovo file fisico ma **il record media mantiene
+  lo stesso id** (e uuid), così restano preservati dati e relazioni (folder,
+  tag, share, riferimenti dalle entità). Vedi aggiornamento in fondo al punto:
+  `name` invece si riallinea al nuovo file.
+  - **`AssetFileReplacer`** (`src/Assets/Support/`): sostituzione manuale sullo
+    stesso record (spatie non ha un "replace" nativo). Aggiorna `file_name` /
+    `mime_type` / `size`, azzera `extracted_metadata` + custom property della
+    preview, riporta a `pending` e ridispaccia `ProcessAssetJob` (idempotente,
+    rigenera metadati e anteprima senza modifiche al job).
+  - **Ordine non ovvio**: l'observer di spatie, quando `file_name` cambia,
+    rinomina lui il file fisico al salvataggio (`syncFileNames`) — quindi
+    prima si salva il record (l'observer sposta il vecchio file sul nuovo
+    path), poi si sovrascrive il contenuto; scrivere prima verrebbe
+    sovrascritto dalla rinomina.
+  - **UI**: action `replaceAssetFile` nell'AssetManager (menu contestuale del
+    file), modal con FileUpload singolo e avviso che il file cambia ovunque
+    l'asset sia usato o condiviso (share compresi: comportamento voluto).
+  - **Test**: `AssetFileReplaceTest` (stesso id + attributi aggiornati + vecchio
+    file/poster rimossi + metadati azzerati + job in coda; overwrite con stesso
+    nome; wiring dell'action). PHPStan/cs-fixer puliti.
+  - **Aggiornamento 2026-07-14**: `name` **non** è più preservato (l'id/uuid sì,
+    e con essi tutte le relazioni). Da quando il rename del 14d tiene allineati
+    `name` e `file_name`, lasciare l'etichetta vecchia su un file nuovo la
+    renderebbe stale e disallineata dal download (che usa `file_name`): es.
+    "Catalogo 2026" appiccicato a `catalogo-2027.pdf`. Il replace ora riassegna
+    `name` = basename del nuovo file, **stessa regola dell'upload**
+    (`usingName(pathinfo(..., PATHINFO_FILENAME))`); ri-etichettare resta a un
+    click dallo slideover. Coperto da
+    `test_replace_realigns_a_previously_renamed_label_to_the_new_file`.
+
+- [x] **28. Tag taxonomy gerarchica a 3 livelli.** ✅ Fatto. I tag sono una
+  taxonomy di catalogo organizzata in `TagGroup → TagCategory → Tag`, con il
+  gruppo legato a una **singola entità taggabile** (vincolo rigido). Vedi
+  design §4.12 per scelte e trade-off (restringe il cross-entità originario).
+  Su `spatie/laravel-tags` (installato), esteso:
+  - `TagGroup` (`tag_groups`): livello top, `HasGlobalId` + `name`
+    translatable + `sort` + `entity_type` (morph alias dell'entità, cast
+    all'enum `App\Enums\TaggableEntity`); `hasMany` categorie.
+  - `TagCategory` (`tag_categories`): livello intermedio, aggiunge FK
+    `tag_group_id` + relazione `group()`; `hasMany` tag.
+  - `App\Models\Tag extends Spatie\Tags\Tag` con FK `tag_category_id` +
+    relazione `category()`, registrato in `config/tags.php` (`tag_model`);
+    campo `type` nativo ignorato (nullable).
+  - Pivot polimorfico `taggables` invariato; `HasTags` su `Product` **e**
+    `Material` (il `Media` esteso resta da agganciare → 21b).
+  - Vincolo entità: il picker tag nei form entità è
+    `App\Filament\Support\EntityTagsSelect`, che filtra i tag per
+    `category.group.entity_type` (es. il form Product mostra solo tag dei
+    gruppi legati a Product).
+  - UI: una sola voce in navigazione, `TagGroupResource`. `TagCategory` e
+    `Tag` sono **risorse nidificate** Filament: si entra in un gruppo → sue
+    categorie → suoi tag, con breadcrumb "solo record"
+    (`HasRecordOnlyBreadcrumbs`). FK valorizzata dalla relazione parent.
+  - Helper spatie basati su `type` da rimpiazzare con scope/relazioni
+    custom quando serviranno.
+  - **NB (evoluzione)**: la taxonomy è stata **spostata nel core** e resa
+    config-driven da **#28b**; i riferimenti app-level qui sopra
+    (`App\Models\*`, `App\Enums\TaggableEntity`, `App\Filament\Support\EntityTagsSelect`)
+    sono storici — vedi #28b per lo stato attuale.
+
+- [x] **28b. Tag sugli asset + relocate della taxonomy nel core.** ✅ Fatto.
+  I tag ora coprono anche i **`Media`** (asset), scopati per **tipo di owner**
+  (tag per asset di Product, di Material, …): il gruppo è legato al tipo di
+  owner, i tag al singolo `Media`. Realizzato:
+  - **Unificato + `target`**: colonna `tag_groups.target` (`entity`|`asset`),
+    default `entity` (backward-compatible). Il taggable è derivato dal target
+    (`entity` → modello entità; `asset` → `Media`), via `TagGroup::taggableModelClass()`.
+  - **3 livelli** anche per gli asset (gruppo→categoria→tag), risorse condivise.
+  - **Taxonomy spostata nel core** `digital-hub` (`AtrioTeam\DigitalHub\Tags\…`):
+    modelli (`Tags\Models\{TagGroup,TagCategory,Tag}`), enum `Tags\Enum\TagTarget`,
+    helper `Tags\Support\TaggableEntities` + `Tags\Filament\TagPicker`, resource
+    nidificate `Tags\Filament\Resources\*`, concern
+    `Filament\Concerns\HasRecordOnlyBreadcrumbs`, lang `digital-hub::tag*`.
+    Resource registrate in `DigitalHubPlugin` (prime Resource del package).
+  - **Binding entità config-driven**: eliminato `App\Enums\TaggableEntity`; il
+    core legge `config('digital-hub.taggable_entities')` (alias→classe, popolato
+    dall'app in `config/digital-hub.php`). `target=asset` risolve sempre a `Media`.
+  - **`Media` taggabile**: `AtrioTeam\DigitalHub\Assets\Models\Media extends
+    Spatie\…\Media` con `HasTags`, in `config('media-library.media_model')`;
+    alias `media` nel morph map (AppServiceProvider).
+  - **UI**: i tag del singolo file stanno nella colonna destra dello slideover
+    "info" dell'`AssetManager` (core), sotto nome/estensione: `TagPicker`
+    standalone filtrato per `(owner, asset)`, incluso solo se per l'owner
+    esistono gruppi `target=asset` (`hasAssetTagGroups()`, scopato sul morph
+    dell'owner del media). Fill e sync sono a carico dell'action `infoAsset`
+    (`assetTagPickerState()` + `tags()->sync()` sul `Media`, pivot `taggables`,
+    `taggable_type=media`): il salvataggio è quello unico di "Salva", condiviso
+    con il rename. Il sync avviene solo se la chiave `tags` è presente nei dati,
+    altrimenti un submit senza picker azzererebbe i tag.
+  - I form entità (Product/Material) usano `TagPicker::make(alias, TagTarget::Entity)`.
+  - **Aggiornamento (luglio 2026)**: la voce unica in nav è stata sdoppiata per
+    `target` in due alberi paralleli — *Tag anagrafiche* (`TagGroupResource` &
+    figli, `target=entity`) e *Tag asset* (`AssetTagGroupResource →
+    AssetTagCategoryResource → AssetTagResource`, `target=asset`), sugli stessi
+    modelli. Ogni gruppo-resource scopa `getEloquentQuery()` per target e forza il
+    `target` via `Hidden` (non più `Select`). Vedi design §4.12.
+
+- [x] **23. Search globale cross-collection.** ✅ Fatto (tracer bullet).
+  Ricerca cross-collection via `laravel/scout`, driver **`database`**
+  (`SCOUT_DRIVER` in `.env`): nessun indice esterno, LIKE diretto sulle
+  colonne dichiarate da `toSearchableArray()`. Distinta dalla ricerca asset
+  locale #22f.
+  - **Meilisearch installato ma non attivo**: servizio `meilisearch` in
+    `docker-compose.yaml` (porta host `COMPOSE_MEILISEARCH_PORT`), config
+    `MEILISEARCH_HOST`/`MEILISEARCH_KEY` già in `.env`/`config/scout.php`.
+    Lo switch futuro è solo `SCOUT_DRIVER=meilisearch` + `scout:import`,
+    nessuna riscrittura di codice applicativo.
+  - **Modelli**: `Searchable` su `Product`, `Material`, `Fabric` (in
+    `App\Models`). `toSearchableArray()` espone `name_search` + `slug`: le
+    chiavi devono essere colonne reali della tabella, è un vincolo del
+    driver `database` (`DatabaseEngine::buildSearchQuery()` fa `LIKE`
+    diretto su `array_keys(toSearchableArray())`).
+  - **Case-insensitive**: `name` è JSON (translatable) e MySQL confronta il
+    contenuto di una colonna JSON con `LIKE` usando collation binaria
+    (case-sensitive) **a prescindere dalla collation di connessione/tabella**
+    — bug scoperto in fase di verifica (`'kandy'`/`'KANDY'` non matchavano
+    `'Kandy'`). Fix: migrazione `add_name_search_columns_for_scout` aggiunge
+    a `products`/`materials`/`fabrics` una colonna generata **STORED**
+    `name_search VARCHAR GENERATED ALWAYS AS (CAST(name AS CHAR))`, che
+    eredita la collation di default della connessione (case-insensitive su
+    questo schema) invece di quella binaria del JSON grezzo.
+    `toSearchableArray()` usa questa colonna al posto di `name` diretto.
+  - **UI = ricerca globale Filament esistente (cmd+K)**, non una pagina
+    dedicata: i tre Resource (`ProductResource`, `MaterialResource`,
+    `FabricResource`) usano il nuovo trait
+    `App\Filament\Concerns\HasScoutGlobalSearch`, che sostituisce
+    `HasGlobalSearch::getGlobalSearchResults()` (LIKE su singolo attributo)
+    con una query Scout, riusando titolo/dettagli/azioni di default. Lo
+    switch a Meilisearch non tocca questo layer.
+  - **`ProductResource` non era globalmente ricercabile prima** (nessun
+    `$recordTitleAttribute`): aggiunto. È una risorsa top-level, url di
+    ricerca globale = comportamento Filament di default (via `EditAction`
+    registrata dal macro `digitalHubTable()`).
+  - **`Material`/`Fabric` sono risorse nidificate** (sotto la relativa
+    Category): Filament non risolve l'URL di ricerca globale per le
+    risorse nidificate di default (`HasGlobalSearch::getGlobalSearchResultUrl()`
+    ritorna sempre `null` se c'è un parent). Override esplicito che apre
+    l'indice nidificato della categoria del record con `tableAction=…`
+    e `tableActionRecord=…` valorizzati.
+    - ⚠️ **Superato (15 luglio 2026): era sempre `view`** — vedi "L'azione
+      aperta segue i permessi" in fondo alla voce. Il default Filament
+      (`HasGlobalSearch::getGlobalSearchResultUrl()`) controlla `canView`
+      **prima** di `canEdit`: se l'utente può entrambe (caso comune, oggi
+      niente policy/permessi su queste entità), vinceva sempre "view" — per
+      `ProductResource` (non nidificata, comportamento di default invariato)
+      succedeva già così, e `Material`/`Fabric` erano stati allineati per
+      coerenza. Ora l'ordine è invertito: edit se puoi, view solo di ripiego.
+    - **`ViewAction` aggiunta** (vedi voce dedicata sotto): inizialmente
+      scartata ("cambierebbe il comportamento di tutte le tabelle"), poi
+      aggiunta comunque quando è emerso un problema più serio di UX (sotto)
+      che la rendeva la soluzione giusta, non solo un nice-to-have.
+    - **Bug del percorso "naturale"**: chiamare `getUrl()` senza nome
+      pagina passa da `CanGenerateUrls::getIndexUrl()`, che delega al
+      genitore controllando `hasPage()` **sulle pagine del genitore**
+      (`MaterialCategoryResource::getPages()` ha solo `'index'`) — le
+      pagine nidificate vivono sul resource figlio, quindi quel ramo è
+      sempre `false` e il parametro `category` va perso silenziosamente
+      (niente eccezione, url sbagliato). Fix: nome pagina `'index'`
+      esplicito su `MaterialResource`/`FabricResource` stesse, che risolve
+      via `getRouteBaseName()` (include il prefisso del genitore) alla
+      route nidificata corretta.
+  - **Tassonomie indicizzate anche loro**: cercare "velluto" non trovava
+    nulla — non è il nome di nessun `Fabric` (i tessuti in categoria
+    "Velluto" si chiamano "WHITE ROS 101", "CREAM SAM 01", …), è il nome
+    della `FabricCategory`, che non era indicizzata. Estesa `Searchable` +
+    `toSearchableArray()` (stesso pattern `name_search`+`slug`) e il trait
+    `HasScoutGlobalSearch` anche a `Category1`, `Category2`, `ProductType`,
+    `MaterialCategory`, `FabricCategory`, `Designer`, `Environment` — tutte
+    risorse top-level (nessun problema di URL nidificato). Migrazione
+    dedicata `add_name_search_columns_to_taxonomy_tables` (stessa colonna
+    generata STORED, tabelle diverse). Alternativa scartata: denormalizzare
+    il nome della categoria nel record figlio (Fabric/Material) — scelto
+    indicizzare la categoria come risultato a sé (si clicca e si entra
+    nell'elenco), niente sync da mantenere tra tabelle.
+  - **Highlighting del termine cercato** nel titolo dei risultati (`<mark>`),
+    calcolato **lato applicazione** in `HasScoutGlobalSearch::highlightGlobalSearchTitle()`,
+    non dal motore di ricerca: funziona identico coi driver `database` e
+    `meilisearch`, nessun codice da toccare allo switch. Scartato l'uso del
+    campo `_formatted` nativo di Meilisearch perché il testo indicizzato
+    (`name_search`, JSON grezzo) non coincide col titolo mostrato (nome
+    nella lingua corrente) — non sarebbe stato direttamente utilizzabile
+    comunque. Se il termine non compare nel titolo (match su slug o altra
+    lingua) resta semplicemente non evidenziato, nessun errore. Nessun CSS
+    aggiuntivo: lo stile di default del browser per `<mark>` è già visibile
+    nel pannello.
+  - **Riga evidenziata nella pagina di destinazione**: l'utente intendeva
+    l'highlighting non nel dropdown di ricerca ma sulla pagina che si apre
+    al click — l'URL porta `?tableAction=…&tableActionRecord=<id>`
+    (Livewire `#[Url]`, sincronizzato per qualunque action modal aperta,
+    non solo dalla ricerca). `DigitalHubTableMacro::apply()` (core,
+    applicata da tutte le tabelle via `->digitalHubTable()`) aggiunge
+    `->recordClasses()`: la riga il cui id combacia con
+    `request()->query('tableActionRecord')` riceve
+    `!bg-warning-50 dark:!bg-warning-400/10`. Effetto collaterale voluto:
+    evidenzia anche la riga di un'action aperta manualmente (non solo da
+    ricerca), comportamento generico coerente col resto del pannello.
+  - **Bug scoperto in verifica: l'highlighting falliva se il record non
+    era in pagina 1** — la riga semplicemente non è nel DOM finché non si
+    pagina a mano, l'utente non vede nulla. Fix: `IsDigitalHubListPage`
+    (trait core usato da tutte le `List*Page`, stesso punto di
+    `getSortAction()`/`getNewAction()`) aggiunge l'hook Livewire
+    `bootedIsDigitalHubListPage()` — se l'URL porta `tableActionRecord`,
+    calcola la posizione del record nella query
+    filtrata/ordinata della tabella (`getFilteredSortedTableQuery()`, la
+    stessa che Filament usa per il rendering reale) e salta alla pagina
+    giusta (`setPage()`).
+    - **Hook `booted*`, non `mount*`**: lo stato di filtri/ordinamento/per-page
+      persistito in sessione è risolto da `InteractsWithTable::bootedInteractsWithTable()`
+      (anch'esso un hook "booted", gira prima perché dichiarato dalla
+      classe base) — a `mount*` quello stato non è ancora pronto.
+      Contropartita: i `booted*` girano a **ogni** richiesta Livewire, non
+      solo al primo caricamento, quindi serve un flag di guardia
+      (`hasJumpedToHighlightedTableRecordPage`) per non forzare l'utente
+      alla pagina del risultato di ricerca a ogni interazione successiva
+      (es. click su "pagina successiva" lo rimanderebbe sempre indietro).
+    - **Trappola nei test**: `Livewire::test()` **non** simula una vera
+      richiesta HTTP — `request()->query(...)` dentro il ciclo di vita del
+      componente non vede query string impostate manualmente prima *né*
+      dopo la chiamata (il "request" applicativo è sostituito
+      internamente). Unico modo corretto:
+      `Livewire::withQueryParams([...])->test(Component::class)`.
+  - **`ViewAction` aggiunta a tutte le tabelle** (`DigitalHubTableMacro::apply()`,
+    accanto a `EditAction`/`DeleteAction`): risolve alla radice il problema
+    di scroll/viewport dell'highlighting di riga (sopra) — se il click apre
+    davvero una modale con i dati del record, l'utente non ha più bisogno di
+    localizzare visivamente la riga in tabella (che potrebbe restare fuori
+    dall'area visibile anche dopo il salto pagina). Riusa lo stesso `form()`
+    del resource, disabled/read-only.
+    - **Rischio valutato**: il form più complesso del pannello (Product:
+      `NestedCheckboxSelect`, `AttributesEditorSection` reattiva — quest'ultima
+      nota per un `TypeError` al re-render su `EditAction`, vedi
+      `ProductMaterialsNestedSelectTest`) poteva non reggere il path di
+      rendering read-only di `ViewAction`. **Verificato non essere un
+      problema**: mount pulito, stato corretto su `materials`
+      (`ProductViewActionTest`). Verificate a campione anche `MaterialCategory`/
+      `FabricCategory` (top-level, via `mountTableAction`).
+    - **Limite del test harness scoperto in verifica** (non un difetto
+      nostro): `Livewire::test()` su una `List*Page` nidificata (Material/Fabric,
+      passando `category` come parametro) fallisce sempre
+      (`resolveRecordRouteBinding(): $key ... null`), **identico con `edit`
+      o `view`** — è un limite noto di Filament sulle route nidificate nei
+      test (`CanGenerateUrls::getUrl()`: "unable to resolve the missing URL
+      parameters from the parent records" quando manca una request reale).
+    - **Bug reale trovato dall'utente in verifica manuale**:
+      `NestedCheckboxSelect` (materiali/tessuti sul Product) è un campo
+      completamente custom (Alpine/Blade, nessun componente Filament nativo
+      sotto) e **non rispettava affatto lo stato disabled** — restava
+      cliccabile anche in `ViewAction`. Fix nella view Blade
+      (`nested-checkbox-select.blade.php`): legge `$isDisabled()` (metodo
+      standard di `CanBeDisabled`, lo stesso letto dai componenti nativi
+      Filament come `checkbox.blade.php`/`select.blade.php`) e lo passa ad
+      Alpine (`disabled: @js($isDisabled())`); blocca sia gli `<input>`
+      (`:disabled="disabled"`, nativo browser — impedisce anche il
+      toggle via `x-model`) sia `toggleCategory()` lato JS (guardia
+      esplicita, ridondante ma innocua). Verificato leggendo
+      `$field->isDisabled()` sullo schema montato (l'output HTML dei test
+      Livewire non include il body della modale, renderizzato lato client).
+    - ⚠️ **Superato (15 luglio 2026): pulsante "Modifica" nel footer della
+      modale view** — `ViewAction` aveva un `EditAction` come
+      `extraModalFooterActions()` (azione nidificata indipendente, si
+      impilava sopra la view; pattern documentato Filament "Opening another
+      modal from an extra footer action"). Rimosso: era la scorciatoia per
+      uscire da una view che a chi può editare non viene più mostrata
+      affatto (voce sotto).
+  - **L'azione aperta segue i permessi, view ed edit non coesistono
+    (15 luglio 2026).** L'utente non voleva la view davanti chi ha l'edit:
+    né come destinazione di un risultato di ricerca (obbligava al giro
+    view → "Modifica"), né come azione di default sul click di riga in
+    tabella, dove vinceva sull'edit. Regola ora: **edit se l'utente può
+    editare, view solo come ripiego di sola lettura**.
+    - **Un solo punto di intervento**: `DigitalHubTableMacro::apply()`
+      nasconde la `ViewAction` a chi può editare
+      (`->visible(fn ($record) => ! static::canEditRecord($record))`).
+      Il click di riga segue da sé, senza toccare `recordAction()`: il
+      default di Filament (`ListRecords::table()`) cicla su
+      `['view', 'edit']` **saltando le azioni nascoste**, quindi cade su
+      edit da solo.
+    - **Gate coerente con l'EditAction**: la macro non conosce il resource
+      della tabella, lo risolve dal modello del record
+      (`Filament::getModelResource($record)::canEdit($record)`) — stessa
+      gate che l'EditAction usa per autorizzarsi. Scartato
+      `Gate::allows('update', …)` diretto: divergerebbe sui modelli senza
+      policy, dove Filament consente l'edit e il Gate lo nega — si
+      vedrebbero view ed edit insieme, esattamente ciò che si vuole evitare.
+      Modello non registrato come resource nel pannello ⇒ view visibile
+      (ripiego sicuro).
+    - **URL di ricerca globale**: `HasScoutGlobalSearch::getGlobalSearchTableActionParameters()`
+      è il punto unico che decide `tableAction` (edit → view → `null`, che
+      scarta il risultato). Usato sia dal `getGlobalSearchResultUrl()` del
+      trait per i resource piatti — necessario: il default Filament
+      hardcoda `'view'` a sua volta, quindi senza override la ricerca
+      globale continuerebbe ad aprire la view — sia dagli override di
+      `Material`/`Fabric`, che ci aggiungono il parametro `category`.
+    - **Ricaduta sui test**: view ed edit non sono più montabili dallo
+      stesso utente, quindi `ProductViewActionTest` non può più usare un
+      super-admin per la view. Nuovo stato di factory
+      `User::factory()->withPermissions('view_any_product', 'view_product')`
+      (permessi Shield creati al volo) per l'utente in sola lettura.
+  - **Test**: `tests/Feature/Search/GlobalSearchTest.php` (Product/Material/Fabric
+    trovati via Scout, URL nidificato esatto via `route()`, nessun match =
+    risultato vuoto, case-insensitivity, tassonomie ricercabili, highlighting
+    titolo) + `SearchResultRowHighlightTest.php` (riga evidenziata via query
+    string, nessuna riga evidenziata senza, salto pagina quando il record è
+    oltre la prima, nessun salto senza query string) + `ProductViewActionTest.php`
+    (mount `ViewAction` pulito col form più complesso del pannello,
+    `NestedCheckboxSelect` disabled su view / abilitato su edit, view
+    nascosta a chi può editare e viceversa). `GlobalSearchTest` copre anche
+    `tableAction=edit` per chi può editare, `view` per il sola-lettura,
+    risultato scartato senza nessuno dei due permessi.
+    PHPStan/cs-fixer puliti.
+  - **Plugin di terze parti scartato**: esiste
+    [`kainiklas/laravel-scout`](https://filamentphp.com/plugins/kainiklas-laravel-scout),
+    plugin Filament che copre global search (come sopra) + **table search**
+    dentro l'index dei resource (sostituisce le colonne `->searchable()`) +
+    `ScoutSelect` per relazioni + highlighting Meilisearch via `useMeilisearch()`.
+    Scartato per ora a favore del trait custom (meno superficie, nessuna
+    dipendenza esterna su un punto sensibile come l'autorizzazione dei
+    risultati) — **da riconsiderare se serve table search o `ScoutSelect`**,
+    che oggi non copriamo (l'index dei resource resta LIKE per colonna).
+
+## Topic da decidere prima di implementare
+
+L'ordine qui dipende da priorità di business — vanno discussi caso per
+caso prima di mettere mano al codice.
+
+- [ ] **24. API esterna** (REST/GraphQL? Solo lettura o anche write?
+  Auth via token? Decisione architetturale prima di implementare).
+- [ ] **25. Frontend pubblico** (catalogo browseable con SEO — Inertia
+  + Vue, o pure Blade? Va deciso prima di partire).
+- [ ] **26. Import/export** (CSV/Excel — Laravel Excel o
+  roll-your-own?).
+- [ ] **27. Versioning record** (solo se richiesto esplicitamente da un
+  cliente).
+- [x] **29. Spostare la relazione tessuti/materiali↔prodotti dalla categoria
+  al singolo tessuto/materiale (9 luglio 2026).** Fatto per entrambi:
+  `Product::fabrics()` (pivot `fabric_product`) e `Product::materials()`
+  (pivot `material_product`).
+- [ ] **30. Aggiornare l'import dei tessuti/materiali.** `attachMatrix` associa
+  oggi tutti i `Fabric`/`Material` della tipologia flaggata (comportamento
+  equivalente a prima, solo più granulare nello storage). In attesa di un
+  file Excel dal cliente strutturato con il dettaglio per singolo
+  colore/materiale, per affinare l'associazione al vero valore disponibile.
+- [ ] **31. Nascondere singoli attributi PIM in base ai permessi utente.**
+  Priorità bassa, non vincolante. Da mettere in relazione con l'authz
+  (design §7.5).
+
+## Interventi finali
+
+Cleanup da fare prima del rilascio / quando si scioglie l'assetto
+temporaneo del package.
+
+Contesto: per facilitare il clone ai colleghi, `atrioteam/digital-hub` è
+stato importato come **subtree** dentro `packages/digital-hub` ed è
+referenziato da composer come path repo con symlink
+(`"url": "./packages/digital-hub"`). È un assetto transitorio: a lavori
+completati il package potrà tornare in un repo a sé (via
+`git subtree split --prefix=packages/digital-hub`).
+
+- [x] **F1. Tema Filament dal package.** Il tema è impostato in
+  `DigitalHubPlugin::register()` via
+  `->viteTheme('vendor/atrioteam/digital-hub/resources/theme/digital-hub-theme.css')`,
+  con l'input già dichiarato in `vite.config.js`. Il path `vendor/...`
+  resta valido sia con il symlink attuale sia con un install VCS reale.
+
+- [ ] **F2. Estrazione package in repo a sé (se servirà).** Quando si
+  decide di riportarlo fuori, rivedere i workaround introdotti per
+  l'assetto monorepo+symlink:
+  - `vite.config.js`: `preserveSymlinks: true` e `server.fs.allow: ['..']`
+    servono perché il package è un symlink verso un path repo; con un
+    install VCS reale (copia vera in `vendor/`) probabilmente non servono
+    più — verificare che build e manifest del tema reggano comunque.
+  - `.github/workflows/master.yml`: il passo "Materialize path package
+    into vendor" ora è ridondante (il symlink risolve dentro al repo); se
+    il package torna repo separato va ripristinato il checkout del
+    package prima di `composer install`.
+  - `composer.json` → `repositories`: riportare l'`url` da
+    `./packages/digital-hub` al repo VCS.
+  - **Config di analisi statica**: `phpstan.neon` (path + stub) e
+    `.php-cs-fixer.dist.php` (finder) ora puntano a `packages/digital-hub/src`
+    (subtree attiva). Se il package torna repo a sé, ripuntarli al path
+    corretto (vendor reale o repo affiancato). Esiste ancora la **cartella
+    sibling stale** `../digital-hub` (copia pre-subtree, non più usata da
+    composer/analisi): da eliminare in questa fase, **se davvero necessario** —
+    oggi è solo inerte, non dà fastidio.
+
+—— **fine roadmap operativa** ——

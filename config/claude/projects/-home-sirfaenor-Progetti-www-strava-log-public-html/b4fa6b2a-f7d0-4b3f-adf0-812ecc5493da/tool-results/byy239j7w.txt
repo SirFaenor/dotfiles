@@ -1,0 +1,317 @@
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:108:    public function getAthlete($id = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-109-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-110-        $path = 'athlete';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-111-        if (isset($id)) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-112-            $path = 'athletes/' . $id;
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-113-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-114-        $parameters['query'] = ['access_token' => $this->getToken()];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-115-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-116-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-117-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-118-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:119:    public function getAthleteStats($id)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-120-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-121-        $path = 'athletes/' . $id . '/stats';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-122-        $parameters['query'] = ['access_token' => $this->getToken()];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-123-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-124-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-125-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-126-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:127:    public function getAthleteRoutes($id, $type = null, $after = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-128-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-129-        $path = 'athletes/' . $id . '/routes';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-130-        $parameters['query'] = [
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-131-            'type' => $type,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-132-            'after' => $after,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-133-            'page' => $page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-134-            'per_page' => $per_page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-135-            'access_token' => $this->getToken(),
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-136-        ];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-137-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-138-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-139-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-140-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:141:    public function getAthleteClubs()
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-142-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-143-        $path = 'athlete/clubs';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-144-        $parameters['query'] = ['access_token' => $this->getToken()];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-145-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-146-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-147-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-148-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:149:    public function getAthleteActivities($before = null, $after = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-150-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-151-        $path = 'athlete/activities';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-152-        $parameters['query'] = [
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-153-            'before' => $before,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-154-            'after' => $after,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-155-            'page' => $page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-156-            'per_page' => $per_page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-157-            'access_token' => $this->getToken(),
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-158-        ];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-159-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-160-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-161-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-162-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:163:    public function getAthleteFriends($id = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-164-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-165-        $path = 'athlete/friends';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-166-        if (isset($id)) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-167-            $path = 'athletes/' . $id . '/friends';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-168-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-169-        $parameters['query'] = [
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-170-            'page' => $page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-171-            'per_page' => $per_page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-172-            'access_token' => $this->getToken(),
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-173-        ];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-174-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-175-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-176-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-177-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:178:    public function getAthleteFollowers($id = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-179-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-180-        $path = 'athlete/followers';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-181-        if (isset($id)) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-182-            $path = 'athletes/' . $id . '/followers';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-183-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-184-        $parameters['query'] = [
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-185-            'page' => $page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-186-            'per_page' => $per_page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-187-            'access_token' => $this->getToken(),
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-188-        ];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-189-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-190-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-191-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-192-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:193:    public function getAthleteBothFollowing($id, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-194-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-195-        $path = 'athletes/' . $id . '/both-following';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-196-        $parameters['query'] = [
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-197-            'page' => $page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-198-            'per_page' => $per_page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-199-            'access_token' => $this->getToken(),
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-200-        ];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-201-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-202-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-203-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-204-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:205:    public function getAthleteKom($id, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-206-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-207-        $path = 'athletes/' . $id . '/koms';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-208-        $parameters['query'] = [
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-209-            'page' => $page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-210-            'per_page' => $per_page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-211-            'access_token' => $this->getToken(),
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-212-        ];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-213-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-214-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-215-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-216-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:217:    public function getAthleteZones()
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-218-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-219-        $path = 'athlete/zones';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-220-        $parameters['query'] = ['access_token' => $this->getToken()];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-221-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-222-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-223-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-224-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php:225:    public function getAthleteStarredSegments($id = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-226-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-227-        $path = 'segments/starred';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-228-        if (isset($id)) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-229-            $path = 'athletes/' . $id . '/segments/starred';
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-230-            // ...wrong in Strava documentation
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-231-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-232-        $parameters['query'] = [
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-233-            'page' => $page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-234-            'per_page' => $per_page,
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-235-            'access_token' => $this->getToken(),
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-236-        ];
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-237-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-238-        return $this->getResponse('GET', $path, $parameters);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-239-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Service/REST.php-240-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:42:    public function getAthlete($id = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-43-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-44-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-45-            return $this->service->getAthlete($id);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-46-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-47-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-48-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-49-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-50-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-51-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-52-     * Retrieve athlete stats
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-53-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-54-     * Only available for the authenticated athlete.
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-55-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-56-     * @link    https://strava.github.io/api/v3/athlete/#stats
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-57-     * @param int $id
+--
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:61:    public function getAthleteStats($id)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-62-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-63-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-64-            return $this->service->getAthleteStats($id);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-65-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-66-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-67-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-68-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-69-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-70-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-71-     * Retrieve athlete routes
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-72-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-73-     * @link    https://strava.github.io/api/v3/routes/#list
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-74-     * @param int $id
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-75-     * @return  array
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-76-     * @throws  ClientException
+--
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:78:    public function getAthleteRoutes($id, $type = null, $after = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-79-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-80-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-81-            return $this->service->getAthleteRoutes($id, $type, $after, $page, $per_page);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-82-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-83-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-84-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-85-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-86-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-87-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-88-     * List athlete clubs
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-89-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-90-     * @link    https://strava.github.io/api/v3/clubs/#get-athletes
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-91-     * @return  array
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-92-     * @throws  Exception
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-93-     */
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:94:    public function getAthleteClubs()
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-95-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-96-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-97-            return $this->service->getAthleteClubs();
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-98-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-99-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-100-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-101-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-102-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-103-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-104-     * List athlete activities
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-105-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-106-     * @link    https://strava.github.io/api/v3/activities/#get-activities
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-107-     * @param string $before
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-108-     * @param string $after
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-109-     * @param int $page
+--
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:114:    public function getAthleteActivities($before = null, $after = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-115-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-116-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-117-            return $this->service->getAthleteActivities($before, $after, $page, $per_page);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-118-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-119-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-120-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-121-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-122-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-123-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-124-     * List athlete friends
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-125-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-126-     * @link    https://strava.github.io/api/v3/follow/#friends
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-127-     * @param int $id
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-128-     * @param int $page
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-129-     * @param int $per_page
+--
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:133:    public function getAthleteFriends($id = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-134-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-135-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-136-            return $this->service->getAthleteFriends($id, $page, $per_page);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-137-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-138-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-139-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-140-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-141-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-142-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-143-     * List athlete followers
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-144-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-145-     * @link    https://strava.github.io/api/v3/follow/#followers
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-146-     * @param int $id
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-147-     * @param int $page
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-148-     * @param int $per_page
+--
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:152:    public function getAthleteFollowers($id = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-153-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-154-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-155-            return $this->service->getAthleteFollowers($id, $page, $per_page);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-156-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-157-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-158-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-159-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-160-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-161-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-162-     * List both following
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-163-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-164-     * @link    https://strava.github.io/api/v3/follow/#both
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-165-     * @param int $id
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-166-     * @param int $page
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-167-     * @param int $per_page
+--
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:171:    public function getAthleteBothFollowing($id, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-172-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-173-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-174-            return $this->service->getAthleteBothFollowing($id, $page, $per_page);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-175-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-176-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-177-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-178-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-179-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-180-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-181-     * List athlete K/QOMs/CRs
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-182-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-183-     * @link    https://strava.github.io/api/v3/athlete/#koms
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-184-     * @param int $id
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-185-     * @param int $page
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-186-     * @param int $per_page
+--
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:190:    public function getAthleteKom($id, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-191-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-192-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-193-            return $this->service->getAthleteKom($id, $page, $per_page);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-194-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-195-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-196-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-197-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-198-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-199-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-200-     * List athlete zones
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-201-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-202-     * @link    https://strava.github.io/api/v3/athlete/#zones
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-203-     * @return  array
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-204-     * @throws  Exception
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-205-     */
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:206:    public function getAthleteZones()
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-207-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-208-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-209-            return $this->service->getAthleteZones();
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-210-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-211-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-212-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-213-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-214-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-215-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-216-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-217-     * List starred segment
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-218-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-219-     * @link    https://strava.github.io/api/v3/segments/#starred
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-220-     * @param int $id
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-221-     * @param int $page
+--
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php:226:    public function getAthleteStarredSegments($id = null, $page = null, $per_page = null)
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-227-    {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-228-        try {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-229-            return $this->service->getAthleteStarredSegments($id, $page, $per_page);
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-230-        } catch (ServiceException $e) {
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-231-            throw new ClientException('[SERVICE] ' . $e->getMessage());
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-232-        }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-233-    }
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-234-
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-235-    /**
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-236-     * Update current athlete
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-237-     *
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-238-     * @link    https://strava.github.io/api/v3/athlete/#update
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-239-     * @param string $city
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-240-     * @param string $state
+/home/sirfaenor/Progetti/www/strava-log/public_html/vendor/basvandorst/stravaphp/src/Strava/API/Client.php-241-     * @param string $country

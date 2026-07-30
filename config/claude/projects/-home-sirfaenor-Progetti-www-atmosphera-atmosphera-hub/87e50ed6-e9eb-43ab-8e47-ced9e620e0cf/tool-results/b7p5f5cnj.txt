@@ -1,0 +1,337 @@
+==================== INTERIOR
+1 |Categoria|Codice|Famiglia|Colore|nr. Moodboard|Composizione|Greenguard|Oekotex|NON PFAS|Ignifugo|Altezza (cm)|Peso|Horizontal repeat (cm)|Vertical repeat (cm)|Resistenza all'abrasione|Solidità del colore alla luce|Pilling|Scheda tecnica
+2 Luxury fabrics|B|CAMD01 |1010|01 24 IVOIRE|02 | Bianco Beige|25 % pa ; 24 % co ; 18 % pc ; 12 % pes ; 11 % li ; 10 % vi|0|0|0|1|132 cm|340 g/m²|23|53|45000|||CAPITAL__DATA-SHEET-Fabrics_CAMD.pdf
+3 Luxury fabrics|B|CAMO01|1178|0302 BEIGE NOIR|01 | Nero Bianco|42 % vi ; 36 % co ; 16 % li ; 6 % pes|0|0|0|0|140 cm|544 g/m²|1|2|40000|||CAPITAL__DATA-SHEET-Fabrics_CAMO.pdf
+4 Luxury fabrics|B|CAME01|4022|0101 Noir|01 | Nero Bianco|76% VI, 13% PES, 8% CO, 3% LI|0|0|0|0|140 cm|668 g/m²|35|35|30000|||CAPITAL__DATA-SHEET-Fabrics_CAME.pdf
+5 Exclusive fabrics|C|RUKI06|30606|07 Dorata|03 | Bianco Oro|63% VI, 26% SE, 11% PM|0|0|0|0|135 cm|220 g||||||CAPITAL__DATA-SHEET-Fabrics_RUKI.pdf
+6 Exclusive fabrics|C|RUKI02|30606|02 Segale|03 | Bianco Oro|63% VI, 26% SE, 11% PM|0|0|0|0|135 cm|220 g||||||CAPITAL__DATA-SHEET-Fabrics_RUKI.pdf
+7 Exclusive fabrics|C|RUKI05|30606|06 Legno|05 | Acquamarina Oro Beige|63% VI, 26% SE, 11% PM|0|0|0|0|135 cm|220 g||||||CAPITAL__DATA-SHEET-Fabrics_RUKI.pdf
+8 Exclusive fabrics|C|RUKI04|30606|04 Madreperla|05 | Acquamarina Oro Beige|63% VI, 26% SE, 11% PM|0|0|0|0|135 cm|220 g||||||CAPITAL__DATA-SHEET-Fabrics_RUKI.pdf
+9 Exclusive fabrics|C|RUKI03|30606|03 Pietra|05 | Acquamarina Oro Beige|63% VI, 26% SE, 11% PM|0|0|0|0|135 cm|220 g||||||CAPITAL__DATA-SHEET-Fabrics_RUKI.pdf
+10 Luxury fabrics|B|RUCI01 |30621|01 Avorio|03 | Bianco Oro|100% PL FLAME RETARDANT|1|1|0|1|140 cm|760 g|||30000|7/0 (SCALE 1-8)|5/0 (SCALE 1-5)|CAPITAL__DATA-SHEET-Fabrics_RUCI.pdf
+11 Luxury fabrics|B|ERST01 | 071/001|Shadow|10 | Antracite Perla|28% CO, 5% LI, 2% PA, 25% PC, 30% PL, 10% VI|0|0|0|0|140 cm|840 g/m|||30000|5 EN ISO 105B02|4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_ERST.pdf
+12 Luxury fabrics|B|RUCI02| 30621|02 Argilla|10 | Antracite Perla|100% PL FLAME RETARDANT|0|1|0|1|140 cm|760 g|||30000|7/0 (SCALE 1-8)|5/0 (SCALE 1-5)|CAPITAL__DATA-SHEET-Fabrics_RUCI.pdf
+13 Luxury fabrics|B|ERTR01 |070/001|Stone|10 | Antracite Perla|30% CO, 10% LI, 2% PA, 23% PC, 25% PL, 10% VI|0|0|0|0|140 cm|820 g/m|||30000|5 EN ISO 105B02|4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_ERTR.pdf
+14 Luxury fabrics|B|CAMD02|1010|0411 MORDORÉ|06 | Terracotta Beige|25 % pa ; 24 % co ; 18 % pc ; 12 % pes ; 11 % li ; 10 % vi|0|0|0|1|132 cm|340 g/m²|23|53|45000|||CAPITAL__DATA-SHEET-Fabrics_CAMD.pdf
+15 Luxury fabrics|B|CANA01|1057|0320 FAUVE|06 | Terracotta Beige|82 % vi ; 18 % pes|0|0|0|0|141 cm|787 g/m²|7|45|35000|||CAPITAL__DATA-SHEET-Fabrics_CANA.pdf
+16 Luxury fabrics|B|CANU01|1160|0456 TABACCO|06 | Terracotta Beige|43 % pc ; 31 % vi ; 26 % pes|0|0|0|1|140 cm|689 g/m²|||40000|||CAPITAL__DATA-SHEET-Fabrics_CANU.pdf
+17 Luxury fabrics|B|CAZE01|1163|0211 NOIR|01 | Nero Bianco|49 % vi ; 35 % co ; 16 % pes|0|0|0|0|135.5 cm|692 g/m²|||100000|||CAPITAL__DATA-SHEET-Fabrics_CAZE.pdf
+18 Luxury fabrics|B|CAZE02|1163|0899 MOUTARDE|04 | Zafferano Taupe Oro|49 % vi ; 35 % co ; 16 % pes|0|0|0|0|135.5 cm|692 g/m²|||100000|||CAPITAL__DATA-SHEET-Fabrics_CAZE.pdf
+19 Luxury fabrics|B|CAZE03|1163|03 34 MARINE|07 | Blu Caramello Oro|49 % vi ; 35 % co ; 16 % pes|0|0|0|0|135.5 cm|692 g/m²|||100000|||CAPITAL__DATA-SHEET-Fabrics_CAZE.pdf
+20 Luxury fabrics|B|CAZE04|1163|0975 CAMEL|06 | Terracotta Beige|49 % vi ; 35 % co ; 16 % pes|0|0|0|0|135.5 cm|692 g/m²|||100000|||CAPITAL__DATA-SHEET-Fabrics_CAZE.pdf
+21 Exclusive fabrics|C|RUSB02|30028|13 ORO|04 | Zafferano Taupe Oro|80%VI 20%CO,60%VI 24%PL 16%CO|0|0|0|0|130 cm|878 g|35|12||||CAPITAL__DATA-SHEET-Fabrics_RUSB.pdf
+22 Exclusive fabrics|C|RUSB01|30028|03 SABBIA|04 | Zafferano Taupe Oro|80%VI 20%CO,60%VI 24%PL 16%CO|0|0|0|0|130 cm|878 g|35|12||||CAPITAL__DATA-SHEET-Fabrics_RUSB.pdf
+23 Luxury fabrics|B|RUTW01|30318|05 Argento|05 | Acquamarina Oro Beige|100% PL FLAME RETARDANT|1|1|0|1|140 cm|630 g |||80000|7/0 (SCALE 1-8)|4/5 (SCALE 1-5)|CAPITAL__DATA-SHEET-Fabrics_RUTW.pdf
+24 Luxury fabrics|B|RUFA02|30319|08 Argento|10 | Antracite Perla|100% PL FLAME RETARDANT|1|1|0|1|140 cm|670 g |||50000|7/0 (SCALE 1-8)|4/0 (SCALE 1-5)|CAPITAL__DATA-SHEET-Fabrics_RUFA.pdf
+25 Exclusive fabrics|C|RUDS01|30357|10 Cachi|09 | Petrolio Oro|42% SE, 36% VI, 12% CO, 10% LI|0|0|0|0|135 cm|340 g ||||||CAPITAL__DATA-SHEET-Fabrics_RUDS.pdf
+26 Luxury fabrics|B|RURE01|30464|01 Pietra|08 | Bianco|72% PL, 17% LI, 11% CO|0|0|0|0|140 cm|850 g|||70000|||CAPITAL__DATA-SHEET-Fabrics_RURE.pdf
+27 Luxury fabrics|B|RUMU01|30465|06 ARGILLA|04 | Zafferano Taupe Oro|43%CO 30%VI 23%LI 4%PA|0|0|0|0|145 cm|600 g|||40000||3/4 Scale 1-5|CAPITAL__DATA-SHEET-Fabrics_RUMU.pdf
+28 Luxury fabrics|B|RUMU02|30465|08 ORZO|05 | Acquamarina Oro Beige|43%CO 30%VI 23%LI 4%PA|0|0|0|0|145 cm|600 g|||40000||3/4 Scale 1-5|CAPITAL__DATA-SHEET-Fabrics_RUMU.pdf
+29 Luxury fabrics|B|RUFA03|30467|31 Madreperla|09 | Petrolio Oro|100% PL FLAME RETARDANT|1|1|0|1|140 cm|670 g|||50000|7/0 (SCALE 1-8)|4/0 (SCALE 1-5)|CAPITAL__DATA-SHEET-Fabrics_RUFA.pdf
+30 Luxury fabrics|B|RUGL02|30607|10 Madreperla|05 | Acquamarina Oro Beige|42% CO, 21% AC, 19% VI, 18% CU|0|0|0|0|140 cm|290 g||||||CAPITAL__DATA-SHEET-Fabrics_RUGL.pdf
+31 Exclusive fabrics|C|RUMO02|30617|02 Pietra|02 | Bianco Beige|44% CO, 34% PL, 22% PA ECO|0|0|0|0|135 cm|660 g|||38000|||CAPITAL__DATA-SHEET-Fabrics_RUMO.pdf
+32 Exclusive fabrics|C|RUNE02|30618|02 Sabbia|05 | Acquamarina Oro Beige|57% PL, 26% PA ECO, 15% PA, 2% PC, 100% PA|0|0|0|0|135 cm|460 g |98|67,5|28000|||CAPITAL__DATA-SHEET-Fabrics_RUNE.pdf
+33 Exclusive fabrics|C|RUNE01|30618|01 Madreperla|10 | Antracite Perla|57% PL, 26% PA ECO, 15% PA, 2% PC, 100% PA|0|0|0|0|135 cm|460 g|98|67,5|28000|||CAPITAL__DATA-SHEET-Fabrics_RUNE.pdf
+34 Luxury fabrics|B|RUZE01|30620|14 Marrone|04 | Zafferano Taupe Oro|100% PL TREVIRA CS|1|1|0|1|145 cm|650 g|||35000||4/0 (SCALE 1-5)|CAPITAL__DATA-SHEET-Fabrics_RUZE.pdf
+35 Luxury fabrics|B|RUCI03|30621|09 Giallo|04 | Zafferano Taupe Oro|100% PL FLAME RETARDANT|1|1|0|1|140 cm|760 g|||30000|7/0 (SCALE 1-8)|5/0 (SCALE 1-5)|CAPITAL__DATA-SHEET-Fabrics_RUCI.pdf
+36 Luxury fabrics|B|RUCI04|30621|10 Madreperla|05 | Acquamarina Oro Beige|100% PL FLAME RETARDANT|1|1|0|1|140 cm|760 g|||30000|7/0 (SCALE 1-8)|5/0 (SCALE 1-5)|CAPITAL__DATA-SHEET-Fabrics_RUCI.pdf
+37 Luxury fabrics|B|CACL01|4061|0134 CRÈME|02 | Bianco Beige|52 % li ; 27 % pa ; 21 % pes|0|0|0|0|140 cm|340 g/m²|47|52|30000|||CAPITAL__DATA-SHEET-Fabrics_CACL.pdf
+38 Tessuto bielastico|B|MSBO 01|Bouclè|01/1||33%VI, 29%PC, 15%WO, 8%CO, 7%PL, 6%LI, 1%PA, 1%EA|0|1|0|0|140 cm|1235 g/mtl|||60000|4/5 UNI EN ISO 105 - B02|5 EN ISO 12945-2|CAPITAL__DATA-SHEET_BOUCLE-MSBO.pdf
+39 Tessuto bielastico|B|MSBO 02|Bouclè|01/2||33%VI, 29%PC, 15%WO, 8%CO, 7%PL, 6%LI, 1%PA, 1%EA|0|1|0|0|140 cm|1235 g/mtl|||60000|5 UNI EN ISO 105 - B02|5 EN ISO 12945-2|CAPITAL__DATA-SHEET_BOUCLE-MSBO.pdf
+40 Tessuto bielastico|B|MSBO 03|Bouclè|05/10||33%VI, 29%PC, 15%WO, 8%CO, 7%PL, 6%LI, 1%PA, 1%EA|0|1|0|0|140 cm|1235 g/mtl|||60000|5 UNI EN ISO 105 - B02|5 EN ISO 12945-2|CAPITAL__DATA-SHEET_BOUCLE-MSBO.pdf
+41 Tessuto bielastico|B|MSBO 04|Bouclè|07/11||33%VI, 29%PC, 15%WO, 8%CO, 7%PL, 6%LI, 1%PA, 1%EA|0|1|0|0|140 cm|1235 g/mtl|||60000|5 UNI EN ISO 105 - B02|5 EN ISO 12945-2|CAPITAL__DATA-SHEET_BOUCLE-MSBO.pdf
+42 Tessuto bielastico|B|MSBO 05|Bouclè|98/16||33%VI, 29%PC, 15%WO, 8%CO, 7%PL, 6%LI, 1%PA, 1%EA|0|1|0|0|140 cm|1235 g/mtl|||60000|5 UNI EN ISO 105 - B02|5 EN ISO 12945-2|CAPITAL__DATA-SHEET_BOUCLE-MSBO.pdf
+43 Tessuto bielastico|B|MSBO 06|Bouclè|02/22||33%VI, 29%PC, 15%WO, 8%CO, 7%PL, 6%LI, 1%PA, 1%EA|0|1|0|0|140 cm|1235 g/mtl|||60000|5 UNI EN ISO 105 - B02|5 EN ISO 12945-2|CAPITAL__DATA-SHEET_BOUCLE-MSBO.pdf
+44 Tessuto bielastico|B|MSBO 07|Bouclè|98/21||33%VI, 29%PC, 15%WO, 8%CO, 7%PL, 6%LI, 1%PA, 1%EA|0|1|0|0|140 cm|1235 g/mtl|||60000|5 UNI EN ISO 105 - B02|5 EN ISO 12945-2|CAPITAL__DATA-SHEET_BOUCLE-MSBO.pdf
+45 Luxury fabrics|B|TLBR03|BR 385|040 Avorio/Nero|01 | Nero Bianco|18% CO, 31%PL, 26% WO, 22% PC, 3% PA|0|0|0|0|140 cm|740 g/mtl|||40000|5 UNI EN ISO 105-B02|3/4 EN ISO 12945-2:2002|CAPITAL__DATA-SHEET-Fabrics_TLBR.pdf
+46 Luxury fabrics|B|TLBR01|BR 385|010 Bianco|01 | Nero Bianco|18% CO, 31%PL, 26% WO, 22% PC, 3% PA|0|0|0|0|140 cm|740 g/mtl|||40000|4/5 UNI EN ISO 105 - B02|3/4 EN ISO 12945-2:2002|CAPITAL__DATA-SHEET-Fabrics_TLBR.pdf
+47 Luxury fabrics|B|TLBR02|BR 385|020 Beige|02 | Bianco Beige|18% CO, 31%PL, 26% WO, 22% PC, 3% PA|0|0|0|0|140 cm|740 g/mtl|||40000|4/5 UNI EN ISO 105 - B02|3/4 EN ISO 12945-2:2002|CAPITAL__DATA-SHEET-Fabrics_TLBR.pdf
+48 Luxury fabrics|B|GLCH01|CHA|4 sabbia|01 | Nero Bianco|52% PC, 42% PL, 6% CO|0|0|0|0|140 cm|1100 g/mtl|||80000|≥ 4/5 EN ISO 105-B02|≥ 4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLCH.pdf
+49 Luxury fabrics|B|GLCH04|CHA|5 CIOTTOLO|04 | Zafferano Taupe Oro|52% PC, 42% PL, 6% CO|0|0|0|0|140 cm|1100 g/mtl|||80000|≥ 4/5 EN ISO 105-B02|≥ 4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLCH.pdf
+50 Luxury fabrics|B|GLCH03|CHA|28 NOTTE|07 | Blu Caramello Oro|52% PC, 42% PL, 6% CO|0|0|0|0|140 cm|1100 g/mtl|||80000|≥ 4/5 EN ISO 105-B02|≥ 4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLCH.pdf
+51 Tessuto |A|LICL01|CHENILLE|08||VI 32%, PC 25%, LI 15%, PL 15%, CO 13%|0|0|0|0|138 cm|515 g/m2|17|36|30000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET_CHENILLE-LICL.pdf
+52 Tessuto |A|LICL02|CHENILLE|04||VI 32%, PC 25%, LI 15%, PL 15%, CO 13%|0|0|0|0|138 cm|515 g/m2|17|36|30000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET_CHENILLE-LICL.pdf
+53 Tessuto |A|LICL03|CHENILLE|05||VI 32%, PC 25%, LI 15%, PL 15%, CO 13%|0|0|0|0|138 cm|515 g/m2|17|36|30000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET_CHENILLE-LICL.pdf
+54 Tessuto |A|LICL04|CHENILLE|10||VI 32%, PC 25%, LI 15%, PL 15%, CO 13%|0|0|0|0|138 cm|515 g/m2|17|36|30000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET_CHENILLE-LICL.pdf
+55 Tessuto |A|LICL05|CHENILLE|16||VI 32%, PC 25%, LI 15%, PL 15%, CO 13%|0|0|0|0|138 cm|515 g/m2|17|36|30000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET_CHENILLE-LICL.pdf
+56 Tessuto |A|LICL06|CHENILLE|12||VI 32%, PC 25%, LI 15%, PL 15%, CO 13%|0|0|0|0|138 cm|515 g/m2|17|36|30000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET_CHENILLE-LICL.pdf
+57 Tessuto |A|LICL07|CHENILLE|13||VI 32%, PC 25%, LI 15%, PL 15%, CO 13%|0|0|0|0|138 cm|515 g/m2|17|36|30000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET_CHENILLE-LICL.pdf
+58 Luxury fabrics|B|MSES03|CS|43|04 | Zafferano Taupe Oro|100% TREVIRA CS|0|1|0|0|140 cm|660 g/m²|||170000|5 EN ISO 105B02|4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_MSES.pdf
+59 Luxury fabrics|B|MSES02|CS|262|07 | Blu Caramello Oro|100% TREVIRA CS|0|1|0|0|140 cm|660 g/m²|||170000|5 EN ISO 105B02|4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_MSES.pdf
+60 Luxury fabrics|B|MSES01|CS|01|08 | Bianco|100% TREVIRA CS|0|1|0|0|140 cm|660 g/m²|||170000|5 EN ISO 105B02|4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_MSES.pdf
+61 Luxury fabrics|B|GLDE02|DEL|2 ANTARTICO|08 | Bianco|62% PC; 17% WO; 12% PL; 9% VI|0|0|0|1|140 cm|1200 g/mtl|||100000|≥ 4/5 EN ISO 105-B02|≥ 4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLDE.pdf
+62 Luxury fabrics|B|GLDE01|DEL|1 GARDENIA|08 | Bianco|62% PC; 17% WO; 12% PL; 9% VI|0|0|0|1|140 cm|1200 g/mtl|||100000|≥ 4/5 EN ISO 105-B02|≥ 4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLDE.pdf
+63 Luxury fabrics|B|GLDE03|DEL|3 NEBBIA|10 | Antracite Perla|62% PC; 17% WO; 12% PL; 9% VI|0|0|0|1|140 cm|1200 g/mtl|||100000|≥ 4/5 EN ISO 105-B02|≥ 4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLDE.pdf
+64 Luxury fabrics|B|GLDE04|DEL|04 FUMO|10 | Antracite Perla|62% PC; 17% WO; 12% PL; 9% VI|0|0|0|1|140 cm|1200 g/mtl|||100000|≥ 4/5 EN ISO 105-B02|≥ 4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLDE.pdf
+65 Luxury fabrics|B|TLDI01 |DI 225|500 Bianco|08 | Bianco|37% CO, 55% VI, 8% LI|0|0|0|0|140 cm|950 g/mtl|||27000|4-5 UNI EN ISO 105-B02|4 EN ISO 12945-2:2002|CAPITAL__DATA-SHEET-Fabrics_TLDI.pdf
+66 Luxury fabrics|B|LIEM01|EMM|20|06 | Terracotta Beige|PC 36%, PL 23%, CO 20%, VI 14%, WO 7%|0|0|0|1|140 cm|650 g/m2|||40000|5/6 UNI EN ISO 105-B02|4 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LIEM.pdf
+67 Pelle sintetica|A|FENI01|Fenice|1-26|||0|0|0|0
+68 Pelle sintetica|A|FENI02|Fenice|2-26|||0|0|0|0
+69 Pelle sintetica|A|FENI03|Fenice|3-26|||0|0|0|0
+70 Pelle sintetica|A|FENI04|Fenice|4-26|||0|0|0|0
+71 Pelle sintetica|A|FENI05|Fenice|5-26|||0|0|0|0
+72 Pelle sintetica|A|FENI06|Fenice|6-26|||0|0|0|0
+73 Pelle sintetica|A|FENI07|Fenice|7-26|||0|0|0|0
+74 Pelle sintetica|A|FENI08|Fenice|8-26|||0|0|0|0
+75 Pelle sintetica|A|FENI09|Fenice|9-26|||0|0|0|0
+76 Pelle sintetica|A|FENI10|Fenice|10-26|||0|0|0|0
+77 Pelle sintetica|A|FENI11|Fenice|11-26|||0|0|0|0
+78 Luxury fabrics|B|GLGE01|GEI|18 ASFALTO|07 | Blu Caramello Oro|40% PL; 30% PL RECYCLED; 30% PP RECYCLED|0|0|0|0|140 cm|850  g/mtl|||70000|≥ 4/5 EN ISO 105-B02|≥ 4/5 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLGE.pdf
+79 Luxury fabrics|B|GLHO01|HOR|19 TALCO|02 | Bianco Beige|70% PC; 25% PL; 5% CO|0|0|0|0|140 cm|1100 g/mtl|||50000|≥ 4/5 EN ISO 105-B02|≥ 4 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLHO.pdf
+80 Luxury fabrics|B|BRCL02|J2841|02 Argento|10 | Antracite Perla|32% PL, 30% VI, 25% CO, 13% LI|0|0|0|0|138 cm|1163 g/m|||50000|||CAPITAL__DATA-SHEET-Fabrics_BRCL.pdf
+81 Exclusive fabrics|C|BRLI01|J2995|03 Cuoio|06 | Terracotta Beige|58% VI, 32% CO, 5% LI, 4% AF, 1% PA|0|0|0|0|138 cm|1156 g/m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRLI.pdf
+82 Exclusive fabrics|C|BRLI02|J2995|05 Petrolio|09 | Petrolio Oro|58% VI, 32% CO, 5% LI, 4% AF, 1% PA|0|0|0|0|138 cm|1156 g/m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRLI.pdf
+83 Exclusive fabrics|C|BRLI03|J2995|07 Ebano|09 | Petrolio Oro|58% VI, 32% CO, 5% LI, 4% AF, 1% PA|0|0|0|0|138 cm|1156 g/m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRLI.pdf
+84 Luxury fabrics|B|BRVA01|J2996|02 Duna|06 | Terracotta Beige|63% VI, 28% CO, 5% LI, 3% AF, 1% PA|0|0|0|0|140 cm|919 g/m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRVA.pdf
+85 Exclusive fabrics|C|BRUR01|J2997|03 Sabbia|06 | Terracotta Beige|60% VI, 31% CO, 5% LI, 3% AF, 1% PA|0|0|0|0|138 cm|1150 g / m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRUR.pdf
+86 Exclusive fabrics|C|BRUR02|J2997|04 Lago|09 | Petrolio Oro|60% VI, 31% CO, 5% LI, 3% AF, 1% PA|0|0|0|0|138 cm|1150 g / m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRUR.pdf
+87 Exclusive fabrics|C|BRUR03|J2997|01 Bronzo|09 | Petrolio Oro|60% VI, 31% CO, 5% LI, 3% AF, 1% PA|0|0|0|0|138 cm|1150 g / m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRUR.pdf
+88 Exclusive fabrics|C|BRRA02|J2998|04 Panna|03 | Bianco Oro|58% VI, 32% CO, 5% LI, 4% AF, 1% PA|0|0|0|0|138 cm|1150 g/m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRRA.pdf
+89 Exclusive fabrics|C|BRRA01|J2998|01 Corteccia|04 | Zafferano Taupe Oro|58% VI, 32% CO, 5% LI, 4% AF, 1% PA|0|0|0|0|138 cm|1150 g/m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRRA.pdf
+90 Exclusive fabrics|C|BRRA03|J2998|05 Palude|09 | Petrolio Oro|58% VI, 32% CO, 5% LI, 4% AF, 1% PA|0|0|0|0|138 cm|1150 g/m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRRA.pdf
+91 Exclusive fabrics|C|BRFL02|J2999|04 Platino|03 | Bianco Oro|62% VI, 30% CO, 3% LI, 3% AF, 1% PL, 1% PA|0|0|0|0|144 cm|1278 g / m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRFL.pdf
+92 Exclusive fabrics|C|BRFL01|J2999|01 Onice|09 | Petrolio Oro|62% VI, 30% CO, 3% LI, 3% AF, 1% PL, 1% PA|0|0|0|0|144 cm|1278 g / m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRFL.pdf
+93 Exclusive fabrics|C|BRPA01 |J3265|01 Panna|01 | Nero Bianco|39% WO, 27% VI, 19% CO, 5% PC, 5% PA, 3% PL, 2% LI|0|0|0|0|147 cm|1070 g/m|||20000|||CAPITAL__DATA-SHEET-Fabrics_BRPA.pdf
+94 Luxury fabrics|B|LILA01|LAR|38|08 | Bianco|CO 42%, PL 26%, PC 32%|0|1|0|0|140 cm|720 g/m2|||45000|5/6|4 5000 rubs|CAPITAL__DATA-SHEET-Fabrics_LILA.pdf
+95 Luxury fabrics|B|TLLI01 |LI 186|121 Bianco/Beige|08 | Bianco|68% VL, 29% CO, 3 %LI|0|0|0|0|140 cm|1000 g/mtl|||27000|4/5 UNI EN ISO 105-B02|3/4 EN ISO 12945-2:2002|CAPITAL__DATA-SHEET-Fabrics_TLLI.pdf
+96 Luxury fabrics|B|LILU01 |LUC|03|02 | Bianco Beige|PL 48%, PC 21%, CO 15%, VI 11%, LI 5%|0|0|0|0|140 cm|710 g/m2|||50000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET-Fabrics_LILU.pdf
+97 Luxury fabrics|B|LILU05|LUC|02|02 | Bianco Beige|PL 48%, PC 21%, CO 15%, VI 11%, LI 5%|0|0|0|0|140 cm|710 g/m2|||50000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET-Fabrics_LILU.pdf
+98 Luxury fabrics|B|LILU02 |LUC|22|04 | Zafferano Taupe Oro|PL 48%, PC 21%, CO 15%, VI 11%, LI 5%|0|0|0|0|140 cm|710 g/m2|||50000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LILU.pdf
+99 Luxury fabrics|B|LILU06|LUC|20|08 | Bianco|PL 48%, PC 21%, CO 15%, VI 11%, LI 5%|0|0|0|0|140 cm|710 g/m2|||50000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs|CAPITAL__DATA-SHEET-Fabrics_LILU.pdf
+100 Luxury fabrics|B|LILU04|LUC|05|10 | Antracite Perla|PL 48%, PC 21%, CO 15%, VI 11%, LI 5%|0|0|0|0|140 cm|710 g/m2|||50000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LILU.pdf
+101 Luxury fabrics|B|LILU03|LUC|19|10 | Antracite Perla|PL 48%, PC 21%, CO 15%, VI 11%, LI 5%|0|0|0|0|140 cm|710 g/m2|||50000|5/6 UNI EN ISO 105-B02|4/5 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LILU.pdf
+102 Exclusive fabrics|C|MIRL01|M291|103 Carbone|01 | Nero Bianco|60 % CO, 25 % LI, 15 % PES|0|0|0|0|138 cm|450 g/m²|||30000|||CAPITAL__DATA-SHEET-Fabrics_MIRL.pdf
+103 Exclusive fabrics|C|MILC01|M303|701 Ivoire|03 | Bianco Oro|60% CO, 31% PES, 6% PC, 3% PA|0|0|0|0|139 cm|760 g/m²|||30000|||CAPITAL__DATA-SHEET-Fabrics_MILC.pdf
+104 Exclusive fabrics|C|MILC02|M303|802 Blue|07 | Blu Caramello Oro|60% CO, 31% PES, 6% PC, 3% PA|0|0|0|0|139 cm|760 g/m²|||30000|||CAPITAL__DATA-SHEET-Fabrics_MILC.pdf
+105 Exclusive fabrics|C|MISA01|M304|103 Givre|05 | Acquamarina Oro Beige|100% PES FR|0|0|0|0|144 cm|540 g/m²|36 ||40000|54||CAPITAL__DATA-SHEET-Fabrics_MISA.pdf
+106 Exclusive fabrics|C|MIRU04|M305|506 Ardoise|04 | Zafferano Taupe Oro|75% VI, 25% CO|0|0|0|0|139 cm|520 g/m²|||40000|||CAPITAL__DATA-SHEET-Fabrics_MIRU.pdf
+107 Exclusive fabrics|C|MIRU01 |M305|102 Givre|05 | Acquamarina Oro Beige|75% VI, 25% CO|0|0|0|0|139 cm|520 g/m²|||40000|||CAPITAL__DATA-SHEET-Fabrics_MIRU.pdf
+108 Exclusive fabrics|C|MIRU03|M305|405 Bleu Eternel|07 | Blu Caramello Oro|75% VI, 25% CO|0|0|0|0|139 cm|520 g/m²|||40000|||CAPITAL__DATA-SHEET-Fabrics_MIRU.pdf
+109 Exclusive fabrics|C|MIRU02|M305|203 Terre d'ombre|07 | Blu Caramello Oro|75% VI, 25% CO|0|0|0|0|139 cm|520 g/m²|||40000|||CAPITAL__DATA-SHEET-Fabrics_MIRU.pdf
+110 Exclusive fabrics|C|MIRU05|M305|901 Ivoire|06 | Terracotta Beige|75% VI, 25% CO|0|0|0|0|139 cm|520 g/m²|||40000|||CAPITAL__DATA-SHEET-Fabrics_MIRU.pdf
+111 Exclusive fabrics|C|MIRO01|M311|803 Ardoise|01 | Nero Bianco|50% CO, 23% LI, 8% VI, 8% WO, 6% PA, 5% BA|0|0|0|0|133 cm|830 g/m²|||80.000|||CAPITAL__DATA-SHEET-Fabrics_MIRO.pdf
+112 Exclusive fabrics|C|MIMO01|M345|402 Terre d'Ombre|07 | Blu Caramello Oro|80% VI, 20% CO, PILE 100% VISCOSE|0|0|0|0|140 cm|635 g/m²|||60000|||CAPITAL__DATA-SHEET-Fabrics_MIMO.pdf
+113 Exclusive fabrics|C|MIEP03|M346|805 Terre d'Ombre|07 | Blu Caramello Oro|61% VI, 39% CO, PILE 100% VISCOSE|0|0|0|0|137 cm|550 g/m²|||60000|||CAPITAL__DATA-SHEET-Fabrics_MIEP.pdf
+114 Exclusive fabrics|C|MIEP01|M346|401 Mordoré|06 | Terracotta Beige|61% VI, 39% CO, PILE 100% VISCOSE|0|0|0|0|137 cm|550 g/m²|||60000|||CAPITAL__DATA-SHEET-Fabrics_MIEP.pdf
+115 Exclusive fabrics|C|TM201|M369|801 Naturel|08 | Bianco|32% LI, 20% CO, 46% VI, 2% PES|0|0|0|0|141 cm|715 g/m²|||30000|||CAPITAL__DATA-SHEET-Fabrics_TM.pdf
+116 Exclusive fabrics|C|MIAU01|M370|901 Lavallière|06 | Terracotta Beige|47% WO, 20% CO, 16% VI, 14% LI, 3% PES|0|0|0|0|138 cm|860 g/m²|||35000|||CAPITAL__DATA-SHEET-Fabrics_MIAU.pdf
+117 Exclusive fabrics|C|MIBE01|M371|101 Naturel|10 | Antracite Perla|33% LI, 38% VI, 2% WO, 22% PES, 5% PC|0|0|0|0|139 cm|1030 g/m²|||60000|||CAPITAL__DATA-SHEET-Fabrics_MIBE.pdf
+118 Exclusive fabrics|C|MIPA01|M439|7 01 GIVRE|05 | Acquamarina Oro Beige|79 % vi ; 21 % co - pile 100% vi|0|0|0|0|137 cm|615 g/m²|||90000|||CAPITAL__DATA-SHEET-Fabrics_MIPA.pdf
+119 Exclusive fabrics|C|MIDA02|M442|1 02 GIVRE|05 | Acquamarina Oro Beige|77 % vi ; 23 % co - pile 100% vi|0|0|0|0|138 cm|585 g/m²|17|34|70000|||CAPITAL__DATA-SHEET-Fabrics_MIDA.pdf
+120 Pelle nabuk|B|PN002|NABUK|02|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+121 Pelle nabuk|B|PN001|NABUK|01|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+122 Pelle nabuk|B|PN002|NABUK|02|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+123 Pelle nabuk|B|PN015|NABUK|15|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+124 Pelle nabuk|B|PN005|NABUK|05|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+125 Pelle nabuk|B|PN004|NABUK|04|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+126 Pelle nabuk|B|PN012|NABUK|12|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+127 Pelle nabuk|B|PN006|NABUK|06|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+128 Pelle nabuk|B|PN030|NABUK|27|||0|0|0|0||||||||CAPITAL__DATA-SHEET_NABUK-LEATHER.pdf
+129 Luxury fabrics|B|MSPA02|PA|26|01 | Nero Bianco|50% ACRYLIC, 28% VISCOSE, 14% COTTON, 8% POLYESTER|0|1|0|0|138 cm|800 g/m²|||70000|4/5 EN ISO 105B02|3/4 EN ISO 12945-2 |CAPITAL__DATA-SHEET-Fabrics_MSPA.pdf
+130 Luxury fabrics|B|TP003 |PE 614|001 Oro/Nero|01 | Nero Bianco|50% VL, 21% LI, 29% PL|0|0|0|0|140 cm|885 g/mtl|||40000|4-5 UNI EN ISO 105-B02|3/4 EN ISO 12945-2:2002|CAPITAL__DATA-SHEET-Fabrics_TP.pdf
+131 Luxury fabrics|B|TP001|PE 614|021 Oro/Bianco|03 | Bianco Oro|50% VL, 21% LI, 29% PL|0|0|0|0|140 cm|885 g/mtl|||40000|4-5 UNI EN ISO 105-B02|3/4 EN ISO 12945-2:2002|CAPITAL__DATA-SHEET-Fabrics_TP.pdf
+132 Luxury fabrics|B|LISC01|SCA|19|07 | Blu Caramello Oro|PC 35%, WO 31%, PL 25%, CO 9%|0|0|0|0|140 cm|670 g/m2||||5/6 UNI EN ISO 105-B02|4 ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LISC.pdf
+133 Luxury fabrics|B|GLSH02|SHA|29 TORTORA|07 | Blu Caramello Oro|65% PC; 23% PL; 12% PP RECYCLED|0|0|0|0|140 cm|900 g/ml|||50000|≥ 4/5 EN ISO 105-B02|≥ 4/5 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLSH.pdf
+134 Luxury fabrics|B|GLSH01|SHA|28 BRUCIATO|06 | Terracotta Beige|65% PC; 23% PL; 12% PP RECYCLED|0|0|0|0|140 cm|900 g/ml|||50000|≥ 4/5 EN ISO 105-B02|≥ 4/5 EN ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_GLSH.pdf
+135 Exclusive fabrics|C|EX0008|Shine|White 07|03 | Bianco Oro|63% CV, 26% CO, 11% SE ( PILE 85% CV, 15% SE )|1|0|0|0|140 cm|1022 g/ml|||50000|4 ISO 105-B02|4 (5000 rubs) ISO 12945|CAPITAL__DATA-SHEET-Fabrics_SHINE-EX.pdf
+136 Exclusive fabrics|C|EX0007|Shine|Beige 016|03 | Bianco Oro|63% CV, 26% CO, 11% SE ( PILE 85% CV, 15% SE )|1|0|0|0|140 cm|1022 g/ml|||50000|4 ISO 105-B02|4 (5000 rubs) ISO 12945|CAPITAL__DATA-SHEET-Fabrics_SHINE-EX.pdf
+137 Exclusive fabrics|C|EX0013|Shine|Fango 009|04 | Zafferano Taupe Oro|63% CV, 26% CO, 11% SE ( PILE 85% CV, 15% SE )|1|0|0|0|140 cm|1022 g/ml|||50000|4/5 ISO 105-B02|4 (5000 rubs) ISO 12945|CAPITAL__DATA-SHEET-Fabrics_SHINE-EX.pdf
+138 Exclusive fabrics|C|EX0010|Shine|Lago 021|09 | Petrolio Oro|63% CV, 26% CO, 11% SE ( PILE 85% CV, 15% SE )|1|0|0|0|140 cm|1022 g/ml|||50000|4/5 ISO 105-B02|4 (5000 rubs) ISO 12945|CAPITAL__DATA-SHEET-Fabrics_SHINE-EX.pdf
+139 Exclusive fabrics|C|EX0009|Shine|Smoke 015|10 | Antracite Perla|63% CV, 26% CO, 11% SE ( PILE 85% CV, 15% SE )|1|0|0|0|140 cm|1022 g/ml|||50000|4/5 ISO 105-B02|4 (5000 rubs) ISO 12945|CAPITAL__DATA-SHEET-Fabrics_SHINE-EX.pdf
+140 Pelle soft Grain|B|PSSG08|Soft Grain|Steel 6008|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+141 Pelle soft Grain|B|PSSG07|Soft Grain|Grey 6008|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+142 Pelle soft Grain|B|PSSG03|Soft Grain|Taupe 6016|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+143 Pelle soft Grain|B|PSSG02|Soft Grain|Dust 6015|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+144 Pelle soft Grain|B|PSSG01|Soft Grain|Ivory 6005|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+145 Pelle soft Grain|B|PSSG06|Soft Grain|Tabacco 6001|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+146 Pelle soft Grain|B|PSSG10|Soft Grain|TDM 6002|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+147 Pelle soft Grain|B|PSSG09|Soft Grain|Chocolate 6011|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+148 Pelle soft Grain|B|PSSG05|Soft Grain|Rust 6019|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+149 Pelle soft Grain|B|PSSG04|Soft Grain|Camel 6021|||0|0|0|0||||||||CAPITAL__DATA-SHEET_SOFT-GRAIN-LEATHER.pdf
+150 Luxury fabrics|B|LISO01 |SOM|110|02 | Bianco Beige|PC 37%, PL 30%, CO 18%, WV 13%, PA 2%|0|0|0|0|140 cm|640 g/m2|||80000|5/6 EN ISO 105-B02|4/5 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LISO.pdf
+151 Luxury fabrics|B|LISO02|SOM|03|10 | Antracite Perla|PC 37%, PL 30%, CO 18%, WV 13%, PA 2%|0|0|0|0|140 cm|640 g/m2|||80000|5/6|4/5 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LISO.pdf
+152 Luxury fabrics|B|LISR01 |SOR|1|01 | Nero Bianco|PC 28%, WV 28%, PL 16%, VI 12%, CO 10% , LI 6%|0|0|0|0|140 cm|1090 g/mtl|||25000|5/6 EN ISO 105-B02|4 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LISR.pdf
+153 Luxury fabrics|B|LISR02|SOR|02|02 | Bianco Beige|PC 28%, WV 28%, PL 16%, VI 12%, CO 10% , LI 6%|0|0|0|0|140 cm|1090 g/mtl|||25000|5/6 EN ISO 105-B02|4 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LISR.pdf
+154 Luxury fabrics|B|LISR03|SOR|21|07 | Blu Caramello Oro|PC 28%, WV 28%, PL 16%, VI 12%, CO 10% , LI 6%|0|0|0|0|140 cm|1090 g/mtl|||25000|5/6 EN ISO 105-B02|4 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LISR.pdf
+155 Luxury fabrics|B|LISR04|SOR|07|06 | Terracotta Beige|PC 28%, WV 28%, PL 16%, VI 12%, CO 10% , LI 6%|0|0|0|0|140 cm|1090 g/mtl|||25000|5/6 EN ISO 105-B02|4 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LISR.pdf
+156 Luxury fabrics|B|LIVE01|VER|01|01 | Nero Bianco|CO 37%, PC 28%, PL 28%, AF 3%, LI 3%, PA 1%|0|0|0|0|140 cm|850 g/m2|||25000|5/6 EN ISO 105-B02|3/4 5000 rubs ISO 12945-2|CAPITAL__DATA-SHEET-Fabrics_LIVE.pdf
+157 Pelle vintage|B|PV 034|Vintage|34|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+158 Pelle vintage|B|PV 027|Vintage|27|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+159 Pelle vintage|B|PV 036|Vintage|36|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+160 Pelle vintage|B|PV 032|Vintage|32|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+161 Pelle vintage|B|PV 001|Vintage|01|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+162 Pelle vintage|B|PV 010|Vintage|10|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+163 Pelle vintage|B|PV 031|Vintage|31|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+164 Pelle vintage|B|PV 028|Vintage|28|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+165 Pelle vintage|B|PV 006|Vintage|6|||0|0|0|0||||||||CAPITAL__DATA-SHEET_VINTAGE-LEATHER.pdf
+166 Tessuto york|A|RANM 01|York|111||95%PL (POLIESTERE), 5%LI (LINO)|0|0|0|0|140 cm|950 g/mtl|||40000|4|4 EN ISO 12945-2|CAPITAL__DATA-SHEET_YORK-RANM.pdf
+167 Tessuto york|A|RANM 02|York|100||95%PL (POLIESTERE), 5%LI (LINO)|0|0|0|0|140 cm|950 g/mtl|||40000|4|4 EN ISO 12945-2|CAPITAL__DATA-SHEET_YORK-RANM.pdf
+168 Tessuto york|A|RANM 03|York|401||95%PL (POLIESTERE), 5%LI (LINO)|0|0|0|0|140 cm|950 g/mtl|||40000|4|4 EN ISO 12945-2|CAPITAL__DATA-SHEET_YORK-RANM.pdf
+169 Tessuto york|A|RANM 04|York|402||95%PL (POLIESTERE), 5%LI (LINO)|0|0|0|0|140 cm|950 g/mtl|||40000|4|4 EN ISO 12945-2|CAPITAL__DATA-SHEET_YORK-RANM.pdf
+170 Tessuto york|A|RANM 05|York|406||95%PL (POLIESTERE), 5%LI (LINO)|0|0|0|0|140 cm|950 g/mtl|||40000|4|4 EN ISO 12945-2|CAPITAL__DATA-SHEET_YORK-RANM.pdf
+171 Tessuto york|A|RANM 06|York|600||95%PL (POLIESTERE), 5%LI (LINO)|0|0|0|0|140 cm|950 g/mtl|||40000|4|4 EN ISO 12945-2|CAPITAL__DATA-SHEET_YORK-RANM.pdf
+172 Tessuto york|A|RANM 07|York|601||95%PL (POLIESTERE), 5%LI (LINO)|0|0|0|0|140 cm|950 g/mtl|||40000|4|4 EN ISO 12945-2|CAPITAL__DATA-SHEET_YORK-RANM.pdf
+173 Velluto|A|VL 015|Velluto|Light Blue Sam 14||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+174 Velluto|A|VL 010|Velluto|Dark Blue Sam 10||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+175 Velluto|A|VL 011|Velluto|Deep Blue Sam 11||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+176 Velluto|A|VL 118|Velluto|Smeraldo Ros 118||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+177 Velluto|A|VL 116|Velluto|Salvia Ros 116||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+178 Velluto|A|VL 130|Velluto|Cipria Ros 130||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+179 Velluto|A|VR 004|Velluto|Pearl Ros 109||100% PL (POLIESTERE)|0|0|0|0|140 cm|430 g/ml|||50000|||CAPITAL__DATA-SHEET_VELVET
+180 Velluto|A|VL 132|Velluto|Lavanda Ros 132||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+181 Velluto|A|VR 123|Velluto|Brown Ros 123||100% PL (POLIESTERE)|0|0|0|0|140 cm|430 g/ml|||50000|||CAPITAL__DATA-SHEET_VELVET
+182 Velluto|A|VL 004|Velluto|Chocolate Sam 04||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+183 Velluto|A|VL135|Velluto|Zafferano Ros 135||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+184 Velluto|A|VF 001|Velluto|Terracotta 5112||100% PL (POLIESTERE)|0|0|0|0|140 cm|430 g/ml|||50000|||CAPITAL__DATA-SHEET_VELVET
+185 Velluto|A|VL 013|Velluto|Teja Sam 12||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+186 Velluto|A|VL 002|Velluto|Lion Sam 02||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+187 Velluto|A|VR 002|Velluto|Honey Ros 103||100% PL (POLIESTERE)|0|0|0|0|140 cm|430 g/ml|||50000|||CAPITAL__DATA-SHEET_VELVET
+188 Velluto|A|VR 003|Velluto|Rose Ros 107||100% PL (POLIESTERE)|0|0|0|0|140 cm|430 g/ml|||50000|||CAPITAL__DATA-SHEET_VELVET
+189 Velluto|A|VL 003|Velluto|Khaki Sam 03||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+190 Velluto|A|VL 014|Velluto|Champagne Sam 13||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+191 Velluto|A|VL 001|Velluto|Cream Sam 01||100% PL (POLIESTERE)|0|0|0|0|140 cm|520 g/ml|||||5 EN ISO 12945-2|CAPITAL__DATA-SHEET_VELVET
+192 Velluto|A|VR 001|Velluto|White Ros 101||100% PL (POLIESTERE)|0|0|0|0|140 cm|430 g/ml|||50000|||CAPITAL__DATA-SHEET_VELVET
+==================== OUTDOOR
+1 |Categoria|Codice|Famiglia|Colore|nr. Moodboard|Composizione|Riciclato|Idrorepellente|Ignifugo|Greenguard|Oekotex|NON PFAS|Altezza|Peso|Resistenza all'abrasione|Solidità del colore alla luce|Pilling|Scheda tecnica
+2 Tessuti Acrilici|A|CA019|(SAND)|1039/15||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - SAND.pdf
+3 Tessuti Acrilici|A|CC101|NAT|10021 CANVAS||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+4 Tessuti Acrilici|A|CA020|(SAND)|1044/15||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - SAND.pdf
+5 Tessuti Acrilici|A|CA029|(TU)|15/151||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - TU.pdf
+6 Tessuti Acrilici|A|CC104|NAT|10151 LINEN CHALK||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+7 Tessuti Acrilici|A|CC102|NAT|10155 TAUPE CHALK||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+8 Tessuti Acrilici|A|CC103|NAT|10065 CARBON BEIGE||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+9 Tessuti Acrilici|A|CC234|NAT|10059 DARK TAUPE||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+10 Tessuti Acrilici|A|CA076|SJA|3741 SILVER GREY||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+11 Tessuti Acrilici|A|CC238|NAT|10152 GRAUMEL CHALK||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+12 Tessuti Acrilici|A|CC231|NAT|10028 HEATHER BEIGE||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+13 Tessuti Acrilici|A|CC255|NAT|P098 MANGO||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+14 Tessuti Acrilici|A|CC276|SJA|3996 WALNUT||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+15 Tessuti Acrilici|A|CC278|SJA|P102 WADI||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+16 Tessuti Acrilici|A|CC270|SJA|3127 MINK BROWN||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+17 Tessuti Acrilici|A|CC274|SJA|3907 TAUPE CHINÈ||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+18 Tessuti Acrilici|A|CA041|(SAND)|1040/24||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - SAND.pdf
+19 Tessuti Acrilici|A|CA018|(SAND)|1033/929||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - SAND.pdf
+20 Tessuti Acrilici|A|CA077|(TU)|929||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - TU.pdf
+21 Tessuti Acrilici|A|CC279|SJA|P106 CURCUMA||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+22 Tessuti Acrilici|A|CC250|NAT|10250 SUNLIGHT||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+23 Tessuti Acrilici|A|CA005|(TU)|926||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - TU.pdf
+24 Tessuti Acrilici|A|CC232|NAT|10029 HEATHER GREY||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+25 Tessuti Acrilici|A|CC072|SJA|3970 LICHEN||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+26 Tessuti Acrilici|A|CC277|SJA|3999 CALATHEA||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+27 Tessuti Acrilici|A|CC237|NAT|10112 BAMBOO||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+28 Tessuti Acrilici|A|CC233|NAT|10040 NATURE GREY||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+29 Tessuti Acrilici|A|CC254|NAT|P097 AGAVE||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+30 Tessuti Acrilici|A|CC236|NAT|10111 POSEDONIA||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+31 Tessuti Acrilici|A|CC074|SJA|3964 CURAÇAO||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+32 Tessuti Acrilici|A|CC253|NAT|10022 GREY CHINÈ||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+33 Tessuti Acrilici|A|CC230|NAT|10025 FROSTY CHINÈ||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+34 Tessuti Acrilici|A|CC235|NAT|10064 CARBON SKY||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+35 Tessuti Acrilici|A|CC275|SJA|3941 ADRIATIC||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+36 Tessuti Acrilici|A|CA015|(TU)|727/15||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - TU.pdf
+37 Tessuti Acrilici|A|CC272|SJA|3757 FLANELLE||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+38 Tessuti Acrilici|A|CC273|SJA|3758 SOOTY||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+39 Tessuti Acrilici|A|CC271|SJA|3706 SHINGLES||100% Sunbrella Acrylic|0|1|0|1|1|1|137|260 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SJA.pdf
+40 Tessuti Acrilici|A|CC252|NAT|5073 CADET GREY||100% Sunbrella Acrylic|0|1|0|1|1|1|140|290 g/m²||4/5|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - NAT.pdf
+41 Tessuti Acrilici|A|CA014|(TU)|94/15||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - TU.pdf
+42 Tessuti Acrilici|A|CA022|(STRIATO)|51377/710||100% solution-dyed acrylic|0|1|0|0|1|1|145|280 g/m²|16000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - STRIATO.pdf
+43 Tessuti Acrilici|A|CA040|(SAND)|1039/930||100% solution-dyed acrylic|0|1|0|0|1|1|152|270 g/m²|17000|7/8|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - SAND.pdf
+44 Tessuti luxury acrilici|C|CC081|HER|18006 PAPYRUS||50% Riciclato Sunbrella Acrilico 47% Sunbrella Acrilico 3% Poliestere|1|1|0|1|1|1|140|335 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - HER.pdf
+45 Tessuti luxury acrilici|C|CC080|HER|18001 ASH||50% Riciclato Sunbrella Acrilico 47% Sunbrella Acrilico 3% Poliestere|1|1|0|1|1|1|140|335 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - HER.pdf
+46 Tessuti luxury acrilici|C|CC256|SLO|19101 FARAFRA|| 33% Recycled Sunbrella, Acrylic 65% Sunbrella Acrylic, 2% Polyester|1|1|0|1|1|1|140|470 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SLO.pdf
+47 Tessuti luxury acrilici|C|CC129|ZAGORA|93102||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+48 Tessuti luxury acrilici|C|CC128|ZAGORA|9315||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+49 Tessuti luxury acrilici|C|CC120|ERFOUD|10215||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+50 Tessuti luxury acrilici|C|CC220|LOP|R018 MARBLE||100% Sunbrella Acrylic |0|1|0|1|1|1|140|680 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - LOP.pdf
+51 Tessuti luxury acrilici|C|CC221|LOP|R033 SNOW||100% Sunbrella Acrylic|0|1|0|1|1|1|140|680 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - LOP.pdf
+52 Tessuti luxury acrilici|C|CC140|SPUGNA|20||100% solution-dyed acrylic|0|1|0|0|1|0|140|1360 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - SPUGNA.pdf
+53 Tessuti luxury acrilici|C|ON001|ONDA|20||100% solution-dyed acrylic|0|1|0|0|1|0|138|880 g/m|35000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ONDA.pdf
+54 Tessuti luxury acrilici|C|FA001|FALESIA|20||100% solution-dyed acrylic|0|1|0|0|1|0|138|930 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - FALESIA.pdf
+55 Tessuti luxury acrilici|C|KO001|KOLYMBETRA|20||100% solution-dyed acrylic|0|1|0|0|1|0|140|850 g/m|20000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - KOLYMBETRA.pdf
+56 Tessuti luxury acrilici|C|CC135|ZAGORA|92693||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+57 Tessuti luxury acrilici|C|CC123|ERFOUD|92693||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+58 Tessuti luxury acrilici|C|CC136|ZAGORA|62||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+59 Tessuti luxury acrilici|C|CC190|ERFOUD|62||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+60 Tessuti luxury acrilici|C|CC195|ERFOUD|18062||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+61 Tessuti luxury acrilici|C|CC147|ZAGORA|181||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+62 Tessuti luxury acrilici|C|CC138|ZAGORA|74||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+63 Tessuti luxury acrilici|C|CC192|ERFOUD|74||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+64 Tessuti luxury acrilici|C|CC193|ERFOUD|18174||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+65 Tessuti luxury acrilici|C|CC258|SLO|19107 SPIREA|| 33% Recycled Sunbrella, Acrylic 65% Sunbrella Acrylic, 2% Polyester|1|1|0|1|1|1|140|470 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SLO.pdf
+66 Tessuti luxury acrilici|C|CC114|HER|18012 MOSS||50% Riciclato Sunbrella Acrilico 47% Sunbrella Acrilico 3% Poliestere|1|1|0|1|1|1|140|335 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - HER.pdf
+67 Tessuti luxury acrilici|C|CC060|HER|18011 LEAF||50% Riciclato Sunbrella Acrilico 47% Sunbrella Acrilico 3% Poliestere|1|1|0|1|1|1|140|335 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - HER.pdf
+68 Tessuti luxury acrilici|C|CC257|SLO|19106 FERN|| 33% Recycled Sunbrella, Acrylic 65% Sunbrella Acrylic, 2% Polyester|1|1|0|1|1|1|140|470 g/m²||4/5|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - SLO.pdf
+69 Tessuti luxury acrilici|C|CC096|ERFOUD|71||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+70 Tessuti luxury acrilici|C|CC097|ZAGORA|8271||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+71 Tessuti luxury acrilici|C|CC095|ERFOUD|80||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+72 Tessuti luxury acrilici|C|CC139|ZAGORA|82||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+73 Tessuti luxury acrilici|C|ON002|ONDA|80||100% solution-dyed acrylic|0|1|0|0|1|0|138|880 g/m|35000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ONDA.pdf
+74 Tessuti luxury acrilici|C|CC194|ERFOUD|7587||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+75 Tessuti luxury acrilici|C|CC125|ZAGORA|8281||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+76 Tessuti luxury acrilici|C|KO002|KOLYMBETRA|80||100% solution-dyed acrylic|0|1|0|0|1|0|140|850 g/m|20000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - KOLYMBETRA.pdf
+77 Tessuti luxury acrilici|C|FA002|FALESIA|81||100% solution-dyed acrylic|0|1|0|0|1|0|138|930 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - FALESIA.pdf
+78 Tessuti luxury acrilici|C|CC142|SPUGNA|81||100% solution-dyed acrylic|0|1|0|0|1|0|140|1360 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - SPUGNA.pdf
+79 Tessuti luxury acrilici|C|CC145|ZAGORA|8183||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+80 Tessuti luxury acrilici|C|FA003|FALESIA|171||100% solution-dyed acrylic|0|1|0|0|1|0|138|930 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - FALESIA.pdf
+81 Tessuti luxury acrilici|C|CC079|ERFOUD|7915||100% solution-dyed acrylic|0|1|0|0|1|0|140|630 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ERFOUD.pdf
+82 Tessuti luxury acrilici|C|CC146|ZAGORA|2010||100% solution-dyed acrylic|0|1|0|0|1|0|140|830 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ZAGORA.pdf
+83 Tessuti luxury acrilici|C|CC141|SPUGNA|170||100% solution-dyed acrylic|0|1|0|0|1|0|140|1360 g/m|50000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - SPUGNA.pdf
+84 Tessuti luxury acrilici|C|ON003|ONDA|170||100% solution-dyed acrylic|0|1|0|0|1|0|138|880 g/m|35000|7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ONDA.pdf
+85 Tessuti poliestere e polipropilene|B|FO001|F 9056|T38/1||100% FR POLYPROPYLENE|0|0|1|0|0|0|140|370 g/m²|35000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - F 9056.pdf
+86 Tessuti poliestere e polipropilene|B|RE001|REEF |0100||67% POLYPROPYLENE, 33% POLYESTER|0|0|0|0|0|0|140| 720 g/m|20000|7|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - REEF.pdf
+87 Tessuti poliestere e polipropilene|B|MA020|M STRIPE 201|38/1||92% FR POLYPROPYLENE - 8 % FR POLYESTER|0|0|1|0|0|0|140|540 g/m²|40000|6/7||Atmosphera DATA SHEET Outdoor Fabrics .25 - M STRIPE 201.pdf
+88 Tessuti poliestere e polipropilene|C|CC179|OLD PANAMAO|A4100|| 98% POLYPROPYLENE, 2% SOLUTION DYED ACRILIC|0|0|0|0|1|0|140| 850 g/m|25000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - OLD PANAMAO.pdf
+89 Tessuti poliestere e polipropilene|C|CC181|CAPUAL|A4200||99% POLYPROPYLENE, 1% SOLUTION DYED ACRILIC|0|0|0|0|1|0|140|880 g/m|25000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - CAPUAL.pdf
+90 Tessuti poliestere e polipropilene|B|FO002|F 9056|T0/1||100% FR POLYPROPYLENE|0|0|1|0|0|0|140|370 g/m²|35000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - F 9056.pdf
+91 Tessuti poliestere e polipropilene|B|RE002|REEF |0025||67% POLYPROPYLENE, 33% POLYESTER|0|0|0|0|0|0|140| 720 g/m|20000|7|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - REEF.pdf
+92 Tessuti poliestere e polipropilene|B|RE003|REEF |0007||67% POLYPROPYLENE, 33% POLYESTER|0|0|0|0|0|0|140| 720 g/m|20000|7|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - REEF.pdf
+93 Tessuti poliestere e polipropilene|C|CC300|DELTA|03||80% POLYPROPYLENE, 20% POLYESTER|0|0|0|0|1|0|138|826 g/mtl|80000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - DELTA.pdf
+94 Tessuti poliestere e polipropilene|B|CB025|CASANOVA 1539|07||100% POLYPROPYLENE|0|0|0|0|0|0|140|810 g/mtl|40000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - 1539.pdf
+95 Tessuti poliestere e polipropilene|B|FO003|F 9056|T79/2||100% FR POLYPROPYLENE|0|0|1|0|0|0|140|370 g/m²|35000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - F 9056.pdf
+96 Tessuti poliestere e polipropilene|B|MA021|M STRIPE 201|T79/1||92% FR POLYPROPYLENE - 8 % FR POLYESTER|0|0|1|0|0|0|140|540 g/m²|40000|6/7||Atmosphera DATA SHEET Outdoor Fabrics .25 - M STRIPE 201.pdf
+97 Tessuti poliestere e polipropilene|C|MA001|MS 52|T79/1||21% FR POLYPROPYLENE - 79 % FR POLYESTER|0|0|1|0|0|0|138|600 g/m²|40000|6/7|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - MS52.pdf
+98 Tessuti poliestere e polipropilene|C|CC182|OLD PANAMAO|A4101|| 98% POLYPROPYLENE, 2% SOLUTION DYED ACRILIC|0|0|0|0|1|0|140| 850 g/m|25000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - OLD PANAMAO.pdf
+99 Tessuti poliestere e polipropilene|C|CC180|CAPUAL|A4201||99% POLYPROPYLENE, 1% SOLUTION DYED ACRILIC|0|0|0|0|1|0|140|880 g/m|25000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - CAPUAL.pdf
+100 Tessuti poliestere e polipropilene|C|DH100|DHARMA BARRÈ|601|| 99% POLYPROPYLENE, 1% SOLUTION DYED ACRILIC|0|0|1|0|0|0|140|880 g/m|25000|≥ 7|≥ 4|Atmosphera DATA SHEET Outdoor Fabrics .25 - DHARMA 601.pdf
+101 Tessuti poliestere e polipropilene|C|HE001|HERBIG |33||100% POLYPROPYLENE|0|0|0|1|1|0|140|980 g/mtl|35000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - HERBIG.pdf
+102 Tessuti poliestere e polipropilene|C|BL001|BLAZE|04||100% POLYPROPYLENE|0|0|0|1|1|0|140|1.080 g/mtl|40000|7/8|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - BLAZE.pdf
+103 Tessuti poliestere e polipropilene|C|CC307|DELTA|01||80% POLYPROPYLENE, 20% POLYESTER|0|0|0|0|1|0|138|826 g/mtl|80000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - DELTA.pdf
+104 Tessuti poliestere e polipropilene|C|CC306|DELTA|90||80% POLYPROPYLENE, 20% POLYESTER|0|0|0|0|1|0|138|826 g/mtl|80000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - DELTA.pdf
+105 Tessuti poliestere e polipropilene|B|NE001|NEW SANTANDER|06||100% POLYPROPYLENE|0|0|0|1|1|0|140|760 g/mtl|40000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - NEW SANTANDER.pdf
+106 Tessuti poliestere e polipropilene|C|CC302|DELTA|45||80% POLYPROPYLENE, 20% POLYESTER|0|0|0|0|1|0|138|826 g/mtl|80000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - DELTA.pdf
+107 Tessuti poliestere e polipropilene|C|CC301|DELTA|02||80% POLYPROPYLENE, 20% POLYESTER|0|0|0|0|1|0|138|826 g/mtl|80000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - DELTA.pdf
+108 Tessuti poliestere e polipropilene|C|BL002|BLAZE|09||100% POLYPROPYLENE|0|0|0|1|1|0|140|1.080 g/mtl|40000|7/8|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - BLAZE.pdf
+109 Tessuti poliestere e polipropilene|C|HE002|HERBIG |31||100% POLYPROPYLENE|0|0|0|1|1|0|140|980 g/mtl|35000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - HERBIG.pdf
+110 Tessuti poliestere e polipropilene|B|NE002|NEW SANTANDER|05||100% POLYPROPYLENE|0|0|0|1|1|0|140|760 g/mtl|40000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - NEW SANTANDER.pdf
+111 Tessuti poliestere e polipropilene|C|CC303|DELTA|01/1||80% POLYPROPYLENE, 20% POLYESTER|0|0|0|0|1|0|138|826 g/mtl|80000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - DELTA.pdf
+112 Tessuti poliestere e polipropilene|C|DH001|DHARMA BARRÈ|401||70% POLYPROPYLENE, 30% POLYESTER OUTDOOR FR|0|0|1|0|0|0|140|740 g/mtl|60000|≥ 7|≥ 4|Atmosphera DATA SHEET Outdoor Fabrics .25 - DHARMA 401.pdf
+113 Tessuti poliestere e polipropilene|C|MA003|MS 52|T0/1||21% FR POLYPROPYLENE - 79 % FR POLYESTER|0|0|1|0|0|0|138|600 g/m²|40000|6/7|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - MS52.pdf
+114 Tessuti poliestere e polipropilene|C|MA002|MS 52|T101/4||21% FR POLYPROPYLENE - 79 % FR POLYESTER|0|0|1|0|0|0|138|600 g/m²|40000|6/7|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - MS52.pdf
+115 Tessuti poliestere e polipropilene|B|MA022|M STRIPE 201|23/7||92% FR POLYPROPYLENE - 8 % FR POLYESTER|0|0|1|0|0|0|140|540 g/m²|40000|6/7||Atmosphera DATA SHEET Outdoor Fabrics .25 - M STRIPE 201.pdf
+116 Tessuti poliestere e polipropilene|C|MA004|MS 52|T201/4||21% FR POLYPROPYLENE - 79 % FR POLYESTER|0|0|1|0|0|0|138|600 g/m²|40000|6/7|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - MS52.pdf
+117 Tessuti poliestere e polipropilene|C|CC202|ALTAI|12/15||100% POLYPROPYLENE|0|0|0|0|1|0|138|728 g/mtl|62000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - ALTAI.pdf
+118 Tessuti poliestere e polipropilene|C|CC204|ALTAI|12/5||100% POLYPROPYLENE|0|0|0|0|1|0|138|728 g/mtl|62000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - ALTAI.pdf
+119 Tessuti poliestere e polipropilene|C|CC203|ALTAI|16/4||100% POLYPROPYLENE|0|0|0|0|1|0|138|728 g/mtl|62000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - ALTAI.pdf
+120 Tessuti poliestere e polipropilene|C|MA005|MS 52|T17/3||21% FR POLYPROPYLENE - 79 % FR POLYESTER|0|0|1|0|0|0|138|600 g/m²|40000|6/7|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - MS52.pdf
+121 Tessuti poliestere e polipropilene|B|MA023|M STRIPE 201|23/1||92% FR POLYPROPYLENE - 8 % FR POLYESTER|0|0|1|0|0|0|140|540 g/m²|40000|6/7||Atmosphera DATA SHEET Outdoor Fabrics .25 - M STRIPE 201.pdf
+122 Tessuti poliestere e polipropilene|B|CB022|CASANOVA 1539|11||100% POLYPROPYLENE|0|0|0|0|0|0|140|810 g/mtl|40000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - 1539.pdf
+123 Tessuti poliestere e polipropilene|B|CB031|CASANOVA 1536|11||100% POLYPROPYLENE|0|0|0|0|0|0|140| 630 g/mtl|65000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - 1536.pdf
+124 Tessuti poliestere e polipropilene|B|FO004|F 9056|T50/1||100% FR POLYPROPYLENE|0|0|1|0|0|0|140|370 g/m²|35000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - F 9056.pdf
+125 Tessuti poliestere e polipropilene|C|CC183|OLD PANAMAO|A4104|| 98% POLYPROPYLENE, 2% SOLUTION DYED ACRILIC|0|0|0|0|1|0|140| 850 g/m|25000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - OLD PANAMAO.pdf
+126 Tessuti poliestere e polipropilene|C|CC184|OLD PANAMAO|A4105|| 98% POLYPROPYLENE, 2% SOLUTION DYED ACRILIC|0|0|0|0|1|0|140| 850 g/m|25000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - OLD PANAMAO.pdf
+127 Tessuti poliestere e polipropilene|C|CC305|DELTA|01/5||80% POLYPROPYLENE, 20% POLYESTER|0|0|0|0|1|0|138|826 g/mtl|80000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - DELTA.pdf
+128 Tessuti poliestere e polipropilene|C|BL003|BLAZE|03||100% POLYPROPYLENE|0|0|0|1|1|0|140|1.080 g/mtl|40000|7/8|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - BLAZE.pdf
+129 Tessuti poliestere e polipropilene|C|HE003|HERBIG |30||100% POLYPROPYLENE|0|0|0|1|1|0|140|980 g/mtl|35000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - HERBIG.pdf
+130 Tessuti poliestere e polipropilene|B|NE003|NEW SANTANDER|11||100% POLYPROPYLENE|0|0|0|1|1|0|140|760 g/mtl|40000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - NEW SANTANDER.pdf
+131 Tessuti poliestere e polipropilene|B|FO006|F 9056|T39/1||100% FR POLYPROPYLENE|0|0|1|0|0|0|140|370 g/m²|35000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - F 9056.pdf
+132 Tessuti poliestere e polipropilene|B|RE004|REEF |0031||67% POLYPROPYLENE, 33% POLYESTER|0|0|0|0|0|0|140| 720 g/m|20000|7|5|Atmosphera DATA SHEET Outdoor Fabrics .25 - REEF.pdf
+133 Tessuti poliestere e polipropilene|B|FO007|F 9056|T29/1||100% FR POLYPROPYLENE|0|0|1|0|0|0|140|370 g/m²|35000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - F 9056.pdf
+134 Tessuti poliestere e polipropilene|C|CC178|OLD PANAMAO|A4109|| 98% POLYPROPYLENE, 2% SOLUTION DYED ACRILIC|0|0|0|0|1|0|140| 850 g/m|25000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - OLD PANAMAO.pdf
+135 Tessuti poliestere e polipropilene|B|FO005|F 9056|T85/3||100% FR POLYPROPYLENE|0|0|1|0|0|0|140|370 g/m²|35000|7|4|Atmosphera DATA SHEET Outdoor Fabrics .25 - F 9056.pdf
+136 Tessuti poliestere e polipropilene|C|CC201|ALTAI|21/26||100% POLYPROPYLENE|0|0|0|0|1|0|138|728 g/mtl|62000||4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - ALTAI.pdf
+137 Tessuti poliestere e polipropilene|C|CC177|CAPUAL|A4209||99% POLYPROPYLENE, 1% SOLUTION DYED ACRILIC|0|0|0|0|1|0|140|880 g/m|25000|7/8|4/5|Atmosphera DATA SHEET Outdoor Fabrics .25 - CAPUAL.pdf
+138 Tessuti poliestere e polipropilene|B|MA024|M STRIPE 201|39/4||92% FR POLYPROPYLENE - 8 % FR POLYESTER|0|0|1|0|0|0|140|540 g/m²|40000|6/7||Atmosphera DATA SHEET Outdoor Fabrics .25 - M STRIPE 201.pdf
+139 Tessuti Acrilici|A|CE005|Etamine|15/151||100% Outdoor acrylic|0|1|0|0|1|0|304|160 g/m²||7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ETAMINE.pdf
+140 Tessuti Acrilici|A|CE003|Etamine|929/926||100% Outdoor acrylic|0|1|0|0|1|0|304|160 g/m²||7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ETAMINE.pdf
+141 Tessuti Acrilici|A|CE001|Etamine|15/727||100% Outdoor acrylic|0|1|0|0|1|0|304|160 g/m²||7/8||Atmosphera DATA SHEET Outdoor Fabrics .25 - ETAMINE.pdf
+142 ||TCOBEI|TDC|01.1 – Beige||100% polyester|0|0|0|0|0|1|152|250 g/m²||||Atmosphera DATA SHEET Outdoor Fabrics .25 - TDC.pdf
+143 ||TCODAR|TDC|02.1 – Dark Grey||100% polyester|0|0|0|0|0|1|152|250 g/m²||||Atmosphera DATA SHEET Outdoor Fabrics .25 - TDC.pdf
