@@ -1,2 +1,0 @@
-- [PHP dentro al container](php-in-docker-container.md) — artisan/composer/tinker solo via `docker compose exec -T web`.
-- [Struttura progetto strava-log](strava-log-struttura-progetto.md) — Laravel 13 + Filament 3, modelli, container docker e porte.

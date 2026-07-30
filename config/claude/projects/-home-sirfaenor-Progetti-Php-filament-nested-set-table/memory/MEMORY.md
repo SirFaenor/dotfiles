@@ -1,1 +1,0 @@
-- [VSCode install method](vscode-install-method.md) — User switched from Snap VSCode to apt/.deb on 2026-05-26 to fix Snap XDG_DATA_HOME breaking lerd/podman. If env issues recur, first check `which code` is `/usr/bin/code`, not `/snap/bin/code`.

@@ -1,2 +1,0 @@
-- [PHP nel container web](php-container.md) — i comandi PHP/artisan vanno eseguiti nel container `${COMPOSE_PROJECT_NAME}_php`, verificare nome con `docker ps`
-- [atmosphera-hub vs atmosphera-admin](atmosphera-hub-vs-admin-containers.md) — due progetti/stack docker separati, facili da confondere
