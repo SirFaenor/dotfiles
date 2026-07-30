@@ -74,6 +74,14 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
+
+# Load the shell dotfiles, and then some:
+for file in ~/Dotfiles/home/.{bash_aliases,functions}; do
+    [ -r "$file" ] && [ -f "$file" ] && source "$file"
+done
+
+unset file
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
