@@ -1,6 +1,9 @@
 
 alias laravel='~/.config/composer/vendor/bin/laravel'
 
+alias sourceb='source ~/.bashrc'
+alias sourcez='source ~/.zshrc'
+
 alias www='cd ~/Progetti/www'
 
 alias marvin='cd ~/Progetti/Php/atrioteam/marvin'
@@ -30,7 +33,8 @@ alias treacque='cd ~/Progetti/www/treacque.it/treacque.it'
 alias pilato='cd ~/Progetti/www/pilato.it/staging.pilato.it'
 alias staboo='cd ~/Progetti/www/staboo.com/staboo.com'
 alias cesar='cd ~/Progetti/www/cesar.it/cesar.it'
-alias atmos='cd ~/Progetti/www/atmosphera/atmosphera-hub'
+alias atmoshub='cd ~/Progetti/www/atmosphera/atmosphera-hub'
+alias atmos='cd ~/Progetti/www/atmosphera/atmosphera'
 
 source /home/sirfaenor/.local/share/bash-completion/completions/deno.bash
 
