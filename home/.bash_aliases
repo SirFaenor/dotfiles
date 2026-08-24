@@ -35,6 +35,7 @@ alias staboo='cd ~/Progetti/www/staboo.com/staboo.com'
 alias cesar='cd ~/Progetti/www/cesar.it/cesar.it'
 alias atmoshub='cd ~/Progetti/www/atmosphera/atmosphera-hub'
 alias atmos='cd ~/Progetti/www/atmosphera/atmosphera'
+alias jododocs='cd ~/Progetti/www/jodoitalia.com/docs.jodoitalia.com'
 
 source /home/sirfaenor/.local/share/bash-completion/completions/deno.bash
 

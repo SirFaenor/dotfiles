@@ -111,4 +111,4 @@ unset file
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.opencode/bin:$HOME/.local/bin:$PATH"

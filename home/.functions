@@ -102,6 +102,13 @@ function color()
     bash ~/Scripts/color_mode.sh
 }
 
+# imposta il comportamento del lid switch a batteria (default: suspend)
+# Uso: lidbat [ignore|suspend|hibernate|hybrid-sleep|suspend-then-hibernate|lock|poweroff]
+function lidbat()
+{
+    bash ~/Scripts/set-lid-battery.sh "$@"
+}
+
 # sshartisan: esegue un comando artisan su un host remoto via SSH.
 # Sull'hosting Aruba la shell interattiva è disabilitata, ma l'esecuzione
 # di comandi inline è permessa: questa funzione sfrutta quella modalità.
