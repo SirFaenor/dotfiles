@@ -1,0 +1,62 @@
+{
+    "peacock.remoteColor": "#fd0fa1",
+    // emeraldwalk.runonsave configured per-folder in .vscode/settings.json
+    "emeraldwalk.runonsave": {
+        "commands": [
+            {
+                "match": "\\.php$",
+                "isAsync": true,
+                "cmd": "docker compose exec -i web /var/www/vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix  --config .php-cs-fixer.dist.php /var/www/${relativeFile}"
+            }
+        ]
+    },
+    "phpstan.binCommand": [
+        "docker", "compose", "exec", "web", "vendor/bin/phpstan"
+    ],
+
+    "phpstan.binPath": "",
+    "phpstan.paths": {
+        "${workspaceFolder}": "/var/www",
+    },
+    "phpstan.timeout": 50000,
+    "phpstan.enabled": true,
+    "phpstan.singleFileMode": true,
+    "phpstan.projectTimeout": 50000,
+    "phpstan.showProgress": true,
+    // Laravel LSP: esegue artisan tinker con il PHP del container (php:8.5-fpm),
+    // non con quello dell'host (8.3) che fallisce il platform_check di Composer (>= 8.5).
+    // Container PHP = servizio "web" del compose, working dir nel container = /var/www.
+    "Laravel.phpEnvironment": "docker",
+    "Laravel.phpCommand": ["docker", "compose", "exec", "-T", "web", "php"],
+    "intelephense.files.maxSize": 5000000,
+    "intelephense.environment.includePaths": [
+        "_ide_helper.php"
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#b66c9e",
+        "activityBar.background": "#b66c9e",
+        "activityBar.foreground": "#15202b",
+        "activityBar.inactiveForeground": "#15202b99",
+        "activityBarBadge.background": "#b9ca95",
+        "activityBarBadge.foreground": "#15202b",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#b66c9e",
+        "statusBar.background": "#a04f86",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#b66c9e",
+        "statusBarItem.remoteBackground": "#8fab54",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#a04f86",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#a04f8699",
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "activityBarTop.activeBackground": "#b66c9e",
+        "activityBarTop.background": "#b66c9e",
+        "activityBarTop.foreground": "#15202b",
+        "activityBarTop.inactiveForeground": "#15202b99",
+        "commandCenter.foreground": "#e7e7e7",
+        "statusBar.debuggingBackground": "#a04f86",
+        "statusBar.debuggingForeground": "#e7e7e7"
+    },
+    "peacock.color": "#a04f86",
+}
