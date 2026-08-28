@@ -112,3 +112,6 @@ unset file
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export PATH="$HOME/.opencode/bin:$HOME/.local/bin:$PATH"
+
+# Pi
+export PATH="/home/sirfaenor/.local/share/pi-node/node-v22.23.2-linux-x64/bin:$PATH"
