@@ -92,7 +92,7 @@ sudo cp ~/.config/monitors.xml ~/.config/gdm
 
 # phpstorm
 - impostazione zoom
-/home/manu/.config/JetBrains/PhpStorm2024.3/options/others.xml chiave "ideScale"
+/home/{user}/.config/JetBrains/PhpStorm2024.3/options/others.xml chiave "ideScale"
 - accelerare rendering testo
 editor.zero.latency.typing=true (help > edit  Custom properties) 
 
@@ -147,3 +147,6 @@ https://bugs.launchpad.net/ubuntu/+source/nautilus/+bug/2148075
 
 3. Restart the file manager: Close all Nautilus instances to apply the changes: nautilus -q
 
+## firefox gnome theme
+
+https://github.com/rafaelmardojai/firefox-gnome-theme

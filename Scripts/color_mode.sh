@@ -14,13 +14,13 @@ if [[ "$CURRENT" == "'prefer-dark'" ]]; then
     # passaggio a light
     gsettings set $SCHEMA $KEY 'default'
     wallpaper_value="prefer-light"
-    icon_theme="Conflux" #kora-grey
-    accent_color="Yaru-prussiangreen"
+    icon_theme="Yaru-blue" #kora-grey|Conflux
+    accent_color="Yaru-blue"
 else
     # passaggio a dark
     gsettings set $SCHEMA $KEY 'prefer-dark'
     wallpaper_value="prefer-dark"
-    icon_theme="Conflux" #kora-grey
+    icon_theme="Yaru-blue" #kora-grey|Conflux
     accent_color="Yaru-blue"
 fi
 

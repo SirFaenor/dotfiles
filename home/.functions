@@ -89,6 +89,10 @@ function dc() {
     docker compose "$@"
 }
 
+# connect to a bash inside a named container ("$1")
+function dockerbash() {
+    docker exec -it "$1" /bin/bash
+}
 
 # shortcut for command to import links and translations
 function dlang()

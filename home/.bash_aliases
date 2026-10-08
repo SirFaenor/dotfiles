@@ -36,6 +36,7 @@ alias cesar='cd ~/Progetti/www/cesar.it/cesar.it'
 alias atmoshub='cd ~/Progetti/www/atmosphera/atmosphera-hub'
 alias atmos='cd ~/Progetti/www/atmosphera/atmosphera'
 alias jododocs='cd ~/Progetti/www/jodoitalia.com/docs.jodoitalia.com'
+alias nonnohub='cd ~/Progetti/www/nonnonanni.it/catalogo-digitale-nonnonanni'
 
 source /home/sirfaenor/.local/share/bash-completion/completions/deno.bash
 
