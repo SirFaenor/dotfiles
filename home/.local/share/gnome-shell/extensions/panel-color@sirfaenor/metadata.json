@@ -1,0 +1,6 @@
+{
+  "uuid": "panel-color@sirfaenor",
+  "name": "Panel Color",
+  "description": "Cambia solo il colore di sfondo della top bar.",
+  "shell-version": ["46"]
+}
