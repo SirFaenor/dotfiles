@@ -1,0 +1,21 @@
+#!/bin/bash
+# Apre lyrics-now in una finestra gnome-terminal con app-id dedicato, così GNOME
+# la associa al launcher (pallino nella dash, clic = focus) invece che all'app Terminale.
+# Uso: lyrics-now-window [player]
+APP_ID=it.atrio.LyricsNow
+PROFILE=88859262-7e59-487d-be35-5c9bfc53dc27  # profilo gnome-terminal "Testi"
+
+has_owner() {
+    gdbus call --session --dest org.freedesktop.DBus --object-path /org/freedesktop/DBus \
+        --method org.freedesktop.DBus.NameHasOwner "$APP_ID" 2>/dev/null | grep -q true
+}
+
+# istanza separata di gnome-terminal-server con il nostro app-id
+if ! has_owner; then
+    setsid /usr/libexec/gnome-terminal-server --app-id "$APP_ID" >/dev/null 2>&1 &
+    for _ in $(seq 50); do has_owner && break; sleep 0.1; done
+fi
+
+# il client stampa "Failed to register" anche quando funziona: silenziato
+exec gnome-terminal --app-id "$APP_ID" --profile="$PROFILE" --title=Testi \
+    -- "$HOME/.local/bin/lyrics-now" "${1:-strawberry}" 2>/dev/null

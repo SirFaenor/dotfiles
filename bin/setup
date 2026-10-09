@@ -55,6 +55,22 @@ ln -sf ~/Dotfiles/home/.bashrc ~/.bashrc
 ln -sf ~/Dotfiles/home/.bashrc ~/.bash_aliases
 ln -sf ~/Dotfiles/home/.bashrc ~/.bash_aliases
 
+# lyrics-now: testi del brano in riproduzione (MPRIS)
+mkdir -p ~/.local/bin ~/.local/share/applications ~/.local/share/icons/hicolor/scalable/apps
+ln -sf ~/Dotfiles/home/.local/bin/lyrics-now ~/.local/bin/lyrics-now
+ln -sf ~/Dotfiles/home/.local/bin/lyrics-now-window ~/.local/bin/lyrics-now-window
+ln -sf ~/Dotfiles/home/.local/share/applications/it.atrio.LyricsNow.desktop ~/.local/share/applications/it.atrio.LyricsNow.desktop
+rm -f ~/.local/share/applications/lyrics-now.desktop  # vecchio nome del launcher
+ln -sf ~/Dotfiles/home/.local/share/icons/hicolor/scalable/apps/lyrics-now.svg ~/.local/share/icons/hicolor/scalable/apps/lyrics-now.svg
+# profilo gnome-terminal "Testi" (trasparente) usato da it.atrio.LyricsNow.desktop
+LYRICS_PROFILE=88859262-7e59-487d-be35-5c9bfc53dc27
+dconf load "/org/gnome/terminal/legacy/profiles:/:$LYRICS_PROFILE/" < "$DOTFILES_DIR/config/lyrics-now/gnome-terminal-profile.dconf"
+PROFILES=$(dconf read /org/gnome/terminal/legacy/profiles:/list)
+[ -z "$PROFILES" ] && PROFILES="['b1dcc9dd-5262-4d8d-a863-c897e6d979b9']"  # profilo predefinito implicito
+if [[ $PROFILES != *$LYRICS_PROFILE* ]]; then
+    dconf write /org/gnome/terminal/legacy/profiles:/list "${PROFILES%]}, '$LYRICS_PROFILE']"
+fi
+
 success "ok"
 
 

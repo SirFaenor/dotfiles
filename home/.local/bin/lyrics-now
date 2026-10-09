@@ -1,0 +1,131 @@
+#!/usr/bin/env python3
+"""Mostra in terminale il testo del brano in riproduzione (MPRIS), sincronizzato se disponibile.
+Fonte testi: lrclib.net, con cache in ~/.cache/lyrics-now. Uso: lyrics-now [nome-player]"""
+import json, os, re, shutil, sys, time, urllib.parse, urllib.request
+from gi.repository import Gio, GLib
+
+PLAYER = sys.argv[1] if len(sys.argv) > 1 else "strawberry"
+BUS = f"org.mpris.MediaPlayer2.{PLAYER}"
+CACHE = os.path.expanduser("~/.cache/lyrics-now")
+os.makedirs(CACHE, exist_ok=True)
+bus = Gio.bus_get_sync(Gio.BusType.SESSION)
+
+def prop(name):
+    try:
+        v = bus.call_sync(BUS, "/org/mpris/MediaPlayer2", "org.freedesktop.DBus.Properties", "Get",
+                          GLib.Variant("(ss)", ("org.mpris.MediaPlayer2.Player", name)),
+                          None, Gio.DBusCallFlags.NONE, 1000, None)
+        return v.unpack()[0]
+    except GLib.Error:
+        return None
+
+def fetch(artist, title, album, length):
+    key = re.sub(r"[^\w-]+", "_", f"{artist}-{title}")[:150]
+    path = os.path.join(CACHE, key + ".json")
+    if os.path.exists(path):
+        with open(path) as f:
+            return json.load(f)
+    data = None
+    q = {"artist_name": artist, "track_name": title, "album_name": album}
+    if length:
+        q["duration"] = int(length)
+    hdr = {"User-Agent": "lyrics-now/1.0"}
+    try:
+        req = urllib.request.Request("https://lrclib.net/api/get?" + urllib.parse.urlencode(q), headers=hdr)
+        data = json.load(urllib.request.urlopen(req, timeout=10))
+    except Exception:
+        try:
+            req = urllib.request.Request("https://lrclib.net/api/search?" + urllib.parse.urlencode(
+                {"artist_name": artist, "track_name": title}), headers=hdr)
+            res = json.load(urllib.request.urlopen(req, timeout=10))
+            data = next((r for r in res if r.get("syncedLyrics")), res[0] if res else None)
+        except Exception:
+            return None  # errore di rete: non salvo in cache, riprovo al prossimo brano
+    out = {"synced": (data or {}).get("syncedLyrics"), "plain": (data or {}).get("plainLyrics")}
+    with open(path, "w") as f:
+        json.dump(out, f)
+    return out
+
+def parse_lrc(text):
+    lines = []
+    for raw in text.splitlines():
+        stamps = re.findall(r"\[(\d+):(\d+(?:\.\d+)?)\]", raw)
+        words = re.sub(r"\[[^\]]*\]", "", raw).strip()
+        for m, s in stamps:
+            lines.append((int(m) * 60 + float(s), words))
+    return sorted(lines)
+
+def fmt_time(sec):
+    sec = int(sec)
+    return f"{sec // 3600}:{sec // 60 % 60:02}:{sec % 60:02}" if sec >= 3600 else f"{sec // 60}:{sec % 60:02}"
+
+def draw(header, lines, current):
+    cols, rows = shutil.get_terminal_size()
+    body = rows - 3
+    left, right = header  # titolo a sinistra, tempo a destra
+    left = left[:max(0, cols - len(right) - 1)]
+    out = ["\033[H\033[2J",
+           f"\033[1;36m{left}\033[0m{' ' * (cols - len(left) - len(right))}\033[36m{right}\033[0m\n",
+           "─" * cols + "\n"]
+    if current is None:  # testo non sincronizzato: mostro dall'inizio
+        start = 0
+    else:
+        start = max(0, current - body // 3)
+    for i, l in enumerate(lines[start:start + body], start):
+        l = l[:cols].center(cols).rstrip()
+        if i == current:
+            out.append(f"\033[1;33m{l}\033[0m\n")
+        elif current is not None and i < current:
+            out.append(f"\033[2m{l}\033[0m\n")
+        else:
+            out.append(l + "\n")
+    sys.stdout.write("".join(out))
+    sys.stdout.flush()
+
+def main():
+    sys.stdout.write("\033[?25l")  # nascondi cursore
+    track_id, lyr, synced, last_frame = None, None, None, None
+    while True:
+        md = prop("Metadata")
+        if not md:
+            frame = (("", ""), [f"In attesa di {PLAYER}…"], None)
+            if frame != last_frame:
+                draw(*frame); last_frame = frame
+            time.sleep(2); continue
+        artist = ", ".join(md.get("xesam:artist") or []) or "?"
+        title = md.get("xesam:title") or "?"
+        tid = (artist, title)
+        year = md.get("year") or 0  # campo di Strawberry: anno della traccia o dell'album
+        length = (md.get("mpris:length") or 0) / 1e6
+        pos = (prop("Position") or 0) / 1e6
+        title_str = f"♪ {artist} — {title}" + (f" ({year})" if year > 0 else "")
+        time_str = f"{fmt_time(pos)} / {fmt_time(length)}" if length else fmt_time(pos)
+        header = (title_str, time_str)
+        if tid != track_id:
+            track_id = tid
+            draw(header, ["", "Cerco il testo…"], None)
+            data = fetch(artist, title, md.get("xesam:album") or "", length)
+            synced = parse_lrc(data["synced"]) if data and data.get("synced") else None
+            if synced:
+                lyr = [w or "♪" for _, w in synced]
+            elif data and data.get("plain"):
+                lyr = data["plain"].splitlines()
+            elif md.get("xesam:asText"):
+                lyr = md["xesam:asText"].splitlines()
+            else:
+                lyr = ["", "Testo non trovato."]
+            last_frame = None
+        cur = None
+        if synced:
+            cur = max([i for i, (t, _) in enumerate(synced) if t <= pos + 0.3], default=-1)
+        frame = (header, lyr, cur, shutil.get_terminal_size())
+        if frame != last_frame:
+            draw(header, lyr, cur); last_frame = frame
+        time.sleep(0.25)
+
+try:
+    main()
+except KeyboardInterrupt:
+    pass
+finally:
+    sys.stdout.write("\033[?25h\033[0m\n")

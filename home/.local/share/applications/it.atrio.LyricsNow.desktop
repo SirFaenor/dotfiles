@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Testi (Strawberry)
+Comment=Testo del brano in riproduzione
+Exec=sh -c "exec \\$HOME/.local/bin/lyrics-now-window strawberry"
+Icon=lyrics-now
+Terminal=false
+StartupWMClass=it.atrio.LyricsNow
+Categories=AudioVideo;Audio;
