@@ -16,14 +16,22 @@ Pensato per Strawberry, ma funziona con qualsiasi player MPRIS (Spotify, VLC, �
 ## Funzionamento
 
 - Legge dal player, via D-Bus/MPRIS, artista, titolo, album, anno, durata e posizione.
-- Scarica il testo da [lrclib.net](https://lrclib.net), gratuito e senza chiave API, e lo salva in `~/.cache/lyrics-now/`.
-  - **Testo sincronizzato** (LRC): la riga corrente è evidenziata e scorre insieme alla canzone.
-  - **Testo semplice**: viene mostrato dall'inizio, senza scorrimento.
-  - Se il player espone il testo nei metadati (`xesam:asText`), viene usato come ultima possibilità.
+- Cerca il testo in quest'ordine, fermandosi alla prima fonte che lo ha:
+  1. file `.lrc` o `.txt` con lo stesso nome del brano, nella stessa cartella;
+  2. tag incorporati nel file audio (letti con `mutagen`): per gli mp3 prima `SYLT` (sincronizzato), poi `USLT`;
+     per FLAC/Ogg/Opus `LYRICS` / `UNSYNCEDLYRICS`; per m4a `©lyr`. Un testo in formato LRC dentro un tag viene
+     riconosciuto come sincronizzato;
+  3. [lrclib.net](https://lrclib.net), gratuito e senza chiave API, con cache in `~/.cache/lyrics-now/`;
+  4. il testo nei metadati MPRIS (`xesam:asText`), se il player lo fornisce.
+
+  Le fonti locali (1 e 2) vengono rilette ogni volta e non vanno in cache, così le modifiche ai tag si vedono subito.
+- **Testo sincronizzato** (LRC): la riga corrente è evidenziata e scorre insieme alla canzone.
+- **Testo semplice**: viene mostrato dall'inizio, senza scorrimento.
 - In alto: artista, titolo, anno (dal campo `year` di Strawberry, preso dalla traccia o dall'album) e tempo trascorso / totale.
 - Quando cambi brano si aggiorna da solo; se il player è chiuso aspetta che venga aperto.
 
-Dipendenze: solo `python3` con `gi` (PyGObject), già presenti su Ubuntu.
+Dipendenze: `python3` con `gi` (PyGObject) e `mutagen` (`python3-mutagen`), già presenti su Ubuntu.
+Senza `mutagen` i tag non vengono letti, ma il resto funziona.
 
 ## File
 
@@ -76,7 +84,16 @@ L'istanza si chiude da sola quando si chiude la finestra.
 
 ## Problemi noti
 
-- **Testo sbagliato o mancante**: cancella il file del brano in `~/.cache/lyrics-now/`, verrà riscaricato. I brani senza testo restano in cache come "non trovato", così lrclib non viene interrogato di nuovo.
+- **"Testo non trovato"**: nessuna delle fonti lo ha. Si può:
+  - mettere un file `.lrc` (sincronizzato) o `.txt` accanto al brano, con lo stesso nome: è la via più rapida;
+  - incorporarlo nei tag del file, ad esempio con l'editor dei tag di Strawberry, Picard o kid3;
+  - aggiungerlo a lrclib.net, ad esempio con [LRCGET](https://github.com/tranxuanthang/lrcget), che sa anche scaricare
+    in blocco i `.lrc` per tutta la libreria.
+
+  Le fonti locali hanno effetto al prossimo cambio brano. Per lrclib invece il "non trovato" resta in cache: cancella
+  il file del brano in `~/.cache/lyrics-now/` perché venga cercato di nuovo.
+- **Testo sbagliato**: se viene da lrclib, cancella il file in cache come sopra; se viene dal file locale, correggi
+  il `.lrc`/`.txt` o il tag.
 - **Il launcher usa ancora la versione vecchia del `.desktop`**: GNOME controlla `~/.local/share/applications`, dove c'è solo il link, e quindi non si accorge delle modifiche fatte al file nel repo. Ricrea il link:
   ```
   ln -sf ~/Dotfiles/home/.local/share/applications/it.atrio.LyricsNow.desktop ~/.local/share/applications/
