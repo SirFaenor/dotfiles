@@ -16,13 +16,16 @@ Pensato per Strawberry, ma funziona con qualsiasi player MPRIS (Spotify, VLC, �
 ## Funzionamento
 
 - Legge dal player, via D-Bus/MPRIS, artista, titolo, album, anno, durata e posizione.
-- Cerca il testo in quest'ordine, fermandosi alla prima fonte che lo ha:
-  1. file `.lrc` o `.txt` con lo stesso nome del brano, nella stessa cartella;
-  2. tag incorporati nel file audio (letti con `mutagen`): per gli mp3 prima `SYLT` (sincronizzato), poi `USLT`;
-     per FLAC/Ogg/Opus `LYRICS` / `UNSYNCEDLYRICS`; per m4a `©lyr`. Un testo in formato LRC dentro un tag viene
-     riconosciuto come sincronizzato;
-  3. [lrclib.net](https://lrclib.net), gratuito e senza chiave API, con cache in `~/.cache/lyrics-now/`;
-  4. il testo nei metadati MPRIS (`xesam:asText`), se il player lo fornisce.
+- Fonti del testo:
+  - **locali**: un file `.lrc` o `.txt` con lo stesso nome del brano, nella stessa cartella, e i tag incorporati
+    nel file audio, letti con `mutagen`. Per gli mp3 `SYLT` (sincronizzato) e `USLT`; per FLAC/Ogg/Opus `LYRICS` /
+    `UNSYNCEDLYRICS`; per m4a `©lyr`. Un testo in formato LRC dentro un tag viene riconosciuto come sincronizzato;
+  - **[lrclib.net](https://lrclib.net)**: gratuito e senza chiave API, con cache in `~/.cache/lyrics-now/`;
+  - il testo nei metadati MPRIS (`xesam:asText`), se il player lo fornisce, come ultima possibilità.
+
+  Vince il testo sincronizzato: prima quello locale, poi quello di lrclib. Solo se nessuno dei due c'è si usa
+  un testo semplice, prima quello locale e poi quello di lrclib. Molti mp3 hanno solo `USLT`, cioè il testo senza tempi:
+  in quel caso lrclib viene interrogato comunque, per non perdere la riga evidenziata.
 
   Le fonti locali (1 e 2) vengono rilette ogni volta e non vanno in cache, così le modifiche ai tag si vedono subito.
 - **Testo sincronizzato** (LRC): la riga corrente è evidenziata e scorre insieme alla canzone.

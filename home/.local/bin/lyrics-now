@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Mostra in terminale il testo del brano in riproduzione (MPRIS), sincronizzato se disponibile.
-Fonti testi, in ordine: file .lrc/.txt accanto al brano, tag incorporati nel file (SYLT/USLT, LYRICS, ©lyr),
-lrclib.net (con cache in ~/.cache/lyrics-now). Uso: lyrics-now [nome-player]"""
+Fonti testi: file .lrc/.txt accanto al brano, tag incorporati (SYLT/USLT, LYRICS, ©lyr) e lrclib.net (con cache
+in ~/.cache/lyrics-now); vince il primo testo sincronizzato, poi il primo semplice. Uso: lyrics-now [nome-player]"""
 import json, os, re, shutil, sys, time, urllib.parse, urllib.request
 from gi.repository import Gio, GLib
 
@@ -48,41 +48,49 @@ def fetch(artist, title, album, length):
     return out
 
 def local_lyrics(url):
-    """Testo dal file locale (LRC o semplice), o None. Non va in cache: i tag possono cambiare."""
+    """Testi dal file locale (LRC o semplici), in ordine di preferenza. Non vanno in cache: i tag possono cambiare."""
     if not url or not url.startswith("file://"):
-        return None
+        return
     path = urllib.parse.unquote(urllib.parse.urlparse(url).path)
     base = os.path.splitext(path)[0]
     for ext in (".lrc", ".txt"):
         if os.path.exists(base + ext):
             with open(base + ext, encoding="utf-8", errors="replace") as f:
-                text = f.read()
-            if text.strip():
-                return text
+                yield f.read()
     try:
         import mutagen
         tags = mutagen.File(path).tags
     except Exception:
-        return None
+        return
     if not tags:
-        return None
+        return
     if hasattr(tags, "getall"):  # ID3 (mp3): SYLT sincronizzato, poi USLT
         for fr in tags.getall("SYLT"):
-            if fr.format == 2 and any(t.strip() for t, _ in fr.text):  # format 2 = millisecondi
-                return "\n".join(f"[{ms // 60000:02}:{ms % 60000 / 1000:05.2f}]{t.strip()}" for t, ms in fr.text)
+            if fr.format == 2:  # format 2 = millisecondi
+                yield "\n".join(f"[{ms // 60000:02}:{ms % 60000 / 1000:05.2f}]{t.strip()}" for t, ms in fr.text)
         for fr in tags.getall("USLT"):
-            if fr.text.strip():
-                return fr.text
-        return None
+            yield fr.text
+        return
     for key in ("LYRICS", "UNSYNCEDLYRICS", "\xa9lyr", "Lyrics"):  # Vorbis/FLAC/Opus, MP4, APE
         try:
             v = tags.get(key)
         except Exception:
             continue
-        text = (v[0] if isinstance(v, list) else str(v)) if v else ""
-        if text.strip():
-            return text
-    return None
+        if v:
+            yield v[0] if isinstance(v, list) else str(v)
+
+def find_lyrics(md, artist, title, length):
+    """Sceglie il testo: sincronizzato locale > sincronizzato lrclib > semplice locale > semplice lrclib."""
+    texts = [t for t in local_lyrics(md.get("xesam:url")) if t and t.strip()]
+    synced = next((t for t in texts if parse_lrc(t)), None)
+    if synced:
+        return {"synced": synced, "plain": None}
+    data = fetch(artist, title, md.get("xesam:album") or "", length)
+    if data and data.get("synced"):
+        return data
+    if texts:
+        return {"synced": None, "plain": texts[0]}
+    return data
 
 def parse_lrc(text):
     lines = []
@@ -142,11 +150,7 @@ def main():
         if tid != track_id:
             track_id = tid
             draw(header, ["", "Cerco il testo…"], None)
-            text = local_lyrics(md.get("xesam:url"))
-            if text:
-                data = {"synced": text, "plain": None} if parse_lrc(text) else {"synced": None, "plain": text}
-            else:
-                data = fetch(artist, title, md.get("xesam:album") or "", length)
+            data = find_lyrics(md, artist, title, length)
             synced = parse_lrc(data["synced"]) if data and data.get("synced") else None
             if synced:
                 lyr = [w or "♪" for _, w in synced]
